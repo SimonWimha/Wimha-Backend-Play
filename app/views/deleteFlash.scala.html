@@ -1,0 +1,33 @@
+@(user:User)
+
+<!DOCTYPE html>
+
+@meta = {
+
+}
+@css = {
+	<!-- Imported CSS -->
+	<link href="@routes.Assets.versioned("stylesheets/totem/designr-theme-cyan.css")" rel="stylesheet">
+	<!-- FONT -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+}
+
+@javascript = {
+}
+	
+@main("Delete Flash")(meta)(css)(javascript)("deleteFlash"){
+	
+	@header(user)("/")("")
+
+	<section id="contact">
+		<div class="container centered">
+			<h1 class="section-title">@Messages("email.firstFlash.feedback")</h1>
+			<button name="" type="button" class="btn-theme btn-lg"><a href="/" style="color:white;">wimha . com</a></button>
+		</div><!-- End container -->
+		
+	</section><!-- End contact section -->
+}
+
+
+
+

@@ -1,0 +1,170 @@
+@(user:User)(isMobile:Boolean)
+<!DOCTYPE html>
+@import models.comment._
+@import models.totem._
+
+@meta = {
+}
+@css = {
+}
+	
+@main("Social feed")(meta)(css)(javascript)("socialFeedPage"){
+
+@newHeader(user)("/")("socialFeedPage")
+
+@if(!isMobile){
+
+}
+
+	<!-- Feature Starts -->
+	<div class="features socialFeed">
+		<div class="container socialFeed">
+            
+            @if(play.mvc.Http.Context.Implicit.flash.get("unsubscribe")!=null){
+            <div class="login-error-message">
+                @play.mvc.Http.Context.Implicit.flash.get("unsubscribe")
+            </div>
+            }
+
+<!--             @if(play.mvc.Http.Context.Implicit.flash.get("unsubscribe")!=null){
+ -->	            <div class="unsubscribe_banner">
+<!-- 		                @play.mvc.Http.Context.Implicit.flash.get("unsubscribe")
+ -->		            <i class="fa fa-check fa-lg"></i> @Messages("socialFeed.unsubscribe.dailyD")
+		                <i class="fa fa-check fa-lg"></i> @Messages("socialFeed.unsubscribe.amb_week")
+		            </div>
+<!--             }
+ -->            
+            @if(models.comment.FollowedThread.getFollowedTotemThreadByUser(user).size()<5 || !Helpers.isMobile()){
+			<div class="col-md-3">
+				<!-- Expert user || visible lg - md -->
+				<div class="sideBar userBlock centered">
+					<div class="">
+						@elements.userPicture(user)("image-responsive userPic")(100)(100)("c_fill")
+					</div>
+					@if(user.picto != null){
+						<div class="user oneLine">
+							@user.firstname @user.lastname
+						</div>
+					}else{
+						<a href="/settingsPage/false" class="unstyled"><div class="uploadPicture pointer">@Messages("socialFeed.side.upload"), <strong> @user.firstname</strong></div></a>
+					}
+
+				</div>
+				<!-- Beginner user || visible lg - md - sm - xs -->
+				@if(models.comment.FollowedThread.getFollowedTotemThreadByUser(user).size()<1){
+					<div class="sideBar welcome oneLine">
+						<strong>@Messages("smallWord.welcome")</strong>, @user.firstname
+					</div>
+				}
+				<!-- All user || visible lg - md - sm - xs -->
+				<div class="sideBar toFollow js_removedWhenEmpty">
+					<h4 class="headLine">
+						@if(models.comment.FollowedThread.getFollowedTotemThreadByUser(user).size()<1){
+							@Messages("socialFeed.side.start")
+						}else{
+							@Messages("socialFeed.side.toFollow")
+						}
+					</h4>
+
+                    @for((totem,index) <- scala.util.Random.shuffle(scala.collection.immutable.List("FoodSenseTour", "Tito", "Backpackers", "Shaka", "JeanMich", "Vasco", "sarahzed", "Partot", "Tomate", "censeize", "Ruedy").map(x=>Tribu.findByName(x))).take(6).zipWithIndex ){
+	                    @if(totem!=null && !models.comment.FollowedThread.isSubscribe(user,totem.thread)){
+						<div class="toFollowBlock js_tohideWhenFollowed">
+							<a class="toFollowUser" href="/myTotemPage/@totem.name">
+								@elements.userPicture(totem.owner)("image-responsive")(50)(50)("c_fill")
+								<span class="userName">@totem.owner.firstname @totem.owner.lastname</span>
+							</a>
+							<p class="userQuestion">@totem.question</p>
+							<div class="followBtn js_follow" data-thread-id="@totem.thread.getId()" data-totem_name="@totem.name">
+								<a class="btn centered">@Messages("button.follow")</a>
+							</div>
+						</div>
+	                    }
+                    }
+				</div>
+
+        	@if(!Helpers.isMobile()){
+				@defining(models.totem.Tribu.findByOwner(user)){ list =>
+		    		@if(list!=null && !list.isEmpty()){
+					<!-- visible lg - md -->
+					<div class="sideBar myTotem">
+						<h4 class="headLine centered">@if(list.size()>1){@Messages("socialFeed.side.myTotems")}else{@Messages("socialFeed.side.myTotem")}</h4>
+						@for(totem <- list){
+							<div class="myTotemBlock">
+								<a class="myTotemUser" href="/myTotemPage/@totem.name">
+									<img src="@totem.picture.url_h(50)" style="float:left; padding-right:10px">
+									<span class="userName">@totem.name</span>
+								</a>
+								<p class="userQuestion">@totem.question</p>
+							</div>
+						}
+					</div>
+					}
+				}  
+        	}
+
+			</div>
+            }
+
+			<div class="col-md-7 col-sm-12 js_feed_container" data-page="0">
+                @if(!Helpers.isMobile() || models.comment.FollowedThread.getFollowedTotemThreadByUser(user).size()>3){
+                <div class="feedHeadLine">@Messages("socialFeed.headLine")</div>
+	            @defining(Flash.getFeed(user,0)){ list =>
+	                @if(list.isEmpty()){
+	                    <div class="socialAction">
+					        <div class="row">
+					            <div class="userPic col-md-2 col-sm-2 centered">
+					                @elements.userPicture(User.findById("1a937e7b-7e79-4d98-b594-43a1fc3d7bee"))("image-responsive")(120)(120)("c_fill")
+					            </div>
+					            <div class="col-md-10 col-sm-10 actionSentence">
+					                <strong class="torange">Bertran</strong> @Messages("socialFeed.action.flash") <strong><a href="/myTotemPage/Censeize" class="totemInvolved">Censeize</a></strong> @Messages("socialFeed.totemInvolved") <strong><a href="/myTotemPage/Censeize" class="totemInvolved">Promo 116</a></strong> @Messages("smallWord.in") <strong>Paris</strong> - <span class="timeStamp">25-03-2014</span>
+					            </div>
+					            <div class="col-md-10 col-sm-9 flashMessage">
+					                <p><strong class="quote">"</strong> @Messages("socialFeed.onboarding") <strong class="quote">"</strong></p>
+					            </div>
+					        </div>
+	                    </div>
+	                    <div class="socialAction emptyFeed">
+	                    	<p>@Messages("socialFeed.empty.1")</p>
+	                    	<p>@Messages("socialFeed.empty.2")</p>
+	                    </div>
+	                }else{
+	                    @socialFeed_list(user)(list)
+	                }
+	            }
+			    </div>
+                }
+		    </div>
+	</div>
+}
+
+@javascript = {
+	<script src="@routes.Assets.versioned("javascripts/totem/pictureDisplay.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/fb.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/follow.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/feed.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/like.js")" type="text/javascript"></script>
+    <script>
+
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=137474053062029&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<!-- Start InterCom -->
+    <script id="IntercomSettingsScriptTag">
+        window.intercomSettings = {
+            name: "@user.firstname @user.lastname",
+            email: "@user.email",
+            app_id: "u6gyo93o"
+        };
+    </script>
+
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://static.intercomcdn.com/intercom.v1.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<!-- End InterCom-->
+}

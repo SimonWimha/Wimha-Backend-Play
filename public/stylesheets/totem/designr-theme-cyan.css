@@ -1,0 +1,601 @@
+/*---------------------------
+---Main Typography Styles----
+-----------------------------*/
+
+body{
+	font-family: Lato, sans-serif;
+    background:#555 url('http://res.cloudinary.com/cloudinarywimha/image/upload/v1404372980/Static%20Pictures/backDark.jpg') repeat;
+
+//    background:#555 url('http://res.cloudinary.com/cloudinarywimha/image/upload/v1404372980/Static%20Pictures/backDark.jpg') no-repeat center center fixed;
+//    -webkit-background-size: cover;
+//      -moz-background-size: cover;
+//         -o-background-size: cover;
+//            background-size: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family: Lato, sans-serif;
+	color:#8aaad9;
+}
+
+h1 {
+    font-size:30px;
+    line-height:30px;
+    font-weight:300;
+//    text-transform:uppercase; because causes pb with the main header !
+    letter-spacing:0.02em;
+}
+
+h1.section-title{
+    position:relative;
+    margin:0 0 124px;
+    font-size:48px;
+    line-height:64px;
+    font-weight:300;
+    text-align:center;
+    color:#8aaad9;
+    z-index:1;
+}
+
+.section-title span {
+    font-size:150%;
+    font-weight:400;
+}
+
+.section-title [class*=fa]{
+    position:absolute;
+    top:-28px;
+    left:50%;
+    margin-left:-60px;
+    font-size:120px;
+    color:#eee;
+    z-index:-1;
+}
+
+h2 {
+    font-size:21px;
+    line-height:24px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+p {
+    font-size:18px;
+    line-height:24px;
+    font-weight:300;
+    letter-spacing:0.01em;
+    margin-bottom:20px;
+}
+
+a,
+a:hover,
+a:focus {
+    outline:none !important;
+    text-decoration:none;
+}
+
+a {
+  color: #536177;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #637187;
+  text-decoration: none;
+}
+
+a:focus,
+.btn:focus {
+  outline: none;
+}
+
+/*----------------------
+---Main Color Styles----
+------------------------*/
+body {
+	color:#999;
+	overflow-x:hidden;
+}
+
+#main-nav .navbar-toggle{
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:0;
+}
+
+#main-nav .fa-bar {
+    background:#fff;
+}
+
+.btn-theme{
+	color:#fff;
+	background-color:#8aaad9;
+	padding:15px 40px;
+	font-size:24px;
+	font-weight:300;
+	text-transform:uppercase;
+	border:none;
+	border-radius:0;
+	-webkit-transition:background-color 0.2s ease-out;
+	transition:background-color 0.2s ease-out;
+}
+
+.btn-theme:hover{
+	cursor:pointer;
+	color:#fff;
+	background-color:#9fb8e0;
+}
+
+.btn-theme:active,
+.btn-theme:focus{
+	color:#fff;
+}
+
+
+.btn-theme [class*=fa]{
+    margin-right:10px;
+}
+
+
+.btn-theme.transparent{
+	color:#fff;
+	background-color:transparent;
+	padding:14px 35px;
+	border:2px solid #fff;
+	font-weight:400;
+	-webkit-transition:all 0.3s ease-out;
+	transition:all 0.3s ease-out;
+}
+
+.btn-theme.transparent:hover,
+.btn-theme.transparent:focus,
+.btn-theme.transparent:active{
+	color:#8aaad9;
+	background-color:#fff;
+	border:2px solid #fff;
+	opacity:1;
+}
+
+/*-----------------------
+------Picture Styles-------
+------------------------*/
+
+#picture {
+    color:#fff;
+    padding:60px 0;
+}
+
+#picture h1 {
+    color:#fff;
+    font-size:48px;
+    line-height:64px;
+    font-weight:300;
+    margin-bottom:80px;
+    position:relative;
+}
+
+#picture p {
+    font-size:24px;
+    line-height:36px;
+    font-weight:300;
+    margin-bottom:15px;
+    margin-top: 15px;
+}
+
+#picture a:hover{
+    text-decoration:underline;
+} 
+
+#picture .btn-theme.transparent {
+    font-size:18px;
+    text-decoration:none;
+}
+
+#picture img {
+    box-shadow:12px 0px 0px 12px rgba(255,255,255,0.2),
+                -12px 0px 0px 12px rgba(255,255,255,0.2);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(250,250,250,0.6);
+}
+
+/*----------------------
+-----Contact Styles-----
+------------------------*/
+
+#contact {
+   padding:60px 0; 
+   color:#fff;
+}
+
+#contact .section-title {
+    color:#fff;
+    margin-bottom:84px;
+}
+
+#contact .section-title [class*=fa]{
+    color:#8aaad9;
+	-webkit-transform: rotate(-15deg);
+	-moz-transform: rotate(-15deg);
+	-ms-transform: rotate(-15deg);
+    transform:rotate(-15deg);
+    opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
+
+#contact .contact-info p,
+#contact .contact-info address{
+    margin:0 0 30px;
+    font-size:18px;
+    line-height:30px;
+    font-weight:400;
+}
+
+
+.contact-form .form-group label{
+    display:none;
+    font-size:18px;
+    line-height:24px;
+    font-weight:400;
+    text-transform:uppercase;
+}
+
+.contact-form .form-control {
+    background:#fff;
+    background:rgba(255,255,255,0.9);
+    border:none;
+    border-radius:1px;
+    outline:none;
+    box-shadow:none;
+    margin-bottom:30px;
+    height:68px;
+    font-size:30px;
+    line-height:48px;
+    font-weight:300;
+    color:#8aaad9;
+    padding-left:64px;
+}
+
+.contact-form .form-group{
+    position:relative;
+}
+
+.contact-form .form-group [class*="fa-"] {
+    display:block;
+    width:64px;
+    position:absolute;
+    top:0;
+    left:5px;
+    color:#8aaad9;
+    font-size:32px;
+    line-height:68px;
+    text-align:center;
+    font-weight:300;
+
+}
+
+.contact-form .error-message {
+    background:#8aaad9;
+    padding:10px 20px;
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    font-size:16px;
+    font-weight:400;
+}
+
+.contact-form .form-control:focus {
+    border:none;
+    outline:none;
+    box-shadow:none;
+}
+
+.contact-form .form-control::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #8aaad9;
+}
+.contact-form .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #8aaad9;
+    opacity:1;
+}
+.contact-form .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #8aaad9;
+    opacity:1;
+}
+.contact-form .form-control:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #8aaad9;
+}
+
+
+/*----------------------
+-----Footer Styles-----
+------------------------*/
+#main-footer {
+    background:#fff;
+    color:#8aaad9;
+    padding:30px 0;
+}
+
+#main-footer .small-logo {
+    padding:0;
+    margin:0;
+    margin-bottom:24px;
+    font-size:24px;
+    line-height:24px;
+    font-weight:normal;
+    color:#8aaad9;
+}
+
+#main-footer .small-logo span {
+    padding:0;
+    font-size:18px;
+    line-height:24px;
+    font-weight:300;
+    text-transform:none;
+}
+
+
+#main-footer ul.footer-nav {
+    list-style:none;
+    padding:0;
+    margin:0;
+    margin-bottom:24px;
+}
+
+#main-footer ul.footer-nav li{
+    display:inline-block;
+    padding:0 15px;
+    line-height:24px;
+    border-right:1px solid #8aaad9;
+}
+
+#main-footer ul.footer-nav li:first-child{
+    padding-left:0;
+}
+
+#main-footer ul.footer-nav li:last-child{
+    border-right:none;
+}
+
+#main-footer ul.footer-nav li a{
+    color:#8aaad9;
+    text-decoration:none;
+    font-size:14px;
+    line-height:24px;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    padding:0;
+    -webkit-transition:color 0.2s ease-out;
+    transition:color 0.2s ease-out;
+}
+
+#main-footer ul.footer-nav li a:hover,
+#main-footer ul.footer-nav li a:active{
+    color:#9fb8e0;
+    text-decoration:none;
+}
+
+#main-footer p{
+    color:#8aaad9;
+    font-size:14px;
+    line-height:24px;
+    font-weight:400;
+}
+
+#main-footer .right-col{
+    text-align:right;
+}
+
+#main-footer .right-col h2{
+    text-transform:none;
+    font-size:18px;
+    line-height:24px;
+    font-weight:700;
+    margin:0 0 24px;
+}
+
+#main-footer .right-col p{
+    font-size:15px;
+    line-height:24px;
+    font-weight:300;
+}
+
+/*-----------------------
+------Media Queries------
+------------------------*/
+
+@media (max-width: 1199px) {
+
+.jumbotron .left-col p{
+    font-size:28px;
+    line-height:32px;
+}
+
+.jumbotron .left-col p span{
+    font-size:36px;
+}
+
+.jumbotron .right-col p{
+    font-size:82px;
+    line-height:82px;
+}
+
+}
+
+@media (max-width: 991px) {
+
+.jumbotron .message-box{
+	padding:10px 0;
+}
+
+.jumbotron .left-col {
+    width:100%;
+    text-align:center;
+}
+
+.jumbotron .left-col p{
+    padding:10px;
+}
+
+.jumbotron .right-col{
+    width:100%;
+    text-align:center;
+}
+
+.jumbotron .right-col p{
+    padding:10px;
+}
+
+}
+
+@media (max-width: 768px) {
+
+#main-nav .navbar-brand{
+    color:#8aaad9;
+}
+
+#main-nav{
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+#main-nav .navbar-toggle{
+    color:#8aaad9;
+    border-color:#8aaad9;
+}
+
+#main-nav .navbar-toggle .fa-bar{
+    background:#8aaad9;
+}
+
+#main-nav .container{
+    padding:10px 20px;
+}
+
+#main-nav .nav a,
+#main-nav .nav a:active,
+#main-nav .nav a:hover{
+    color:#8aaad9;
+    line-height:42px;
+    text-align:center;
+}
+
+#main-nav .nav a:before {
+    display:none;
+}
+
+#main-nav .nav a:hover,
+#main-nav .nav li.active a {
+    box-shadow:0 0 0 1px;
+}
+
+.jumbotron .left-col p{
+    font-size:24px;
+    line-height:28px;
+}
+
+.jumbotron .left-col p span{
+    font-size:32px;
+}
+
+.jumbotron .right-col p{
+    font-size:62px;
+    line-height:62px;
+}
+
+#main-footer ul.footer-nav{
+    margin-bottom:24px;
+}
+
+#main-footer .left-col,
+#main-footer .right-col{
+    text-align:center;
+}
+
+.modal-dialog{
+    max-width:480px;
+}
+
+.modal-body .left-col,
+.modal-body .right-col{
+	width:100%;
+}
+
+h1.section-title{
+    font-size:42px;
+    line-height:56px;
+}
+
+}
+
+@media (max-width: 479px) {
+
+.jumbotron .right-col p{
+    font-size:38px;
+    line-height:38px;
+}
+
+h1.section-title{
+    font-size:32px;
+    line-height:46px;
+}
+
+
+p {
+    font-size:16px;
+    line-height:21px;
+}
+
+.btn-theme{
+	padding:15px 40px;
+	font-size:18px;
+}
+
+#about h1 {
+    font-size:28px;
+    line-height:36px;
+}
+
+#about p {
+    font-size:21px;
+    line-height:28px;
+}
+
+
+#filter-works ul li a{
+    font-size:21px;
+    line-height:28px;
+}
+
+#contact .contact-info p,
+#contact .contact-info address{
+    font-size:16px;
+    line-height:26px;
+}
+
+
+#contact .form-control {
+    height:58px;
+    font-size:24px;
+    line-height:30px;
+}
+
+#contact .form-group [class*="fa-"] {
+    font-size:32px;
+    line-height:58px;
+
+}
+
+#contact textarea.form-control {
+    font-size:24px;
+    line-height:32px;
+	padding-top:14px;
+}
+
+}

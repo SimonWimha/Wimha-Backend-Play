@@ -1,0 +1,14 @@
+@(listShortUrl : java.util.List[String])(listMemberIdUrl : java.util.List[String])
+<h3>short url (to put directly qr code)</h3>
+<div>
+    @for(url <- listShortUrl){
+        @url<br>
+    }
+</div>
+
+<h3>long url (to put in unitag)</h3>
+<div>
+    @for(url <- listMemberIdUrl){
+        @url<br>
+    }
+</div>

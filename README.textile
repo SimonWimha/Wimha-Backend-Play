@@ -1,0 +1,19 @@
+h2. Pre requisite
+
+You will need the framework and database :
+- Play! Framework 2.3.6
+- PostgreSQL 9.1
+
+
+You will also need an account on the following services :
+- Cloudinary.com
+- Parse.com
+- Google and/or Bing geocoding api key
+- Mailjet or Gmail account.
+- facebook app
+
+
+h2. Setup configuration
+Fill the external_services.conf with your previously created accounts
+
+Run the app !

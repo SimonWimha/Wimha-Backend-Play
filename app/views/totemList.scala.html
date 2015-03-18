@@ -1,0 +1,326 @@
+@(user:User)
+<!DOCTYPE html>
+
+@meta = {}
+@css = {}
+
+@main("Wimha")(meta)(css)(javascript)("homePage"){
+
+<!-- Top Starts -->
+<div class="top homeP">	
+	@header(user)("/")("totemList")
+	<!-- Hero starts -->
+	<div class="hero homeP">
+		<div class="container">
+			<div class="row relative">
+				<div class="col-md-6">
+					<div class="intro homeP row pvWimha">
+						<h2>
+							@Messages("wimha.catchLine.1")<span class="tblue">.</span>
+							@Messages("wimha.catchLine.2")<span class="tblue">.</span>
+							@Messages("wimha.catchLine.3")<span class="tblue">.</span>
+						</h2>
+						<p>@Messages("wimha.pv")</p>
+						<hr>
+						<div class="callToActionBtn">
+							<a href="/#howItWorks" class="download download-orange">@Messages("hp.title.howTo")</a>
+						</div>
+					
+					</div>
+				</div>
+				<img src="http://res.cloudinary.com/cloudinarywimha/image/upload/v1407331549/Static%20Pictures/Simon300.png" alt="image" class="img-responsive hpPicture"/>
+			</div>
+		</div>
+	</div>
+	<!-- Hero ends -->
+</div>
+
+
+<!-- Top Ends -->
+<div id="totemfamily" class="features relative">
+	<div class="container">				
+		<div class="row">
+			<div class="col-md-12">					
+				<div class="page-title text-center">
+					<h3 class="title">@Messages("totemfamily.headLine") (14,90€/Totem)</h3>
+					<p class="centered">@Messages("totemfamily.hashtags")</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">					
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/AutumnTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.AutumnTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.AutumnTot.intro")<a href="@Messages("totemfamily.citation.1")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>		
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/0Boqg-autumntot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="0Boqg">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+@*
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1402478102/Static%20Pictures/BlablaTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.CovoitTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.CovoitTot.intro")<a href="@Messages("totemfamily.citation.1")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>		
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="https://www.shoplocket.com/products/6LX4m-covoituragetot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="6LX4m">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/FrenchTechTot200.png">
+					<hr>
+					<h3 class="name-totem">FrenchTechTot</h3>
+					<p class="intro-totem">The "French Tech" gathers all talented people who build the digital French scene<a href="http://ctt.ec/VdQPZ" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>					
+					<div class="">
+						<div class="shotcontent centered">
+							<a class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="QX5t2" href="https://www.shoplocket.com/products/QX5t2-frenchtechtot/buy"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+*@
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/BuddhaTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.BuddhaTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.BuddhaTot.intro")<a href="@Messages("totemfamily.citation.2")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>			
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="https://www.shoplocket.com/products/NULD5-buddhatot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="NULD5"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034158/Static%20Pictures/DurtyTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.DurtyTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.DurtyTot.intro")<a href="@Messages("totemfamily.citation.3")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/ZJn19-durtytot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="ZJn19"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/GardenTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.GardenTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.GardenTot.intro")<a href="@Messages("totemfamily.citation.4")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/ABOaa-gardentot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="ABOaa"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/HollandTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.HollandTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.HollandTot.intro")
+					<a href="@Messages("totemfamily.citation.5")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/WeNhF-hollandtot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="WeNhF">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/HoneyTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.HoneyTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.HoneyTot.intro")
+					<a href="@Messages("totemfamily.citation.6")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/UdfJJ-honeytot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="UdfJJ">@Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034158/Static%20Pictures/NakedTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.NakedTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.NakedTot.intro")
+					<a href="@Messages("totemfamily.citation.7")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/wzc24-nakedtot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="wzc24">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/OddenTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.OddenTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.OddenTot.intro")
+					<a href="@Messages("totemfamily.citation.8")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/0MeZX-oddenttot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="0MeZX"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034158/Static%20Pictures/PlayTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.Playtot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.Playtot.intro")
+					<a href="@Messages("totemfamily.citation.9")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/e7j5G-playtot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="e7j5G">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/SandyTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.SandyTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.SandyTot.intro")
+					<a href="@Messages("totemfamily.citation.10")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/ybG87-sandytot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="ybG87"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034158/Static%20Pictures/SummerTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.SummerTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.SummerTot.intro")
+					<a href="@Messages("totemfamily.citation.11")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/xxpoD-summertot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="xxpoD">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/UrbanTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.urbanTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.urbanTot.intro")
+					<a href="@Messages("totemfamily.citation.2")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/XQv1X-urbantot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="XQv1X"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/VentanaTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.VentanaTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.VentanaTot.intro")
+					<a href="@Messages("totemfamily.citation.13")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/OZCXx-ventanatot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="OZCXx">  @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034157/Static%20Pictures/FunkyTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.FunkyTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.FunkyTot.intro")
+					<a href="@Messages("totemfamily.citation.14")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/LoRg2-funkytot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="LoRg2"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034156/Static%20Pictures/SofiaTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.SofiaTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.SofiaTot.intro")
+					<a href="@Messages("totemfamily.citation.15")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/i8RDX-sofiatot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="i8RDX"> @Messages("button.buy")</a>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-4 totemBlock">
+				<div class="feat shots shots-padding-0">
+					<img class="img-responsive totemPicCentered" src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1394034158/Static%20Pictures/ColeTot200.png">
+					<hr>
+					<h3 class="name-totem">@Messages("totemfamily.ColeTot")</h3>
+					<p class="intro-totem">@Messages("totemfamily.ColeTot.intro")
+					<a href="@Messages("totemfamily.citation.16")" Target= "_blank"> <i class="fa fa-twitter"></i></a></p>
+					<hr>
+					<div class="">
+						<div class="shotcontent centered">
+							<a href="http://www.shoplocket.com/products/JHmF0-coletot/buy" class="shoplocket-checkout download download-orange js_mp_buy" data-shoplocket-product-token="JHmF0"> @Messages("button.buy")</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row backLink centered">
+			<a href="/totemFamily/#pricing">@Messages("callToAction.backTo.hp")</a>
+		</div>
+	</div>
+</div>
+}
+
+@javascript = {}

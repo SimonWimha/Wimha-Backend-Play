@@ -1,0 +1,114 @@
+@(totem:models.totem.Tribu)(isMobile: Boolean)(user: User)(comingPage: String)
+@import models.totem._
+@import models.comment._
+
+<!DOCTYPE html>
+
+@meta = {
+	<meta name="description" content="@totem.question">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wimha">
+    <meta property="og:description" content="@totem.question">
+	<meta property="og:title" content="@totem.name the traveling totem">
+	<meta property="og:url" content="https://www.wimha.com/@totem.name">
+	<meta property="og:image" content="@if(totem.picture!=null){@totem.picture.url()}">
+}
+@css = {
+}
+@javascript = {
+	<script src="@routes.Assets.versioned("javascripts/pictureDisplay.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/follow.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/fb.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/like.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    	$(document).ready(function() {
+			if(window.location.hash == "") {
+				location.href = location.href + '#followersPage';
+			}
+		});
+    </script>
+}
+
+@main("@totem.name")(meta)(css)(javascript)("followersPage"){
+
+@if(!Helpers.isMobile){
+	@*
+	<div id="printModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body row">
+	      	<div class="col-md-4 centered">
+	      		<img src="@totem.picture.url_w(120)">
+	      	</div>
+	      	<div class="col-md-8">
+		        <h3>@Messages("myTP.modal.headLine")</h3>
+		        <h4>@Messages("myTP.modal.text")&hellip;</h4>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default js_printModal_no" data-dismiss="modal">@Messages("button.notInterested")</button>
+	        <button type="button" class="btn btn-success js_printModal_yes" data-dismiss="modal">@Messages("button.interested")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	*@
+	@elements.bg_picture(totem.backgroundPicture)
+}
+	@newHeader(user)(controllers.routes.Application.myTotemPage(totem.name).toString)("myTP")
+	@tribeDescription(totem:models.totem.Tribu)(isMobile:Boolean)(user: User)("followersPage")
+
+	<!-- Shots starts -->
+	<div id="followersPage" class="commentShot">
+		<div class="shots">
+			<div class="container">		
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 commentBlock">
+						<div class="shotcontent row">
+							<i class="fa fa-user fa-lg"></i><span class="commentNumber"> @Messages("followerPage.yourFollowers")</span>
+						</div>
+
+                           @defining(models.comment.FollowedThread.getSubscribedUserByThread(totem.getThread())){ fThreads =>
+                            @if(!fThreads.isEmpty()){
+                                @for(fThread <- fThreads){
+                                <div class="shotcontent row emptyTemplate">
+                                    <div class="col-md-2 col-xs-2 centered">
+                                        @elements.userPicture(fThread.getUser())("image-responsive commentPicture")(60)(60)("c_fill")
+                                    </div>
+                                    <div class="col-md-10 col-xs-10 infoBlock">
+                                        <h4 class="commentName">@fThread.getUser().firstname @fThread.getUser().lastname</h4>
+                                    </div>
+                                </div>
+                                }
+                            }else{
+                                <div class="shotcontent row emptyTemplate">
+                                    <div class="col-md-offset-2 col-offset-xs-2 col-md-10 col-xs-10 infoBlock">
+                                        <h4 class="commentName">@Messages("followerPage.noFollower")</h4>
+                                    </div>
+
+                                </div>
+                            }
+                           }
+					</div>
+					
+					<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 backLinkMyTP centered">
+						@if(comingPage == "myTP"){
+							<a href="/myTotemPage/@totem.name">
+							@Messages("commentPage.backTo.before") @totem.name @Messages("commentPage.backTo.after")
+						}
+						@if(comingPage == "socialFeed"){
+							<a href="/">
+							@Messages("commentPage.backTo.socialFeed")
+						}
+							
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Shots ends -->
+}
+
+

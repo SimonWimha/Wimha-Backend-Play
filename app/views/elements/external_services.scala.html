@@ -1,0 +1,55 @@
+@(social:Boolean)
+@* accounts prod *@
+@if(play.Play.isProd() && !Application.VAL) {
+
+    <!-- Loggr -->
+    <script src="https://api.loggr.net/1/loggr.min.js?l=@play.Play.application().configuration().getString("logger_name_prod")&a=@play.Play.application().configuration().getString("logger_key_prod")"></script>
+
+@* accounts for val and dev *@
+}else{
+
+    <!-- Loggr -->
+    <script src="https://api.loggr.net/1/loggr.min.js?l=@play.Play.application().configuration().getString("logger_name_dev")&a=@play.Play.application().configuration().getString("logger_key_dev")"></script>
+}
+
+<script type="text/javascript">
+
+    $.fn.serializeObject = function(){
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    function loggr(text,tags){
+        if(typeof Loggr != 'undefined' && undefined != Loggr){
+            Loggr.Log.events.createEvent().text(text).tags(tags).post();
+        }                  
+    }
+
+</script>
+
+@if(social ){
+<!-- Facebook Like -->
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=@play.Play.application().configuration().getString("facebook.apiKey")&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Twitter Follow -->
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+}

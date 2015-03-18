@@ -1,0 +1,52 @@
+@(user:User)(list: java.util.List[models.totem.Flash])
+@for(flash <- list){
+    <div class="socialAction">
+        <div class="row">
+            <div class="userPic col-md-2 col-sm-2 centered">
+                @elements.userPicture(flash.getFlasher())("image-responsive")(120)(120)("c_fill")
+            </div>
+            <div class="col-md-10 col-sm-10 actionSentence">
+                <strong class="torange">@flash.getFlasher().firstname</strong> @Messages("socialFeed.action.flash") <a href="/myTotemPage/@flash.getTribu().name" class="totemInvolved">@flash.getTribu.name</a>
+
+                @Messages("socialFeed.totemInvolved")
+                <a href="/myTotemPage/@flash.getTribu().name" class="totemInvolved">@flash.getTribu().getOwner.firstname</a>
+                @Messages("socialFeed.totemInvolved.en")  
+
+                @Messages("smallWord.in") <strong>@if(flash.city!=null && !flash.city.isEmpty()){@flash.city, @flash.country}else{@flash.address}</strong>
+                - <span class="timeStamp">@flash.getDate()</span>
+            </div>
+            <div class="col-md-10 col-sm-9 totemQuestion">@flash.question</div>
+        </div>
+        <div class="row">
+            <div class="flashMessage col-md-12 col-sm-12">
+                <p><strong class="quote">"</strong>@flash.message<strong class="quote">"</strong></p>
+            </div>
+            @if(flash.picture != null){
+                <div class="col-md-12 col-sm-12 timeline-heading socialFeed closed">
+                    <img class="img-responsive js_flashPicture flashPicture" src="@flash.picture.url_a()" />
+                </div>
+            }
+        </div>
+
+        @if(user!=null){
+            @defining(models.socialAction.LikeFlashAction.alreadyLiked(user,flash)) { like =>
+                @defining(models.socialAction.LikeFlashAction.findLikesForAFlash(flash).size()) { nb =>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2 socialIndicators socialFeed">
+                            <a class="@if(like!=null){js_unlike js_feed}else{js_like js_feed js_mp_likeFlash}" data-flash-id="@flash.id" data-message-like="@Messages("button.like")" data-message-unlike="@Messages("button.liked")">@if(like!=null){@Messages("button.liked")}else{@Messages("button.like")}</a>
+                            -
+                            <a href="@controllers.social.routes.Comments.commentPageDisplay(flash.id+"","socialFeed")" class="js_mp_comment">@Messages("button.comment")</a>
+                            -
+                            <a href="@controllers.social.routes.Comments.commentPageDisplay(flash.id+"","socialFeed")" class="indicators">
+                                <i class="fa fa-heart"></i>
+                                <span class="js_count">@nb</span>
+                                <i class="fa fa-comment"></i>
+                                @flash.getThread().getComments().size()
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+}

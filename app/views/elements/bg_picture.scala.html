@@ -1,0 +1,14 @@
+@(picture:models.Picture)
+
+
+@if(picture!=null){
+	<div class="bluredImg">
+		<div style="background-image:url('@picture.imageTotemBG()');position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;"></div>
+		<div class="js_blur" style="background-image:url('@picture.imageTotemBG_blured()');position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;"></div>
+	</div>
+}else{
+	<div class="bluredImg">
+	    <div style="background-image:url('http://res.cloudinary.com/cloudinarywimha/image/upload/e_colorize:30/v1404372980/Static%20Pictures/backDark.jpg');position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;"></div>
+	    <div class="js_blur" style="background-image:url('http://res.cloudinary.com/cloudinarywimha/image/upload/e_blur:500,e_colorize:30/v1404372980/Static%20Pictures/backDark.jpg');position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;"></div>
+	</div>
+}

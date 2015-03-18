@@ -1,0 +1,101 @@
+@(user: User)
+@import models.notification._
+<!DOCTYPE html>
+
+@meta = {
+}
+
+@css = {
+	<!-- Imported CSS -->
+	<link href="@routes.Assets.versioned("stylesheets/totem/designr-theme-cyan.css")" rel="stylesheet">
+	<!-- FONT -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+	<!-- Switch CSS -->
+	<link href="@routes.Assets.versioned("stylesheets/totem/bootstrap-switch.min.css")" rel="stylesheet">
+}
+@javascript = {
+	<script src="@routes.Assets.versioned("javascripts/user/notifications.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/totemPage/bootstrap-switch.min.js")" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			  // initialize all the inputs
+			  $('input[type="checkbox"],[type="radio"]').not('#create-switch').bootstrapSwitch();
+		});
+	</script>
+}
+
+@main(Messages("header.notificationSettings"))(meta)(css)(javascript)("notifSettingsPage"){
+
+	@header(user)("/")("")
+
+	<section id="picture">
+		<div class="container notifSettings">
+			<h1 class="section-title marginBottom">@Messages("settings.headLine.notif")</h1>
+	
+			<div class="row">
+				<p id="intro" class="centered">@Messages("settings.notif.cases")</p>
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock newFollower">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.1")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.newFollowerOfYourTotem)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.newFollowerOfYourTotem">
+					</div>				
+				</div>	
+				<hr class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock totemLike">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.2")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.newLikeOnYourTotem)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.newLikeOnYourTotem">
+					</div>				
+				</div>	
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock flashLike">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.3")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.newLikeOnYourFlash)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.newLikeOnYourFlash">
+					</div>				
+				</div>	
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock newFlash">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.4")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.newFlashOnATotemYouFollow)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.newFlashOnATotemYouFollow">
+					</div>				
+				</div>
+				<hr class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">	
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock newComment">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.5")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.commentOneOfTheMessagesOnMyTotem)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.commentOneOfTheMessagesOnMyTotem">
+					</div>				
+				</div>	
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.6")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.commentMyFlash)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.commentMyFlash">
+					</div>				
+				</div>	
+				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 notifCasesBlock">
+					<div class="col-md-8 col-sm-8 notifCases">
+						@Messages("settings.notif.cases.7")
+					</div>
+					<div class="col-md-4 col-sm-4 switch">
+						<input type="checkbox" @if(NotificationPreference.isSubscribed(user,NotificationPreference.commentAFlashIHaveCommented)){checked} class="switch-large" data-on="#69b8e5" data-off="gray" data-animated="true" data-group="@NotificationPreference.commentAFlashIHaveCommented">
+					</div>				
+				</div>	
+			</div><!--End row -->
+		</div><!--End container -->
+	</section><!--End about section -->
+	
+	@footer()
+	
+}

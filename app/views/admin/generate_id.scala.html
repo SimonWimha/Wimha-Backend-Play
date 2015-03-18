@@ -1,0 +1,36 @@
+
+@helper.form(action = routes.NewTotem.generateNewIdSubmit(),
+'enctype -> "multipart/form-data" ) {
+        <h4>2 modes : </h4>
+        mode A : on ajoute des members à une tribu existante : dans ce cas, on n'importe pas d'image. On met un nombre et un id de tribu <br>
+        mode B : on crée une tribu et des members : dans ce cas, importer une image (celle de la tribu) et entrer un nombre. laisser l'id de tribu vide.<br>
+	image de tribu : <input type="file" accept="image/*;capture=camera" name="picture" id="picture" class="hide"><br>
+    nombre de members : <input type="text" name="nb"><br>
+    nom de tribu : <input type="text" class="js_tribuName"><button type="button" class="js_btn">find id</button><br>
+    id de tribu : <input type="text" name="tribuId" class="js_tribuId"><br>
+
+
+	<button>ok</button><br>
+}
+<script src="//code.jquery.com/jquery-1.9.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('.js_btn').on('click', function(){
+
+            $.ajax({
+                url: "/getTribuId/"+$('.js_tribuName').val()
+            })
+            .done(function( id ) {
+                $('.js_tribuId').val(id);
+            })
+            .fail(function(){
+                $('.js_btn').after('bad name, enter the right name and retry');
+            });
+
+        });
+
+
+
+    });
+</script>

@@ -1,0 +1,19 @@
+@(totem_name : String)(positions : java.util.List[models.totem.Flash])
+<rss version="2.0">
+
+<channel>
+  <title>Wimha.com : @totem_name</title>
+  <link>https://www.wimha.com/myTotemPage/@totem_name</link>
+  <description>"Last messages on the totem @totem_name"</description>
+  @for(position <- positions){
+    <item>
+      <title>@position.getTribu().name</title>
+      <link>https://www.wimha.com/myTotemPage/@totem_name</link>
+      <description>@position.getName() : "@position.getMessage()" #@position.getTribu().name http://wimha.com/myTotemPage/@totem_name</description>
+      <pubDate>@Helpers.getPubDate(position.date_post+"")</pubDate>
+      <guid>@position.getDate()</guid>
+    </item>
+  }
+</channel>
+
+</rss>

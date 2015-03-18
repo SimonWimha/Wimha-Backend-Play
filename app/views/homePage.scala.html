@@ -1,0 +1,771 @@
+@(user:User)
+<!DOCTYPE html>
+@import models.comment._
+@import models.totem._
+@import scala.collection.immutable._
+
+@meta = {
+	<meta name="description" content="@Messages("wimha.pv")">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wimha">
+    <meta property="og:description" content="@Messages("wimha.pv")">
+	<meta property="og:title" content="Wimha : @Messages("wimha.catchLine")">
+	<meta property="og:url" content="https://www.wimha.com/TotemFamily/">
+	<meta property="og:image" content="@Messages("picture.og.homePage")">
+}
+@css = {
+	<link href="@routes.Assets.versioned("stylesheets/totem/animations.css")" rel="stylesheet">
+}
+
+@main("Wimha")(meta)(css)(javascript)("homePage"){
+
+
+@if(user==null){
+    <div id="intercomFake" class="btn btn-black btn-lg"><i class="fa fa-question-circle"></i></div>
+	<div id="emailMissingModale" class="modal fade" data-email="johnDoe@@gmail.com">
+	  <div class="modal-dialog">
+	    <div class="modal-content intercom">
+	      <div class="modal-body row">
+	      	<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1408438069/Static%20Pictures/pointer.png" class="col-md-4 col-sm-3 visible-lg visible-md visible-sm" style="margin-bottom:-50px;">
+	      	<p class="col-md-8 white col-sm-9 col-xs-12 intercomIntro"><strong>@Messages("smallWord.hello")</strong></br>
+	      		@Messages("hp.intercom.first")</br>@Messages("hp.intercom.second")
+	      	</p>
+	      </div>
+	      <div class="modal-footer intercom">
+	        <div class="input-group input-group-lg col-md-7 col-sm-7 col-xs-12" style="">
+  				<input id="emailMissingInput" type="text" class="form-control" placeholder="@Messages("input.ph.email")">
+	      	</div>
+	        <button type="button" class="btn btn-success btn-lg col-md-5 col-sm-5 js_btnNext openIntercom">@Messages("hp.intercom.write")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+}
+
+@ouibounce_modale()
+
+	<!-- Top Starts -->
+	<div class="top homeP">
+		@header(user)("/")("homePage")
+		<!-- Hero starts -->
+		<div class="hero homeP">
+			<div class="container">
+				<div class="row relative">
+					<div class="col-md-6">
+						<div class="intro homeP row pvWimha">
+							<h2 class="catchLine">
+								@Messages("wimha.catchLine.1")<span class="torange">.</span>
+								@Messages("wimha.catchLine.2")<span class="torange">.</span>
+								@Messages("wimha.catchLine.3")<span class="torange">.</span>
+							</h2>
+							<p class="pv">@Messages("wimha.pv")</p>
+							<div class="callToActionBtn mg-top-20">
+								<a href="#howItWorks" class="download download-orange">@Messages("hp.title.howTo")</a>
+								<a href="https://itunes.apple.com/fr/app/wimha/id873048515?mt=8&uo=4" target="itunes_store"><i class="fa fa-apple fa-3x"></i></a>
+								<a href="https://play.google.com/store/apps/details?id=com.wimha.app"><i class="fa fa-android fa-3x"></i></a>
+							</div>
+
+						</div>
+					</div>
+					<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_400/v1407331549/Static%20Pictures/Simon300.png" alt="image" class="img-responsive hpPicture boucingTotem js_flipTotem"/>
+					<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_400/v1408459423/Static%20Pictures/SimonBack.png" alt="image" class="img-responsive hpPicture hide js_backTotem animated fadeInUp">
+				</div>
+			</div>
+		</div>
+		<!-- Hero ends -->
+	</div>
+	<!-- Top Ends -->
+
+
+	<div id="howItWorks" class="shots block relative">
+		<div class="container">
+			<img class="visible-lg visible-md visible-sm img_OS" src="http://res.cloudinary.com/cloudinarywimha/image/upload/v1421067813/Static Pictures/christmas/opensource.png">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-title text-center">
+						<h3>@Messages("hp.title.howTo")</h3>
+						<p class="centered">@Messages("hp.headLine.howto")</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 centered mg-bottom-50 visible-lg visible-md visible-sm">
+                    <img src="https://res.cloudinary.com/cloudinarywimha/image/upload/v1417452439/Static%20Pictures/christmas/1417474021_social_4-128.png" class="js_playVideo pointer" >
+                    <p class="js_playVideoText bold mg-top-20" style="color:#e34446;">@Messages("hp.video")</p>
+                    <iframe src="//player.vimeo.com/video/79901351?title=0" class="hide js_christmasVideo" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+				<div class="col-md-4">
+					<div class="screenshot imgCentered hpiOSDevice relative">
+						<div class="fadingPicture iPhone js_changePicture">
+							<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/w_230/v1407770553/Static%20Pictures/mockupiPhone/HP.png" class="">
+							<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/w_230/v1407770553/Static%20Pictures/mockupiPhone/Scan.png" class="active">
+							<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/w_230/v1416481012/Static%20Pictures/mockupiPhone/flashNew.png" class="">
+							<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/w_230/v1416481475/Static%20Pictures/mockupiPhone/comment.png" class="">
+							<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/w_230/v1407770553/Static%20Pictures/mockupiPhone/myTP.png" class="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="shotcontent">
+						<div class="row">
+							<hr class="visible-xs">
+							<div class="col-md-6">
+								<div class="shot-content-body">
+									<h4><i class="fa fa-cloud tblue"></i>@Messages("hp.subtitle.howto.1")</h4>
+									<p>@Messages("hp.text.howto.1")</p>
+								</div>
+							</div>
+							<hr class="visible-xs">
+							<div class="col-md-6">
+								<div class="shot-content-body">
+									<h4><i class="fa fa-flash tblue"></i>@Messages("hp.subtitle.howto.2")</h4>
+									<p>@Messages("hp.text.howto.2")</p>
+								</div>
+							</div>
+							<hr class="visible-xs">
+							<div class="col-md-6">
+								<div class="shot-content-body">
+									<h4><i class="fa fa-map-marker tblue"></i>@Messages("hp.subtitle.howto.3")</h4>
+									<p>@Messages("hp.text.howto.3")</p>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="applinks">
+							<a href="https://play.google.com/store/apps/details?id=com.wimha.app"><img src="@Messages("totemfamily.faq.android")" alt="Get it on Google Play"></a>
+							<a href="https://itunes.apple.com/fr/app/wimha/id873048515?mt=8&uo=4" target="itunes_store"><img src="@Messages("totemfamily.faq.ios")"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div id="tribeMap" class="shots block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-title text-center">
+					<h3>@Messages("hp.title.map")</h3>
+					<p class="centered">@Messages("hp.headLine.map")</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="imgCentered hpDesktopDevice relative">
+					<div class="fadingPicture desktop js_changePicture visible-lg visible-md visible-sm">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_430/v1407771347/Static%20Pictures/mockupDesktop/header.png" class="active">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_430/v1407771347/Static%20Pictures/mockupDesktop/Map.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_430/v1407771347/Static%20Pictures/mockupDesktop/MapZoomed.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_430/v1407771347/Static%20Pictures/mockupDesktop/Newflash.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_430/v1410439362/Static%20Pictures/mockupDesktop/MyTP2bis.png">
+					</div>
+					<div class="fadingPicture desktop js_changePicture visible-xs">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_250/v1407771347/Static%20Pictures/mockupDesktop/header.png" class="active">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_250/v1407771347/Static%20Pictures/mockupDesktop/Map.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_250/v1407771347/Static%20Pictures/mockupDesktop/MapZoomed.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_250/v1407771347/Static%20Pictures/mockupDesktop/Newflash.png">
+						<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_250/v1410439362/Static%20Pictures/mockupDesktop/MyTP2bis.png">
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>
+</div>
+
+
+<div id="whyIsItCool" class="service block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("hp.title.why")</h3>
+			<p>@Messages("hp.headLine.why")</p>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="service-item">
+					<a href=""><img src="@routes.Assets.versioned("images/heart.png")"></a>
+					<h4>@Messages("hp.subtitle.why.1")</h4>
+					<p>@Messages("hp.text.why.1")</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="service-item">
+					<a href=""><img src="@routes.Assets.versioned("images/map.png")"></a>
+					<h4>@Messages("hp.subtitle.why.2")</h4>
+					<p>@Messages("hp.text.why.2")</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="service-item">
+					<a href=""><img src="@routes.Assets.versioned("images/man.png")"></a>
+					<h4>@Messages("hp.subtitle.why.3")</h4>
+					<p>@Messages("hp.text.why.3")</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Testimonials Starts -->
+
+<div id="testimonials" class="testimonials block visible-lg visible-md">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("hp.title.testimonial")</h3>
+			<p>@Messages("hp.headLine.testimonial")</p>
+		</div>
+
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="10000">
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="carousel-caption">
+						<div class="row">
+							<div class="col-md-3 col-sm-4">
+								<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407336730/Static%20Pictures/TestiAT.jpg" alt="" class="img-responsive" />
+							</div>
+							<div class="col-md-9 col-sm-8">
+								<div class="content-right">
+									<p><strong>@Messages("hp.testi.who.at")</strong> @Messages("hp.testi.at")</p>
+									<a href="https://wimha.com/mytotempage/partot" class="btn btn-danger callToAction">@Messages("callToAction.haveALook")</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="carousel-caption">
+						<div class="row">
+							<div class="col-md-3 col-sm-4">
+								<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407932484/Static%20Pictures/Sans_titre.png" alt="" class="img-responsive" />
+							</div>
+							<div class="col-md-9 col-sm-8">
+								<div class="content-right">
+									<p><strong>@Messages("hp.testi.who.crf")</strong> @Messages("hp.testi.crf")</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+@*				<div class="item">
+					<div class="carousel-caption">
+						<div class="row">
+							<div class="col-md-3 col-sm-4">
+								<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407337241/Static%20Pictures/TestiTBS.png" alt="" class="img-responsive" />
+							</div>
+							<div class="col-md-9 col-sm-8">
+								<div class="content-right">
+									<p>Dabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco nisi ut aldddc laboris nisi.</p>
+									<small>Go to their tribe page</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+*@				<div class="item">
+					<div class="carousel-caption">
+						<div class="row">
+							<div class="col-md-3 col-sm-4">
+								<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407930993/Static%20Pictures/icam116.png" alt="" class="img-responsive" />
+							</div>
+							<div class="col-md-9 col-sm-8">
+								<div class="content-right">
+									<p><strong>@Messages("hp.testi.who.icam")</strong> @Messages("hp.testi.icam")</p>
+									<a href="http://wimha.com/mytotempage/censeize" class="btn btn-danger callToAction">@Messages("callToAction.haveALook")</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#carousel-example-generic" data-slide="prev">
+			<span class="fa fa-chevron-left larrow"></span>
+		</a>&nbsp;
+		<a href="#carousel-example-generic" data-slide="next">
+			<span class="fa fa-chevron-right rarrow"></span>
+		</a>
+	</div>
+</div>
+
+<!-- Testimonial Ends -->
+
+<!-- Gallery Starts -->
+
+<div id="gallery" class="gallery block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("hp.title.gallery")</h3>
+			<p>@Messages("hp.headLine.gallery")</p>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<!-- Gallery Item -->
+				<div class="gallery-item">
+					<!-- Gallery Image -->
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765354/Static%20Pictures/galleryHP/IMG_0808.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765354/Static%20Pictures/galleryHP/IMG_0808.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<!-- Gallery Content -->
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.1")</a></h4>
+						<p>@Messages("hp.gallery.text.1")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765353/Static%20Pictures/galleryHP/Photo_23-10-2013_17_19_48.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765353/Static%20Pictures/galleryHP/Photo_23-10-2013_17_19_48.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.2")</a></h4>
+						<p>@Messages("hp.gallery.text.2")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765477/Static%20Pictures/galleryHP/IMG_0766.png" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765477/Static%20Pictures/galleryHP/IMG_0766.png" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.3")</a></h4>
+						<p>@Messages("hp.gallery.text.3")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765352/Static%20Pictures/galleryHP/10330301_652562368148187_5709570799354799183_n.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765352/Static%20Pictures/galleryHP/10330301_652562368148187_5709570799354799183_n.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.4")</a></h4>
+						<p>@Messages("hp.gallery.text.4")</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765352/Static%20Pictures/galleryHP/10471512_675096342561456_1777352844861594303_n.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765352/Static%20Pictures/galleryHP/10471512_675096342561456_1777352844861594303_n.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.5")</a></h4>
+						<p>@Messages("hp.gallery.text.5")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1407765352/Static%20Pictures/galleryHP/justedingue.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_200,w_200/v1407765352/Static%20Pictures/galleryHP/justedingue.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.6")</a></h4>
+						<p>@Messages("hp.gallery.text.6")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_200/v1407765352/Static%20Pictures/galleryHP/fleur.png" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_300,w_300/v1407765352/Static%20Pictures/galleryHP/fleur.png" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.7")</a></h4>
+						<p>@Messages("hp.gallery.text.7")</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="gallery-item">
+					<div class="gallery-image">
+						<a href="https://res.cloudinary.com/cloudinarywimha/image/upload/h_200/v1407765352/Static%20Pictures/galleryHP/10589825_10203739909554892_599461093_n.jpg" class="prettyphoto"><span class="img-hover"> <i class="fa fa-search"></i> </span><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/c_fill,g_center,h_300,w_300/v1407765352/Static%20Pictures/galleryHP/10589825_10203739909554892_599461093_n.jpg" alt="" class="img-responsive" /></a>
+					</div>
+					<div class="gallery-content">
+						<h4><a href="#">@Messages("hp.gallery.8")</a></h4>
+						<p>@Messages("hp.gallery.text.8")</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Gallery Ends -->
+@*
+<!-- Pricing Starts -->
+
+<div id="pricing" class="pricing block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("hp.title.pricing")</h3>
+			<p>@Messages("hp.headLine.pricing")</p>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-sm-4 pricing-block">
+				<div class="pricing-item">
+					<div class="pricing-content">
+						<h4>@Messages("hp.pricing.offer.1")</h4>
+						<span>@Messages("hp.pricing.price.1")</span>
+						<h6>@Messages("hp.pricing.nb.1")</h6>
+						<ul class="list-unstyled">
+							<!-- List -->
+							<li> <i class="fa fa-check"></i> @Messages("pricing.1") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.2") 7 @Messages("smallWord.days") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.3bis") <a href="/totemList/#totemfamily">(cf @Messages("pricing.3.link"))</a></li>
+						</ul>
+						<!-- Button -->
+						<a href="/totemList/#totemfamily" class="btn btn-danger centered">@Messages("callToAction.choose.your")</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 pricing-block">
+				<!-- Pricing Item -->
+				<div class="pricing-item">
+					<div class="pricing-content">
+						<h4>@Messages("hp.pricing.offer.2")</h4>
+						<span><span style="font-size:15px;">@Messages("smallWord.starting")</span> @Messages("hp.pricing.price.2")</span>
+						<h6>@Messages("hp.pricing.nb.2")</h6>
+						<ul class="list-unstyled">
+							<li> <i class="fa fa-check"></i> @Messages("pricing.1") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.2") 15 @Messages("smallWord.days") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.3") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.4") </li>
+						</ul>
+						<a class="js_contactUs btn btn-danger centered js_btn_pricing_1" data-size="mediumPack">@Messages("callToAction.contactUs")</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 pricing-block">
+				<!-- Pricing Item -->
+				<div class="pricing-item">
+					<div class="pricing-content">
+						<h4>@Messages("hp.pricing.offer.3")</h4>
+						<span><span style="font-size:15px;">@Messages("smallWord.starting")</span>@Messages("hp.pricing.price.3")</span>
+						<h6>@Messages("hp.pricing.nb.3")</h6>
+						<ul class="list-unstyled">
+							<li> <i class="fa fa-check"></i> @Messages("pricing.1") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.2") 25 @Messages("smallWord.days") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.3") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.4") </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.5")  </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.6")  </li>
+							<li> <i class="fa fa-check"></i> @Messages("pricing.7")  </li>
+						</ul>
+						<a class="js_contactUs btn btn-danger centered js_btn_pricing_2" data-size="bigPack">@Messages("callToAction.contactUs")</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Pricing Ends -->
+
+<!-- Contact starts -->
+<div id="contactUs" class="contact block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("callToAction.contactUs")</h3>
+			<p>@Messages("hp.headLine.contact")</p>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-sm-8">
+				<div class="formdetails well">
+					<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Classic message</legend>
+							<div class="form-group">
+								<label for="inputName" class="col-lg-3 control-label">Name</label>
+								<div class="col-lg-9">
+								  <input type="name" class="form-control" id="inputName" placeholder="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail" class="col-lg-3 control-label">Email</label>
+								<div class="col-lg-9">
+								  <input type="email" class="form-control" id="inputEmail" placeholder="">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="inputComment" class="col-lg-3 control-label">Comment</label>
+								<div class="col-lg-9">
+								  <textarea class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-offset-3 col-lg-9">
+									<button type="submit" class="btn btn-danger">Submit</button>
+									<button type="submit" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4">
+				<div class="well">
+
+						<fieldset>
+							<legend>Sick of forms?</legend>
+								<div class="social text-center">
+									<!-- Social Media Icons -->
+									<a href="#" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+									<a href="#" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+									<a href="#" class="google-plus"><i class="fa fa-instagram fa-lg"></i></a>
+									<a href="#" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+								</div>
+						</fieldset>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- contact ends -->
+*@
+<!-- Team Starts -->
+
+<div class="team block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3>@Messages("hp.title.us")</h3>
+			<p>@Messages("hp.headLine.us")</p>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<!-- Team Item -->
+				<div class="team-item">
+					<!-- Image -->
+					<a href="#"><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407828048/Static%20Pictures/Bertran.jpg" alt="" class="img-responsive" /></a>
+					<!-- Name -->
+					<h3>Bertran Ruiz</h3>
+					<!-- Position -->
+					<h5>CEO</h5>
+					<!-- Paragraph -->
+					<p>@Messages("hp.us.bertran")</p>
+					<!-- Social -->
+					<div class="social">
+						<!-- Social Media Icons -->
+						<a href="https://twitter.com/bertranruiz" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="http://fr.linkedin.com/in/bertranruiz" class="linkedin"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!-- Team Item -->
+				<div class="team-item">
+					<a href="#"><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407828048/Static%20Pictures/Martin.jpg" alt="" class="img-responsive" /></a>
+					<h3>Martin Rallier</h3>
+					<h5>Totem father</h5>
+					<p>@Messages("hp.us.martin")</p>
+					<div class="social">
+						<a href="http://fr.linkedin.com/martin-rallier" class="linkedin"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!-- Team Item -->
+				<div class="team-item">
+					<a href="#"><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407827941/Static%20Pictures/profile2.jpg" alt="" class="img-responsive" /></a>
+					<h3>Simon Vacher</h3>
+					<h5>Product improver</h5>
+					<p>@Messages("hp.us.simon")</p>
+					<div class="social">
+						<a href="https://twitter.com/SimVchr" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="http://instagram.com/simon_vchr" class="google-plus"><i class="fa fa-instagram"></i></a>
+						<a href="https://www.linkedin.com/simon-vchr" class="linkedin"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!-- Team Item -->
+				<div class="team-item">
+					<a href="#"><img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_150/v1407938972/Static%20Pictures/julien.jpg" alt="" class="img-responsive" /></a>
+					<h3>Julien Derenty</h3>
+					<h5>Backend Developper</h5>
+					<p>@Messages("hp.us.julien")</p>
+					<div class="social">
+						<a href="https://twitter.com/JulienDerenty" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.linkedin.com/profile/view?id=99412493&authType=NAME_SEARCH&authToken=yJ0W&locale=fr_FR&trk=tyah&trkInfo=tarId%3A1407939096880%2Ctas%3Ajulien%20derenty%2Cidx%3A1-1-1" class="linkedin"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Team Ends -->
+
+
+<div id="travelAmb" class="service block">
+	<div class="container">
+		<div class="page-title text-center">
+			<h3 class="white">@Messages("hp.title.travel")</h3>
+			<p class="white">@Messages("hp.headLine.travel")</p>
+		</div>
+		<div class="row">
+			<h3 class="white">@Messages("hp.offer.travel")</h3>
+			<div class="btn btn-danger btn-lg mg-top-30 js_travelAmb">@Messages("callToAction.try")</div>
+		</div>
+	</div>
+</div>
+
+<div id="faq" class="shots block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-title text-center">
+					<h3>@Messages("totemfamily.faq.title")</h3>
+					<p>@Messages("hp.headLine.contact")</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h3>1. @Messages("totemfamily.faq.question1")</h3>
+				<p>@Messages("totemfamily.faq.reponse1") </p>
+
+				<h3>2. @Messages("totemfamily.faq.question2")</h3>
+				<p>@Messages("totemfamily.faq.reponse2") </p>
+
+				<h3>3. @Messages("totemfamily.faq.question3")</h3>
+				<p>@Messages("totemfamily.faq.reponse3") </p>
+				<div style="margin-top:20px;">
+					<a href="https://play.google.com/store/apps/details?id=com.wimha.app"><img alt="Get it on Google Play"
+				       src="@Messages("totemfamily.faq.android")" /></a>
+					<a href="https://itunes.apple.com/fr/app/wimha/id873048515?mt=8&uo=4" target="itunes_store"><img alt=""
+				       src="@Messages("totemfamily.faq.ios")" /></a>
+				</div>
+
+				<h3>4. @Messages("totemfamily.faq.question4")</h3>
+				<p>@Messages("totemfamily.faq.reponse4") <a href="https://www.wimha.com/myTotemPage/tomate">@Messages("callTaAction.map")</a></p>
+
+				<h3>5. @Messages("totemfamily.faq.question5")</h3>
+				<p>@Messages("totemfamily.faq.reponse5")</p>
+
+				<h3>6. @Messages("totemfamily.faq.question6")</h3>
+				<p>@Messages("totemfamily.faq.reponse6")</p>
+
+				<h3>7. @Messages("totemfamily.faq.question7")</h3>
+				<p>@Messages("totemfamily.faq.reponse7")</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+@footer()
+}
+
+@javascript = {
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/totemPage/ouibounce-modal.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/ouibounce_modal.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/homePage.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/totemPage/jquery.cookie.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/follow.js")" type="text/javascript"></script>
+
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<script src='https://d1pocdzmde73mw.cloudfront.net/assets/widgets/embed.js' type='text/javascript'></script>
+
+
+<!-- Start InterCom -->
+@if(user!=null){
+    <script id="IntercomSettingsScriptTag">
+        window.intercomSettings = {
+            name: "@user.firstname @user.lastname",
+            email: "@user.email",
+            app_id: "u6gyo93o"
+        };
+    </script>
+
+    <script>
+        $(".js_contactUs, .js_travelAmb").on("click", function(){
+            Intercom('show');
+        });
+    </script>
+
+}else{
+    <script type="text/javascript">
+        $(".js_contactUs, .js_travelAmb, #intercomFake").on("click", function(){
+
+            if(typeof ouibounceModalObject != 'undefined' && undefined != ouibounceModalObject){
+                ouibounceModalObject.disable();     //ouibounceModalObject : defined in homePage.js
+            }
+            var emailSession=$.cookie("intercomEmailSession");
+            var emailPermanent=$.cookie("intercomEmail");
+
+            if(emailSession!=undefined){
+                initAndDisplayIntercom(emailSession);
+
+            }else if(emailPermanent!=undefined){
+                $('#emailMissingInput').val(emailPermanent);
+                $("#emailMissingModale").modal('show');
+
+            }else{
+                $("#emailMissingModale").modal('show');
+            }
+        });
+
+        // in modal, clic next store email in cookie and display intercom
+        $('.js_btnNext').on('click',function(){
+            var email=$('#emailMissingInput').val();
+
+            if(email!==""){
+
+                $.cookie("intercomEmailSession",email);
+                $.cookie("intercomEmail",email, { expires: 90 });
+
+                initAndDisplayIntercom(email);
+            }else{
+                //display error
+            }
+        });
+
+        function initAndDisplayIntercom(email){
+            window.Intercom('boot', {
+                app_id: 'u6gyo93o',
+                email: email,
+                user_id: email,
+                created_at: Date.now(),
+                widget: {activator: '#IntercomDefaultWidget'}
+              }
+            );
+            $("#emailMissingModale").modal('hide');
+            $("#intercomFake").hide();
+            Intercom('show');
+        }
+    </script>
+}
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://static.intercomcdn.com/intercom.v1.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<!-- End InterCom-->
+
+<!-- Facebook js that fires the like button in the ouibounce modale -->
+	<script>
+	window.fbAsyncInit = function() {
+		    console.log('fb ok');
+
+	    FB.Event.subscribe('edge.create',function(url, html_element) {
+	    console.log('fire like');
+		  likedBtnok();
+		});
+	};
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=137474053062029&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+}
+
+
+

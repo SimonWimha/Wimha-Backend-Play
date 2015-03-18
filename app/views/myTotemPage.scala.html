@@ -1,0 +1,268 @@
+@(totem:models.totem.Tribu)(thread : models.comment.Thread)(isMobile: Boolean)(user: User)(list: java.util.List[models.totem.Flash])(listFavorites: java.util.List[models.totem.Flash])
+@import models.totem._
+@import models.comment._
+
+<!DOCTYPE html>
+
+@meta = {
+	<meta name="description" content="@totem.question">
+    <meta property="fb:app_id" content="137474053062029" />
+	<meta property="og:description" content="@totem.description">
+	<meta property="og:title" content="@totem.name : @totem.question">
+	<meta property="og:type" content="wimhapp:totem"/>
+	<meta property="og:url" content="http://www.wimha.com/myTotemPage/@totem.name">
+	<meta property="og:image" content="@if(totem.picture!=null){@totem.picture.imageWithBG()}">
+}
+@css = {
+	<link href="@routes.Assets.versioned("stylesheets/totem/newTimeline.css")" rel="stylesheet">
+	<link href="@routes.Assets.versioned("stylesheets/totem/animations.css")" rel="stylesheet">
+    <link href="@routes.Assets.versioned("stylesheets/totem/hint.min.css")" rel="stylesheet">
+}
+
+@main("@totem.name")(meta)(css)(javascript)("myTotemPage"){
+
+@if(user==null){
+    <div id="intercomFake" class="btn btn-black btn-lg"><i class="fa fa-question-circle"></i></div>
+	<div id="emailMissingModale" class="modal fade" data-email="johnDoe@@gmail.com">
+	  <div class="modal-dialog">
+	    <div class="modal-content intercom">
+	      <div class="modal-body row">
+	      	<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1408438069/Static%20Pictures/pointer.png" class="col-md-4 col-sm-3 visible-lg visible-md visible-sm" style="margin-bottom:-50px;">
+	      	<p class="col-md-8 white col-sm-9 col-xs-12 intercomIntro"><strong>@Messages("smallWord.hello")</strong></br>
+	      		@Messages("hp.intercom.first")</br>@Messages("hp.intercom.second")
+	      	</p>
+	      </div>
+	      <div class="modal-footer intercom">
+	        <div class="input-group input-group-lg col-md-7 col-sm-7 col-xs-12" style="">
+  				<input id="emailMissingInput" type="text" class="form-control" placeholder="@Messages("input.ph.email")">
+	      	</div>
+	        <button type="button" class="btn btn-success btn-lg col-md-5 col-sm-5 js_btnNext openIntercom">@Messages("hp.intercom.write")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+}
+
+@if(!isMobile){
+	@ouibounce_modale()
+	@if(user == totem.owner){
+		@favorite_modale(totem)
+	}
+}
+
+	<div id="fb-root"></div>
+
+@if(!isMobile){
+
+@*	<div id="printModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body row">
+	      	<div class="col-md-4 centered">
+	      		<img src="@totem.picture.url_w(120)">
+	      	</div>
+	      	<div class="col-md-8">
+		        <h3>@Messages("myTP.modal.headLine")</h3>
+		        <h4>@Messages("myTP.modal.text")&hellip;</h4>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default js_printModal_no" data-dismiss="modal">@Messages("button.notInterested")</button>
+	        <button type="button" class="btn btn-success js_printModal_yes" data-dismiss="modal">@Messages("button.interested")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+*@
+
+	@*Doesnt work on mobile so we have to use inline style...*@
+    @elements.bg_picture(totem.backgroundPicture)
+}
+
+	@newHeader(user)(controllers.routes.Application.myTotemPage(totem.name).toString)("myTP")
+
+@if(!isMobile){
+
+}
+	@tribeDescription(totem:models.totem.Tribu)(isMobile:Boolean)(user: User)("myTP")
+	
+	<!-- Feature Starts -->
+	<div class="map_block visible-lg visible-md visible-sm js_mapData" data-tribu_name="@totem.name">
+		<div id="map-canvas" class="travelerMap visible-lg visible-md visible-sm"></div>
+		<a class="chevronScroll visible-lg visible-md visible-sm col-md-2 col-md-offset-5 col-sm-6 col-sm-offset-3 centered" href="#flash_feed"><i class="fa fa-chevron-down chevron_black fa-3x"></i></a>
+	</div>
+	<!-- Feature Ends -->
+	
+@defining(models.totem.Flash.flashCount(totem)){ flashCount =>
+
+	<!-- Shots starts -->
+			
+	<!-- shot1-->
+	<div id="flash_feed" class="commentShot">
+		<div class="shots" style="padding-top:30px;">
+			<div class="container">		
+				<div class="row">
+                    @defining(listFavorites.size() > 4){ favoriteFirst =>
+						<div class="shots-title">
+							<h3 class="centered commentsTitle">
+								@if(flashCount==0){
+									@Messages("myTP.comment.headLine.empty")
+								}else{
+									<strong>@flashCount</strong> @Messages("myTP.comment.headLine")
+									<div>
+										<h4 class="inline pointer feed_tab @if(favoriteFirst){active} js_tabBtn">@Messages("myTP.tab.favorite")</h4>
+										<h4 class="inline pointer feed_tab second_tab @if(!favoriteFirst){active} js_tabBtn">@Messages("myTP.tab.all")</h4>
+									</div>
+								}
+							</h3>
+						</div>
+						<div class="shotcontent">
+							@if(flashCount==0){
+								<p class="centered emptyTimeline">@Messages("myTP.comment.empty")</p>
+							}else{
+						        <!-- Timeline -->
+	                            <ul class="timeline js_feed_container @if(favoriteFirst){hidden}" data-page="0" data-totem_name="@totem.name">
+	                                @myTP_list(user)(totem)(list)
+                                    <div class="js_endOfList"></div>
+                                    <li class="clearfix" style="float: none;"></li>
+	                            </ul>
+
+	                            <!-- Timeline Favorites -->
+                                <ul class="timeline js_feed_container @if(!favoriteFirst){hidden} js_containerFavorite" data-page="0" data-totem_name="@totem.name">
+	                            @if(listFavorites == null || listFavorites.isEmpty()){
+                                        <div class="js_endOfList"></div>
+                                        <p class="centered emptyTimeline">@Messages("myTP.favorite.empty")</p>
+		                            </ul>
+		                        }else{
+                                        @myTP_list(user)(totem)(listFavorites)
+                                        <div class="js_endOfList"></div>
+                                        <li class="clearfix" style="float: none;"></li>
+                                    </ul>
+                            }
+		 					}
+						</div>
+                    }
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Facebook comments -->
+	<div class="commentShot visible-md visible-lg">
+		<div class="shots">
+			<div class="container centered">	
+				<div class="fb-comments" data-href="http://wimha.com/@totem.name" data-numposts="10" data-colorscheme="light"></div>
+			</div>
+		</div>
+	</div>
+
+}
+	<!-- Shots Ends -->	
+}
+
+@javascript = {
+    <script src="@routes.Assets.versioned("javascripts/totem/map.js")" type="text/javascript"></script>
+
+    <script src="@routes.Assets.versioned("javascripts/totemPage/jquery.cookie.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/totemPage/ouibounce-modal.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/ouibounce_modal.js")"></script>
+
+	<script src="@routes.Assets.versioned("javascripts/social/follow.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/fb.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/like.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/totem/myTotemPage.js")" type="text/javascript"></script>
+
+<!-- Start InterCom -->
+@if(user!=null){
+    <script id="IntercomSettingsScriptTag">
+        window.intercomSettings = {
+            name: "@user.firstname @user.lastname",
+            email: "@user.email",
+            app_id: "u6gyo93o"
+        };
+    </script>
+
+}else{
+    <script type="text/javascript">
+        $("#intercomFake").on("click", function(){
+
+            if(typeof ouibounceModalObject != 'undefined' && undefined != ouibounceModalObject){
+                ouibounceModalObject.disable();     //ouibounceModalObject : defined in homePage.js
+            }
+            var emailSession=$.cookie("intercomEmailSession");
+            var emailPermanent=$.cookie("intercomEmail");
+
+            if(emailSession!=undefined){
+                initAndDisplayIntercom(emailSession);
+
+            }else if(emailPermanent!=undefined){
+                $('#emailMissingInput').val(emailPermanent);
+                $("#emailMissingModale").modal('show');
+
+            }else{
+                $("#emailMissingModale").modal('show');
+            }
+        });
+
+        // in modal, clic next store email in cookie and display intercom
+        $('.js_btnNext').on('click',function(){
+            var email=$('#emailMissingInput').val();
+
+            if(email!==""){
+
+                $.cookie("intercomEmailSession",email);
+                $.cookie("intercomEmail",email, { expires: 90 });
+
+                initAndDisplayIntercom(email);
+            }else{
+                //display error
+            }
+        });
+
+        function initAndDisplayIntercom(email){
+            window.Intercom('boot', {
+                app_id: 'u6gyo93o',
+                email: email,
+                user_id: email,
+                created_at: Date.now(),
+                widget: {activator: '#IntercomDefaultWidget'}
+              }
+            );
+            $("#emailMissingModale").modal('hide');
+            $("#intercomFake").hide();
+            Intercom('show');
+        }
+    </script>
+}
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://static.intercomcdn.com/intercom.v1.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<!-- End InterCom-->
+
+
+	<!-- Script for Facebook comments -->
+@if(!Helpers.isMobile){
+	<script>
+
+	<!-- Facebook js that fires the like button in the ouibounce modale -->
+	window.fbAsyncInit = function() {
+		    console.log('fb ok');
+
+	    FB.Event.subscribe('edge.create',function(url, html_element) {
+	    console.log('fire like');
+		  likedBtnok();
+		});
+	};
+
+//todo isnt it already imported with external services ?
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=137474053062029&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>	
+
+	<script src="@routes.Assets.versioned("javascripts/totem/pictureDisplay.js")" type="text/javascript"></script>
+}
+
+}

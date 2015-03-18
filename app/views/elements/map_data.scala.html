@@ -1,0 +1,4 @@
+@(list : java.util.List[models.totem.Flash])
+@for(flash <- list){
+<a href="#" class="coord hide" data-lat="@flash.getLat()" data-lon="@flash.getLon()" data-name="@flash.getName()" data-link="" data-msg="@flash.getMessage()" data-timestamp="@flash.date_post" data-realDate="@flash.getDate()" data-adress="@flash.city, @flash.country" @if(flash.picture!=null){data-picture="@flash.picture.url_a()"}> </a>
+}

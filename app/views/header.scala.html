@@ -1,0 +1,95 @@
+@(user:User)(loginRedirectionUrl:String)(currentPage:String)
+@import play.i18n._
+
+<!-- Unconnected -->
+@if(user==null){
+	<header>
+		<div class="container header">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 js_headerBrand">
+					<div class="logo">
+						<h1 class="brandText"><a href="https://www.wimha.com">Wimha<span class="tblue"> . </span></a></h1>
+					</div>
+				</div>
+				<div class="navigation js_headerBtn">
+					@if(currentPage == "homePage"){
+						<a href="/#howItWorks">@Messages.get("hp.title.howTo")</a>
+						@*<a href="/#pricing">@Messages.get("header.price")</a>*@
+						<a href="/#faq">@Messages.get("totemfamily.faq.title")</a>
+						<a href="/login/@java.net.URLEncoder.encode(loginRedirectionUrl, "UTF-8")" class="focusedBtn test_go_login">@Messages.get("button.login")</a>
+						<a href="#" id="langBtn" class="navField"><i class="fa fa-caret-down"></i>@controllers.Lang.getLangRequest()</a>
+					}else{
+						<a href="/login/@java.net.URLEncoder.encode(loginRedirectionUrl, "UTF-8")" class="focusedBtn test_go_login">@Messages.get("button.login")</a>
+						<a href="#" id="langBtn" class="navField"><i class="fa fa-caret-down"></i>@controllers.Lang.getLangRequest()</a>
+					}
+
+				</div>
+
+			</div>
+		</div>
+		<ul class="dropdown dropdownLang alignRight hide">
+			<li class="centered"><a href="/lang/?locale=fr">français</a></li>
+			<li class="centered"><a href="/lang/?locale=en">english</a></li>
+		</ul>
+	</header>
+}else{
+	<!-- Connected header -->
+	<header>
+		<div class="container header test_logged">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1 class="brandText"><a href="https://www.wimha.com">Wimha<span class="tblue"> . </span></a></h1>
+					</div>
+
+				</div>
+				<div class="navigation">
+					@if(currentPage == "homePage"){
+						<a href="/totemFamily/#howItWorks">@Messages.get("hp.title.howTo")</a>
+						@*<a href="/totemFamily/#pricing">@Messages.get("header.price")</a>*@
+						<a href="/totemFamily/#faq">@Messages.get("totemfamily.faq.title")</a>
+					}else{
+						<a href="#" id="dropdownBtn" class="focusedBtn navField"><i class="fa fa-caret-down"></i> @user.firstname</a>
+						<a href="#" id="langBtn" class="navField"><i class="fa fa-caret-down"></i>  @controllers.Lang.getLangRequest()</a>					
+					}
+				</div>
+			</div>
+		</div>
+		<ul class="dropdown dropdownHeader alignRight hide">
+			<li class="firstLink pointer js_mp_buy_header">
+				@defining(models.totem.Tribu.findByOwner(user)){totemsList =>
+					@if(totemsList == null || totemsList.isEmpty()){
+						<a href="/"><span class="tblue">@Messages.get("button.feed")</span>
+					}else{
+						@if(currentPage == "homePage"){
+							<a href="/"><span class="tblue">@Messages.get("button.feed")</span>
+						}else{
+							<a href="/totemFamily/"><span class="tblue">@Messages.get("button.hp")</span>
+						}
+					}
+				}
+			</a></li>
+		    <li class="pointer"><a href="/settingsPage/false">@Messages.get("header.settings")</a></li>
+		    <li class="pointer"><a href="/notificationsettings/">@Messages.get("header.notificationSettings")</a></li>
+
+		    @defining(models.totem.Tribu.findByOwner(user)){ list =>
+		    	@if(list!=null && !list.isEmpty()){
+
+				    <hr class=""></hr>
+				    <li class="title"><span class="yourTotemPage">@Messages.get("header.totemPage")</span></li>
+
+				    @for(totem <- list){
+				    	<li class="pointer totemPage"><img src="@totem.picture.url_h(30)" style="float:left; padding-right:10px"><a href="/myTotemPage/@totem.name">@totem.name</a></li>
+				    }
+				}
+		    }
+
+		    <hr class=""></hr>
+		    <li class="pointer"><a href="/logout/">@Messages.get("header.logout")</a></li>
+		</ul>
+		<ul class="dropdown dropdownLang alignRight hide">
+			<li class="centered"><a href="/lang/?locale=fr-FR">français</a></li>
+			<li class="centered"><a href="/lang/?locale=en-EN">english</a></li>
+		</ul>
+	</header>
+}

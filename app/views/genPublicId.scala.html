@@ -1,0 +1,225 @@
+@(user:User)
+<!DOCTYPE html>
+@import models.comment._
+@import models.totem._
+@import scala.collection.immutable._
+
+@meta = {
+	<meta name="description" content="@Messages("wimha.pv")">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wimha">
+    <meta property="og:description" content="@Messages("wimha.pv")">
+	<meta property="og:title" content="Wimha : @Messages("wimha.catchLine")">
+	<meta property="og:url" content="https://www.wimha.com/TotemFamily/">
+	<meta property="og:image" content="@Messages("picture.og.homePage")">
+}
+@css = {
+}
+
+@main("Wimha")(meta)(css)(javascript)("genid"){
+
+
+@if(user==null){
+    <div id="intercomFake" class="btn btn-black btn-lg"><i class="fa fa-question-circle"></i></div>
+	<div id="emailMissingModale" class="modal fade" data-email="johnDoe@@gmail.com">
+	  <div class="modal-dialog">
+	    <div class="modal-content intercom">
+	      <div class="modal-body row">
+	      	<img src="https://res.cloudinary.com/cloudinarywimha/image/upload/h_300/v1408438069/Static%20Pictures/pointer.png" class="col-md-4 col-sm-3 visible-lg visible-md visible-sm" style="margin-bottom:-50px;">
+	      	<p class="col-md-8 white col-sm-9 col-xs-12 intercomIntro"><strong>@Messages("smallWord.hello")</strong></br>
+	      		@Messages("hp.intercom.first")</br>@Messages("hp.intercom.second")
+	      	</p>
+	      </div>
+	      <div class="modal-footer intercom">
+	        <div class="input-group input-group-lg col-md-7 col-sm-7 col-xs-12" style="">
+  				<input id="emailMissingInput" type="text" class="form-control" placeholder="@Messages("input.ph.email")">
+	      	</div>
+	        <button type="button" class="btn btn-success btn-lg col-md-5 col-sm-5 js_btnNext openIntercom">@Messages("hp.intercom.write")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+}
+
+@ouibounce_modale()
+
+
+	@header(user)("/")("homePage")
+
+<form id="tribeForm" enctype="multipart/form-data">
+	<div class="block relative mg-bottom-50">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-title text-center">
+						<h3 class="white">@Messages("create.title")</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="imgCentered relative centered">
+						<img id="preview" src="http://res.cloudinary.com/cloudinarywimha/image/upload/h_420/212534d8-2190-40cc-bd84-6d1f426b7234.png" class="">
+						<div class="download download-orange mg-top-20 js_picUpload">@Messages("create.upload")
+							<div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" name="picture" type="file" value="upload" accept="image/*;capture=camera"/></div>
+						</div>
+						<p class="italic mg-top-10 white" style="font-size:12px;">width : 300px / height : 420px</p>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="input-group-lg">
+						  <label class="mg-top-20 white">@Messages("create.tribe.name")</label>
+						  <input type="text" name="tribe_name" class="form-control mg-top-10" placeholder="@Messages("create.tribe.name.placeholder")">
+						  <div class="errorForm hidden js_error_tribe_name">Oops your bad !</div>
+
+						  <label class="mg-top-20 white">@Messages("create.tribe.question")</label>
+						  <input type="text" name="question" class="form-control mg-top-10" placeholder="@Messages("create.tribe.question.placeholder")">
+						  <div class="errorForm hidden js_error_question">Oops your bad !</div>
+
+						  <label class="mg-top-20 white">@Messages("create.member")</label>
+						  <input type="text" name="nb" class="form-control mg-top-10" placeholder="@Messages("create.member.placeholder")">
+						  <div class="errorForm hidden js_error_nb">Oops your bad !</div>
+
+						@if(user==null){
+						  <label class="mg-top-40 white">@Messages("create.name")</label>
+						  <input type="text" name="user_name" class="form-control mg-top-10" placeholder="@Messages("create.name.placeholder")">
+							<div class="errorForm hidden js_error_user_name">Oops your bad !</div>
+
+						  <label class="mg-top-20 white">@Messages("create.email")</label>
+						  <input type="text" name="email" class="form-control mg-top-10" placeholder="@Messages("create.email.placeholder")">
+							<div class="errorForm hidden js_error_email">Oops your bad !</div>
+						}
+
+						  <div class="download download-green mg-top-20 pull-right js_submitBtn">@Messages("create.go")</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="block relative mg-bottom-100 hidden js_row">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-4">
+				<div class="page-title">
+					<h3 class="white">@Messages("create.lastStep")</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-4">
+				<p style="font-size:30px;" class="white">@Messages("create.qrcode.1")</br> @Messages("create.qrcode.2")</p>
+				<a href="http://unitag.io/qrcode" target="_blank" class="download download-green mg-top-20 mg-bottom-20"> @Messages("smallWord.here")</a>
+				<div class="mg-top-30 js_urls white"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@footer()
+}
+
+@javascript = {
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/totemPage/ouibounce-modal.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/ouibounce_modal.js")"></script>
+	<script src="@routes.Assets.versioned("javascripts/totemPage/jquery.cookie.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@routes.Assets.versioned("javascripts/totem/generateTribes.js")"></script>
+
+
+<!-- Start InterCom -->
+@if(user!=null){
+    <script id="IntercomSettingsScriptTag">
+        window.intercomSettings = {
+            name: "@user.firstname @user.lastname",
+            email: "@user.email",
+            app_id: "u6gyo93o"
+        };
+    </script>
+
+    <script>
+        $(".js_contactUs, .js_travelAmb").on("click", function(){
+            Intercom('show');
+        });
+    </script>
+
+}else{
+    <script type="text/javascript">
+        $(".js_contactUs, .js_travelAmb, #intercomFake").on("click", function(){
+
+            if(typeof ouibounceModalObject != 'undefined' && undefined != ouibounceModalObject){
+                ouibounceModalObject.disable();     //ouibounceModalObject : defined in homePage.js
+            }
+            var emailSession=$.cookie("intercomEmailSession");
+            var emailPermanent=$.cookie("intercomEmail");
+
+            if(emailSession!=undefined){
+                initAndDisplayIntercom(emailSession);
+
+            }else if(emailPermanent!=undefined){
+                $('#emailMissingInput').val(emailPermanent);
+                $("#emailMissingModale").modal('show');
+
+            }else{
+                $("#emailMissingModale").modal('show');
+            }
+        });
+
+        // in modal, clic next store email in cookie and display intercom
+        $('.js_btnNext').on('click',function(){
+            var email=$('#emailMissingInput').val();
+
+            if(email!==""){
+
+                $.cookie("intercomEmailSession",email);
+                $.cookie("intercomEmail",email, { expires: 90 });
+
+                initAndDisplayIntercom(email);
+            }else{
+                //display error
+            }
+        });
+
+        function initAndDisplayIntercom(email){
+            window.Intercom('boot', {
+                app_id: 'u6gyo93o',
+                email: email,
+                user_id: email,
+                created_at: Date.now(),
+                widget: {activator: '#IntercomDefaultWidget'}
+              }
+            );
+            $("#emailMissingModale").modal('hide');
+            $("#intercomFake").hide();
+            Intercom('show');
+        }
+    </script>
+}
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://static.intercomcdn.com/intercom.v1.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+<!-- End InterCom-->
+
+<!-- Facebook js that fires the like button in the ouibounce modale -->
+	<script>
+	window.fbAsyncInit = function() {
+		    console.log('fb ok');
+
+	    FB.Event.subscribe('edge.create',function(url, html_element) {
+	    console.log('fire like');
+		  likedBtnok();
+		});
+	};
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=137474053062029&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+}
+
+
+

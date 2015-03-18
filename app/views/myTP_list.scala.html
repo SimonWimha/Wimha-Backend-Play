@@ -1,0 +1,133 @@
+@(user:User)(totem:models.totem.Tribu)(list: java.util.List[models.totem.Flash])
+@import models.totem._
+
+@for((message,index) <- list.zipWithIndex){
+@defining(models.socialAction.LikeFlashAction.findLikesForAFlash(message).distinct) { listLikes =>
+@defining(listLikes.size()) { nbLikes =>
+
+<li id="@message.date_post" class="@if(index%2==0){timeline-inverted} js_removed_when_delete timeline_post">
+    <div class="timeline-badge primary">
+        <a><i class="fa fa-map-marker fa-lg" rel="tooltip" id=""></i></a>
+    </div>
+    <div class="timeline-panel">
+
+        <!-- when picture -->
+
+        @if(message.picture!=null){
+            <div class="timeline-heading myTP closed">
+                <img class="img-responsive js_flashPicture flashPicture" src="@message.picture.url_a()" />
+                <a class="js_fbShare" style="position: absolute;top: 15px;right: 15px;cursor:pointer;" data-href="@Application.SERVER_URL@controllers.social.routes.Comments.commentPageDisplay(message.id+"","myTP")">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <div class="top_flash_pic js_likeList">
+                    @for(user <- listLikes.map( like => like.liker ).take(7)){
+                    <div title="@user.firstname @user.lastname" class="inline">
+                        @elements.userPicture(user)("image-responsive")(30)(30)("c_fill")
+                    </div>
+                    }
+                    <div class="js_userPicLike" style="display:none;">@elements.userPicture(user)("image-responsive")(30)(30)("c_fill")</div>
+                </div>
+                <div class="bottom_flash_pic">
+                    <div class="flasherName_pic col-md-8 col-sm-7 col-xs-8">
+                        @elements.userPicture(message.flasher)("image-responsive")(50)(50)("c_fill")
+                        <div class="display_name">@message.name</div>
+                    </div>
+                    <div class="socialElements pic col-md-4 col-sm-5 col-xs-4">
+                        @if(user!=null){
+                            @defining(models.socialAction.LikeFlashAction.alreadyLiked(user,message)) { like =>
+                                <div class="socialIndicators myTPFlash">
+                                    <a class="@if(like!=null){js_unlike}else{js_like js_mp_likeFlash} like_pic unstyled" data-flash-id="@message.id">@if(like!=null){<i class="fa fa-heart"></i>}else{<i class="fa fa-heart-o"></i>}</a><span class="js_count like_count_pic"> @nbLikes</span>
+
+                                    <a href="@controllers.social.routes.Comments.commentPageDisplay(message.id+"","myTP").toString" class="js_mp_comment comment_pic unstyled"><i class="fa fa-comment"></i> @message.getThread().getComments().size()</a>
+                                </div>
+                            }
+                        }else{
+                                <div class="socialIndicators myTPFlash">
+                                    <a class="js_signup_redirect like_pic unstyled"><i class="fa fa-heart-o"></i></a>
+                                    <span class="js_count like_count_pic"> @nbLikes</span>
+
+                                    <a href="@controllers.social.routes.Comments.commentPageDisplay(message.id+"","myTP").toString" class="js_mp_comment comment_pic unstyled"><i class="fa fa-comment"></i> @message.getThread().getComments().size()</a>
+                                </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="secondInfo pic">
+                <small class="text-muted">
+                    <i class="glyphicon glyphicon-time"></i> 
+                    @message.getDate() @Messages("smallWord.at")
+                    <strong>@if(message.city!=null && !message.city.isEmpty()){@message.city, @message.country}else{@message.address}</strong>
+                </small>
+
+                @dropdownAdmin(user, message, totem)
+            </div>
+            <div class="timeline-body">
+                <p class="flashQuestion"><span class="text-muted">@message.question</span></p>
+                <p class="messageLeft">" @message.message"</p>
+            </div>
+        <!-- when no picture -->
+
+        }else{
+            <div class="timeline-title row">
+                <p class="flasherName col-md-10">
+                    @elements.userPicture(message.flasher)("image-responsive")(50)(50)("c_fill")
+                    @message.name
+                </p>
+                @dropdownAdmin(user, message, totem)
+            </div>
+
+            <p class="secondInfo"><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @message.getDate() @Messages("smallWord.at") <strong>@if(message.city!=null && !message.city.isEmpty()){@message.city, @message.country}else{@message.address}</strong></small></p>
+
+            <div class="timeline-body">
+                <p class="flashQuestion"><span class="text-muted">@message.question</span></p>
+                <p class="messageLeft">" @message.message&nbsp"</p>
+            </div>
+
+            <div class="timeline-footer">
+                @if(user!=null){
+                    @defining(models.socialAction.LikeFlashAction.alreadyLiked(user,message)) { like =>
+                        <div class="socialElements nopic">
+                            <div class="socialIndicators myTPFlash">
+                                <a class="@if(like!=null){js_unlike}else{js_like js_mp_likeFlash} like_nopic unstyled" data-flash-id="@message.id">@if(like!=null){<i class="fa fa-heart"></i>}else{<i class="fa fa-heart-o"></i>}</a> <span class="js_count like_count_nopic">@nbLikes</span>
+
+                                <a href="@controllers.social.routes.Comments.commentPageDisplay(message.id+"","myTP").toString" class="js_mp_comment comment_nopic unstyled"><i class="fa fa-comment"></i> @message.getThread().getComments().size()</a>
+                            </div>
+                        </div>
+                    }
+                }else{
+                        <div class="socialElements nopic">
+                            <div class="socialIndicators myTPFlash">
+                                <a class="js_signup_redirect like_nopic unstyled"><i class="fa fa-heart"></i></a> <span class="js_count like_count_nopic">@nbLikes</span>
+
+                                <a href="@controllers.social.routes.Comments.commentPageDisplay(message.id+"","myTP").toString" class="js_mp_comment comment_nopic unstyled"><i class="fa fa-comment"></i> @message.getThread().getComments().size()</a>
+                            </div>
+                        </div>
+                }
+            </div>
+        }
+    </div>
+</li>
+}
+}
+}
+
+@dropdownAdmin(user : models.User, message : models.totem.Flash, tribu : models.totem.Tribu) = {
+@if(user!=null && user == tribu.owner){
+<div class="dropdown col-md-2 visible-lg pic">
+    <i class="fa fa-chevron-down hide pointer js_delete_button"  data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown_actions" role="menu" aria-labelledby="dLabel">
+        <li class="js_delete_flash pointer" data-flash-id="@message.id"><i class="fa fa-times"></i>@Messages("button.delete")</li>
+        @if(message.member!=null){<li class="pointer js_block_member_flash" data-flash-id="@message.id"><i class="fa fa-thumbs-o-down"></i>@Messages("button.block") @message.flasher.firstname </li>}
+        @if(message.favorite!=null && message.favorite){
+        <li class="pointer js_unfavoriteBtn" data-flash_id="@message.id" data-id_to_remove="@message.date_post"><i class="fa fa-star-o"></i>@Messages("button.remove.favorite")</li>
+        }else{
+        <li class="pointer js_favoriteBtn" data-flash_id="@message.id" data-id_to_remove="@message.date_post" data-toggle="modal" data-target="#favorite-modal" data-flasher-name="@message.flasher.firstname"><i class="fa fa-star"></i>@Messages("button.favorite")</li>
+        }
+        <li class="pointer">@Messages("button.cancel")</li>
+    </ul>
+</div>
+}
+}

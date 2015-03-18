@@ -1,0 +1,25 @@
+@(totem_name:String)
+@import helper._
+
+@javascript = {
+    <script src="@routes.Application.jsMessages()"></script>
+}
+
+@main(totem_name)(javascript)(content)
+
+
+@content = {
+	<div id="wrapper" class="container centered" style="margin-top:20%;">
+		<h2>@Messages("flash.getOut")</h2></br>
+		<h3>@Messages("flash.download")</h3></br>
+		<div style="margin-bottom:20px;">
+			<a href="https://play.google.com/store/apps/details?id=com.wimha.app"><img alt="Get it on Google Play"
+					       src="@Messages("totemfamily.faq.android")" /></a>
+		</div>
+		<div>
+			<a href="https://itunes.apple.com/fr/app/wimha/id873048515?mt=8&uo=4" target="itunes_store"><img alt=""
+					       src="@Messages("totemfamily.faq.ios")" /></a>
+		</div>
+
+	</div>
+}

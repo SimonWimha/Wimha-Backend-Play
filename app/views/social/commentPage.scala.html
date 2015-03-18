@@ -1,0 +1,152 @@
+@(totem:models.totem.Tribu)(flashPost:models.totem.Flash)(isMobile: Boolean)(user: User)(comingPage: String)
+@import models.totem._
+@import models.comment._
+
+<!DOCTYPE html>
+
+@meta = {
+	<meta name="description" content="@totem.question">
+    <meta property="og:type" content="wimhapp:flash">
+    <meta property="og:site_name" content="Wimha">
+    <meta property="og:title" content="@totem.question">
+    <meta property="og:description" content="@flashPost.message">
+    <meta property="og:flasher_name" content="@flashPost.flasher.firstname">
+	<meta property="og:url" content="@Application.SERVER_URL@controllers.social.routes.Comments.commentPageDisplay(flashPost.id+"","myTP")">
+	<meta property="og:image" content="@if(flashPost.picture!=null){@flashPost.picture.imageWithTotem(totem)}">
+}
+@css = {
+}
+@javascript = {
+	<script src="@routes.Assets.versioned("javascripts/pictureDisplay.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/comment.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/follow.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/social/fb.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.versioned("javascripts/social/like.js")" type="text/javascript"></script>
+    <script src="@routes.Application.jsMessages()"></script>
+
+}
+
+@main("@totem.name")(meta)(css)(javascript)("commentPage"){
+
+@if(!Helpers.isMobile){
+	@*
+	<div id="printModal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body row">
+	      	<div class="col-md-4 centered">
+	      		<img src="@totem.picture.url_w(120)">
+	      	</div>
+	      	<div class="col-md-8">
+		        <h3>@Messages("myTP.modal.headLine")</h3>
+		        <h4>@Messages("myTP.modal.text")&hellip;</h4>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default js_printModal_no" data-dismiss="modal">@Messages("button.notInterested")</button>
+	        <button type="button" class="btn btn-success js_printModal_yes" data-dismiss="modal">@Messages("button.interested")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	*@
+	@elements.bg_picture(totem.backgroundPicture)
+}
+	@newHeader(user)(controllers.routes.Application.myTotemPage(totem.name).toString)("myTP")
+	@tribeDescription(totem:models.totem.Tribu)(isMobile:Boolean)(user: User)("commentsPage")
+
+	<!-- Shots starts -->
+	<div id="commentsPage" class="commentShot">
+		<div class="shots">
+			<div class="container">		
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+						<div class="shotcontent">
+							<h3>
+								@flashPost.name 
+								<span class="text-muted locationSize">at @if(flashPost.city!=null && !flashPost.city.isEmpty()){@flashPost.city, @flashPost.country}else{@flashPost.address}</span>
+								<span class="text-muted timeSize italic">  -  10.12.2013
+							 </h3>
+							<p class="messageLeft">@flashPost.message</p>
+						</div>
+					</div>
+					@if(flashPost.picture != null){
+	                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 timeline-heading commentPage closed">
+	                    <img class="img-responsive js_flashPicture flashPicture" src="@flashPost.picture.url_a()" />
+	                </div>
+           			}
+					<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 commentBlock">
+						<div class="shotcontent row">
+							<i class="fa fa-comment fa-lg"></i><span class="commentNumber"> @flashPost.getThread().getComments().size() @Messages("indicator.comment")</span> 
+						</div>
+						@for(comment <- Comment.getLastCommentsForThread(flashPost.getThread().getId(), 100)){
+						<div class="shotcontent row js_removed_when_delete">
+							<div class="col-md-2 col-xs-2 centered">
+								@elements.userPicture(comment.getUser())("image-responsive commentPicture")(60)(60)("c_fill")
+							</div>
+							<div class="col-md-10 col-xs-10 infoBlock">
+								<h4 id="@comment.getId()" class="commentName">@comment.getUser().firstname </h4><span class="text-muted timeSize italic">  -  @comment.getCreatedAt()</span>
+								<p class="shot-para commentText">
+									@comment.getMessage()
+								</p>
+							</div>
+							@if(user!=null && user.equals(totem.owner)){
+							<div class="dropdown visible-lg dropdownComment">	
+								<i class="fa fa-times js_delete_button pointer" data-toggle="dropdown"></i>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+							    	<li class="js_delete_comment pointer" data-comment-id="@comment.getId()">@Messages("button.delete")</li>
+							    	<li class="pointer">@Messages("button.cancel")</li>
+							    </ul>
+							</div>
+							}
+						</div>
+						}
+						@if(user!=null){
+						<div class="shotcontent row emptyTemplate hide">
+							<div class="col-md-2 col-xs-2 centered">
+								@elements.userPicture(user)("image-responsive commentPicture")(60)(60)("c_fill")
+							</div>
+							<div class="col-md-10 col-xs-10 infoBlock">
+								<h4 class="commentName" data-user-Name="@user.firstname @user.lastname"></h4><span class="text-muted timeSize italic"></span>
+								<p class="shot-para commentText">
+								</p>
+							</div>
+						</div>
+						}
+					</div>
+					<div class="shotcontent col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 inputCommentBlock">
+						@if(user==null){
+							<textarea id="userComment" name="" rows="2" class="form-control input-lg" placeholder="Login first to comment ..." data-thread-id="@flashPost.thread.getId()" disabled></textarea>
+						}else{
+							<textarea id="userComment" name="" rows="2" class="form-control input-lg" placeholder="Write your comment here ..." data-thread-id="@flashPost.thread.getId()"></textarea>
+						}
+						@* Login button for tablets and desktop *@
+						@if(user==null){<div class="download postButton js_signup_redirect visible-sm visible-md visible-lg centered">@Messages("button.login")</div>}
+
+						@* Login button for mobile when user not logged, otherwise Post button *@
+						<div class="download postButton @if(user==null){js_signup_redirect
+						}else{js_postButton} visible-xs">@if(user==null){@Messages("button.login")}else{@Messages("button.post")}</div>
+
+						<div class="error-message centered hide js_error_length">@Messages("error.lenght.1000")</div>
+						<div class="error-message centered hide js_error_internet">@Messages("error.internet.connexion")</div>
+					</div>
+					<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 backLinkMyTP centered">
+						@if(comingPage == "myTP"){
+							<a href="/myTotemPage/@totem.name">
+							@Messages("commentPage.backTo.before") @totem.name @Messages("commentPage.backTo.after")
+						}
+						@if(comingPage == "socialFeed"){
+							<a href="/">
+							@Messages("commentPage.backTo.socialFeed")
+						}
+							
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Shots ends -->
+}
+
+

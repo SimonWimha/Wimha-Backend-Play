@@ -1,0 +1,59 @@
+@(user:User)(originUrl:String)
+
+<!DOCTYPE html>
+
+@meta = {
+}
+@css = {
+	<!-- Imported CSS -->
+	<link href="@routes.Assets.versioned("stylesheets/totem/designr-theme-cyan.css")" rel="stylesheet">
+	<!-- FONT -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+}
+
+@javascript = {
+    <script src="@routes.Assets.versioned("javascripts/user/login.js")" type="text/javascript"></script>
+}
+	
+@main("Login Wimha")(meta)(css)(javascript)("missingEmailPage"){
+	
+	@header(user)("/")("")
+
+	<section id="contact">
+		<div class="container">
+			<h1 class="section-title">@Messages("login.lastStep")</h1>
+			
+			<div class="row loginContainer">
+				
+				<!--=== Contact Form ===-->
+
+				<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+					<form id="missing_email" class="contact-form" action="#" method="POST" data-originalurl="@originUrl">
+						<div class="form-group">
+						  <label class="control-label">@Messages("input.label.email")</label>
+						  <div class="controls">
+							<i class="fa fa-envelope"></i>
+							<input id="giveEmail" name="give_email" placeholder="@Messages("input.ph.email")" class="form-control input-lg requiredField js_mail_input" type="email">
+						  </div>
+						  <div class="login-error-message js_email_error" style="display:none;" data-error-empty="@Messages("error.email.empty")" data-error-invalid="@Messages("error.email.invalid")"></div>
+						</div><!-- End email input -->
+						
+						<p class="">
+							<button name="submit" type="button" class="btn-login tr-bg btn-theme btn-lg js_give_mail" data-error-message="@Messages("button.status.error")" data-sending-message="@Messages("button.status.waiting")" data-ok-message="@Messages("button.status.ok")">@Messages("button.status.enter")</button>
+						</p>
+
+						<div class="success-message login" style="display:none;">@Messages("login.success.feedback")</div>
+						<div class="success-message register" style="display:none;">@Messages("login.success.register")</div>
+						<input type="hidden" name="submitted" id="submitted" value="true" />
+						
+					</form>
+				</div><!-- End contact-form -->
+			  
+			</div><!-- End row -->
+			
+		</div><!-- End container -->
+		
+	</section><!-- End contact section -->
+
+}

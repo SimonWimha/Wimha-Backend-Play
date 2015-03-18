@@ -1,0 +1,116 @@
+@(title: String)(meta: Html)(css: Html)(javascript: Html)(currentPage:String)(content: Html)
+@import models.totem._
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <!-- NewRelic real user monitoring -->
+        @if(play.Play.isProd() && !Application.VAL) {
+            <script type="text/javascript">
+               var NREUMQ=[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);
+            </script>
+        }
+
+        <!-- ==================================================
+             META + FAV
+             ================================================== -->
+		<title>Totem Wimha </title> 
+		<meta name="keywords" content="Totem,travel,discovery,people">
+		<meta name="author" content="Wimha">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@@wimha">
+		<meta name="twitter:title" content="Wimha : @Messages("wimha.catchLine")">
+		<meta name="twitter:description" content="@Messages("wimha.pv")">
+		<meta name="twitter:creator" content="@@bertranruiz">
+		<meta name="twitter:image:src" content="@Messages("picture.og.homePage")">
+		<meta name="twitter:domain" content="wimha.com">
+		<meta name="twitter:app:name:iphone" content="">
+		<meta name="twitter:app:name:ipad" content="">
+		<meta name="twitter:app:name:googleplay" content="">
+		<meta name="twitter:app:url:iphone" content="">
+		<meta name="twitter:app:url:ipad" content="">
+		<meta name="twitter:app:url:googleplay" content="">
+		<meta name="twitter:app:id:iphone" content="">
+		<meta name="twitter:app:id:ipad" content="">
+		<meta name="twitter:app:id:googleplay" content="">
+
+		@if(meta!=null){@meta}
+        
+        <link rel="alternate" hreflang="fr" href="http://www.wimha.com/fr/" />
+        <link rel="alternate" hreflang="en" href="http://www.wimha.com/" />
+
+		<link rel="shortcut icon" type="image/png" href="http://wimha.com/assets/images/favicon.png">
+        <!-- ==================================================
+             CSS + FONTS
+             ================================================== -->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+		<!-- Styles -->
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <!-- Custom CSS -->
+
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/main.css")">
+
+		<!-- Sidebar menu -->
+		<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/totem/sidebar/component.css")">
+		<script src="@routes.Assets.versioned("javascripts/totemPage/sidebar/modernizr.custom.js")"></script>
+
+<!-- Facebook Conversion Code for View Noel Page -->
+    <script>(function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+      var fbds = document.createElement('script');
+      fbds.async = true;
+      fbds.src = '//connect.facebook.net/en_US/fbds.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(fbds, s);
+      _fbq.loaded = true;
+    }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6023321336937', {'value':'0.00','currency':'EUR'}]);
+    </script>
+        <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6023321336937&amp;cd[value]=0.00&amp;cd[currency]=EUR&amp;noscript=1" /></noscript>
+
+	</head>
+	<body class="cbp-spmenu-push @if(currentPage == "genid"){genidBodyBg}">
+        <div id="fb-root"></div>
+		@content
+		<!-- Latest compiled and minified JavaScript -->
+        <script src="@routes.Application.jsMessages()"></script>
+        <script src="//code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+		<!-- Respond JS for IE8 -->
+			<script src="@routes.Assets.versioned("javascripts/totemPage/respond.min.js")"></script>
+
+		<!-- HTML5 Support for IE -->
+			<script src="@routes.Assets.versioned("javascripts/totemPage/html5shiv.js")"></script>
+
+		<!-- JS for sidebar menu -->
+			<script src="@routes.Assets.versioned("javascripts/totemPage/sidebar/classie.js")" type="text/javascript"></script>
+
+        @elements.external_services(true)
+
+		<!-- Custom JS -->
+			<script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+
+		@javascript
+
+	</body>
+</html>
+
+			<!-- Imported CSS -->
+			@if(currentPage == "homePage"){
+				<link href="@routes.Assets.versioned("stylesheets/totem/homePageFasi.css")" rel="stylesheet">
+			}else{
+				<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+				<link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+				<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>
+				<link href="@routes.Assets.versioned("stylesheets/totem/imported.css")" rel="stylesheet">
+			}
+			@css

@@ -1,0 +1,19 @@
+@(totem:models.totem.Tribu)
+
+	<div id="favorite-modal" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content favorite">
+	      <div class="modal-body row">
+	      	<img src="@totem.picture.url()" class="col-md-4">
+	      	<p class="col-md-8 white message">@Messages("myTP.favorite.modal") <strong class="flasherName"></strong> ?</p>
+	      	<div class="col-md-8 mg-top-20 mg-bottom-20">
+	      		<textarea class="js_favorite_mail_text" style="padding:10px;width:100%;" rows="3" placeholder="Enter your message here"></textarea>
+	      	</div>
+	      </div>
+	      <div class="modal-footer favorite">
+	        <button type="button" class="btn btn-danger btn-lg js_favoriteBtnNoEmail" data-dismiss="modal">@Messages("button.noThanks")</button>
+	        <button type="button" class="btn btn-success btn-lg js_favoriteBtnWithEmail" data-dismiss="modal" disabled >@Messages("button.send")</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>

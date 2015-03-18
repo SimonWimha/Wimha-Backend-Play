@@ -1,0 +1,35 @@
+@(user:User)(loginRedirectionUrl:String)(currentPage:String)
+
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<h3 id="closeSideMenu" class="pointer centered"><i class="fa fa-chevron-left pull-left"></i> Wimha<span class="tblue"> . </span></h3>
+@if(user==null){
+			<a href="/lang/?locale=fr">français</a>
+			<a href="/lang/?locale=en">english</a>
+			<a href="/login/@java.net.URLEncoder.encode(loginRedirectionUrl, "UTF-8")" class="bold loginCAT centered">@Messages("callToAction.signOrCreate")</a>
+}else{
+			<a href="/"><i class="fa fa-newspaper-o"></i> @Messages("button.feed")</a>
+			<a href="/settingsPage/false">@elements.userPicture(user)("image-responsive imgCentered userPic")(30)(30)("c_fill")  @user.firstname<i class="fa fa-gear"></i></a>
+			<a href="/notificationsettings/"><i class="fa fa-bell-o"></i> @Messages("header.notificationSettings")</a>
+
+		    @defining(models.totem.Tribu.findByOwner(user)){ list =>
+		    	@if(list!=null && !list.isEmpty()){
+				<div class="sideBar_titles bold">@Messages("header.totemPage")</div>
+				    @for(totem <- list){
+				    	<img src="@totem.picture.url_h(30)" class="userTotem"><a href="/myTotemPage/@totem.name">@totem.name</a>
+				    }
+				}
+		    }
+		    <div class="sideBar_titles bold">@Messages("header.language")</div>
+		    <a href="/lang/?locale=en">english</a>
+		    <a href="/lang/?locale=fr">français</a>
+		    <a href="/logout/"><i class="fa fa-sign-out"></i> @Messages("header.logout")</a>
+}
+		</nav>
+
+
+@if(currentPage == "myTP"){
+	<span id="showLeftPush" class="pointer"><i class="fa fa-navicon fa-3x white"></i></span>
+}
+@if(currentPage == "socialFeedPage"){
+	<span id="showLeftPush" class="pointer"><i class="fa fa-navicon fa-3x gray absolute"></i></span>
+}

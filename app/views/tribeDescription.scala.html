@@ -1,0 +1,122 @@
+@(totem:models.totem.Tribu)(isMobile:Boolean)(user: User)(comingPage:String)	
+@import models.totem._
+@import models.comment._
+
+@defining(models.totem.Flash.flashCount(totem)){ flashCount =>
+
+	<!-- Top Starts -->
+	<div style="@if(!Helpers.isMobile){height:100%;width:100%;display:table;}">
+		<div class="top myTP @if(Helpers.isMobile){mobileBG}else{desktopBG}" @if(Helpers.isMobile){@if(totem.backgroundPicture!=null){style="background-image:url('@totem.backgroundPicture.imageTotemBG()')"}else{style="background-image:url('http://res.cloudinary.com/cloudinarywimha/image/upload/e_colorize:30/v1404372980/Static%20Pictures/backDark.jpg');"}}>	
+
+			@if(user==null){
+				<a href="/login/@java.net.URLEncoder.encode("/myTotemPage/"+totem.name, "UTF-8")" class="btn-empty btn-white btn-small bold btn-follow tr-bg centered unstyled">@Messages("button.follow")</a>
+			}else{
+				@if(!FollowedThread.isSubscribe(user, totem.getThread())){
+					<div class="btn-empty btn-white btn-small bold btn-follow tr-bg centered js_follow js_mp_follow" data-thread-id="@totem.getThread().getId()" data-totem_name="@totem.name" data-message-unfollow="@Messages("button.unfollow")" data-message-follow="@Messages("button.follow")">@Messages("button.follow")</div>
+				}else{
+					<div class="btn-empty btn-white btn-small bold btn-follow tr-bg centered js_unfollow" data-thread-id="@totem.getThread().getId()" data-message-unfollow="@Messages("button.unfollow")" data-message-follow="@Messages("button.follow")">@Messages("button.unfollow")</div>
+				}
+			}
+			<!-- Hero starts -->
+			<div class="hero hero_fSize @if(Helpers.isMobile){mobileBG}else{js_blockBlur desktopBG}">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 visible-lg visible-md">
+							<div class="shot">
+							@if(totem.picture!=null){
+								<img src="@totem.picture.url_w(300)" alt="image" class="img-responsive"/>
+								@* Used for the gMap pins *@
+								<img id="totemPins" src="@totem.picture.url_h(50)" alt="image" class="img-responsive" style="display:none"/>				
+							}
+							<h1 class="centered totemName">@totem.name</h1>
+							</div>
+						</div>
+
+						<div class="col-md-8 ownerQuestion">
+							<div class="intro myTP">
+								<h1 class="question"><i class="fa fa-quote-left fa-lg"></i>  @totem.question  <i class="fa fa-quote-right fa-lg"></i></h1>
+								<h3 class="projectDescription">@if(org.apache.commons.lang.StringUtils.isNotBlank(totem.description)){@totem.description}</h3>
+								<div class="row mg-top-30">
+									<div class="col-md-2 ownerPicture centered">
+											@elements.userPicture(totem.owner)("image-responsive imgCentered")(100)(100)("c_fill")
+									</div>
+									<h3 class="col-md-9">@totem.owner.firstname @totem.owner.lastname</h3>
+								</div>
+								<div class="row" style="padding-left:10px;"><hr class="col-md-2 col-md-offset-0 col-sm-3 col-sm-offset-4"></div>
+								<div class="followButton myTP">
+									<div class="socialIndicators myTPHeader">
+										<a href="@controllers.social.routes.Comments.followersPageDisplay(totem.id+"","myTP")" class="unstyled white"><i class="fa fa-dashboard dashboard fa-lg"></i>
+										<span class="js_count">
+											@FollowedThread.getSubscribedUserByThread(totem.getThread()).size()
+										</span>
+										@Messages("indicator.followers")</a>
+@*										<i class="fa fa-heart heart fa-lg"></i>
+										@defining(models.socialAction.LikeTotemAction.countLikesForATotem(totem)) { nb =>
+											<span class="js_count_like_totem">@nb</span>
+										}
+*@
+										<i class="fa fa-flash flash fa-lg"></i>
+											@flashCount flashs
+
+									</div>
+									@if(user == totem.owner){
+										<div class="settingButton">
+											<a href="/settingsPage/false" class="editTotem"><i class="fa fa-gear fa-lg">  </i>@Messages("settings.editButton.totem")</a>
+											@if(!Helpers.isMobile){
+												<a href="#" class="editTotem js_bg_upload"><i class="fa fa-image fa-lg">  </i>@Messages("settings.editButton.bg")</a>
+												<form id="bg_pic_form" action="@routes.Settings.changeTotemPageBackPicture(totem.name)" method="POST" enctype="multipart/form-data">
+													<div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" name="upfile" type="file" value="upload" accept="image/*;capture=camera"/></div>
+				    							</form>
+				    							<p class="italic errorSize">@play.mvc.Http.Context.Implicit.flash.get("error")</p>
+				    						}
+										</div>
+@*
+		                                <div class="facebookBtn">
+		                                    @if(totem.post_fb==null){
+		                                        <a href="#" class="postOnFacebook js_postFb" data-totem_name="@totem.id"><i class="fa fa-facebook fa-lg">  </i>@Messages("settings.postOnFacebook")</a>
+		                                    }
+		                                    <p class="postOnFbSuccess js_postFb_success hide"><i class="fa fa-check"></i> @Messages("facebook.feedback.accountLinked")</p>
+		                                </div></br>
+		                                <div class="printTotem visible-lg visible-md">
+		                                	<a class="printTotemBtn unstyled js_printModal_btn" data-toggle="modal" data-target="#printModal"><i class="fa fa-camera"></i> @Messages("callToAction.print")</a>
+		                                </div>
+*@
+		                                
+									}else{
+										<div class="">
+											@if(user==null){
+@*
+												<div class="download download-blue js_signup_redirect">@Messages("button.like")</div>
+*@
+												
+											}else{
+@*
+												@defining(models.socialAction.LikeTotemAction.alreadyLiked(user,totem)) { like =>
+													<div class="download download-blue @if(like!=null){js_unlike_totem}else{js_like_totem js_mp_likeTotem}" data-totem-id="@totem.id" data-totem_name="@totem.name" data-message-like="@Messages("button.like")" data-message-unlike="@Messages("button.liked")">@if(like!=null){@Messages("button.liked")}else{@Messages("button.like")}</div>
+												}
+*@
+											}
+										</div>
+									}
+
+									<div class="row" style="padding-left:10px;"><hr class="col-md-2 col-md-offset-0 col-sm-3 col-sm-offset-4"></div>
+									<div class="row">
+										<div class="col-md-6">
+                                            @for(userLike <- models.socialAction.LikeFlashAction.findMostLikedUsers(totem)){
+											<span class="hint--bottom" data-hint="@Messages("myTP.ambOfTheWeek", userLike.user.firstname, userLike.nbLikes)">@elements.userPicture(userLike.user)("image-responsive imgCentered img-35")(35)(35)("c_fill")</span>
+										    }
+                                        </div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Hero ends -->
+		</div>
+		<a class="chevronScroll js_scrollDown @if(comingPage=="myTP"){js_toMap} @if(comingPage=="followersPage"){js_toFollowers} @if(comingPage=="commentsPage"){js_toComments} visible-lg visible-md visible-sm col-md-2 col-md-offset-5 col-sm-6 col-sm-offset-3 centered" href="@if(comingPage=="myTP"){#map-canvas} @if(comingPage=="followersPage"){#followersPage} @if(comingPage=="commentsPage"){#commentsPage}"><i class="fa fa-chevron-down chevron_white fa-3x animated bounceInDown hide"></i></a>
+	</div>
+	<!-- Top Ends -->
+}

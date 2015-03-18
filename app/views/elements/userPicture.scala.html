@@ -1,0 +1,8 @@
+@(user: User)(imgClass: String)(width: Integer)(height: Integer)(transformation: String)
+@if(user != null){
+	@if(user.picto != null) {
+		<img class="@imgClass img-circle" src="@user.picto.transformation(width,height,transformation)">
+	} else {
+		<img class="@imgClass img-circle" src="@routes.Assets.versioned("images/totemPage/DefaultPictureW.png")">
+	}
+}

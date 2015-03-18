@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Google Chrome Frame support -->
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>404</title>
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+	
+			
+
+	<style type="text/css" translate="none"> 
+  
+  .error{
+    
+    font-size: 65px;
+    text-align: center;
+    vertical-align:middle;
+    font-weight: bold;
+    color: white;
+   	padding-top:60px;
+    }
+
+  .comeback{
+    
+    font-size: 30px;
+    text-align: center;
+    padding-top:70px;
+    color: white;
+    }
+
+   .here {
+   	font-size: 20px;
+    text-align: center;
+    padding-top:80px;
+    color: white;
+    }
+   
+  a:visited {color: white}
+  a:hover {color: white}
+  a:visited:hover {color: white}
+
+  
+
+   body{
+    background-image:url("@routes.Assets.versioned("images/Sky404.png")");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: cover;
+    display: block;
+    }
+
+
+</style>
+
+@minified=@{ if (play.Play.isProd()) ".min" else "" }
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/twitterbootstrap/styles"+ minified + ".css")">
+ <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32362359-1']);
+    _gaq.push(['_setDomainName', 'wimha.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+<body>	
+	        <div class="error">@Messages("error.400.1")<div/>
+	        <div class="comeback">@Messages("error.400.2")</div>
+	        <div class="here"><a href="http://wimha.com">@Messages("error.400.3")</a></div>
+</body>
+</html>

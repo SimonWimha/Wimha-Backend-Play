@@ -1,0 +1,64 @@
+@(totem_name: String)(messages : java.util.List[models.totem.Flash])
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" type="image/png" href="http://wimha.com/assets/images/favicon.png">
+    <title>Follow the Totem Around The Word</title>
+    <meta http-equiv="title" name="title" content="Follow the Totem Around The World">
+    <meta http-equiv="description" name="description" content="Lots of WimhaTotems are traveling the world, if you find one flash it and tell us your story">
+    <meta property="og:description" content="Lots of WimhaTotems are traveling the world, if you find one flash it and tell us your story">
+    <meta property="og:title" content="Follow the Totem Around The World">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WimhaTotem">
+    <meta property="og:url" content="@controllers.routes.Application.map(totem_name)">
+    <meta property="og:image" content="http://img.wimha.com/img/logo.jpg">
+
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map-canvas { height: 100% }
+
+        .infobox-wrapper {
+        display:none;
+        }
+        #infobox {
+        border:2px solid black;
+        margin-top: 8px;
+        background:#333;
+        color:#FFF;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:12px;
+        padding: .5em 1em;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        text-shadow:0 -1px #000000;
+        -webkit-box-shadow: 0 0  8px #000;
+        box-shadow: 0 0 8px #000;
+        }
+
+    </style>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_nYQ4Vk57N-4BOjY7eJSEX-BQq7Fvorg&sensor=true">
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</head>
+<body>
+@for(message <- messages){
+<a href="#" class="coord hide" data-lat="@message.getLat()" data-lon="@message.getLon()" data-name="@message.getName()" data-link="" data-picture="" data-msg="@message.getMessage()" data-timestamp="@message.date_post" data-realDate="@message.getDate()" data-adress="@message.getAddress()"> </a>
+}
+<div id="map-canvas"/>
+
+<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+
+<script src="@routes.Assets.versioned("javascripts/map.js")" type="text/javascript"></script>
+
+
+
+  </body>
+</html>

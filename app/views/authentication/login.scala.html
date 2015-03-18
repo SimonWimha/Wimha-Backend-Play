@@ -1,0 +1,113 @@
+@(user:User)(originalUrl : String)
+
+<!DOCTYPE html>
+
+@meta = {
+	<meta name="description" content="@Messages("wimha.pv")">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wimha">	<meta property="og:description" content="@Messages("wimha.pv")">
+	<meta property="og:title" content="@Messages("wimha.catchLine")">
+	<meta property="og:url" content="https://www.wimha.com">
+	<meta property="og:image" content="https://wimha.com/assets/images/totemPage/totem-doble.png">
+}
+@css = {
+	<!-- Imported CSS -->
+	<link href="@routes.Assets.versioned("stylesheets/totem/designr-theme-cyan.css")" rel="stylesheet">
+	<!-- FONT -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+}
+
+@javascript = {
+    <script src="@routes.Assets.versioned("javascripts/user/login.js")" type="text/javascript"></script>
+}
+	
+@main("Login Wimha")(meta)(css)(javascript)("loginPage"){
+	
+	@header(user)("/")("")
+
+	<section id="contact">
+		<div class="container">
+			<h1 class="section-title">@Messages("login.headline.before")   <span>@Messages("login.headline.middle")</span>   @Messages("login.headline.after")</h1>
+			
+			<div class="row loginContainer">
+				
+				<!--=== Contact Form ===-->
+
+				<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+					<p class=""><div class="btn-login tr-bg btn-Facebook-login btn-lg test_fbc js_fbc" data-error-message="Error!" data-sending-message="Connecting..." data-ok-message="Message Sent"><i class="fa fa-facebook"></i>@Messages("login.withFacebook")</div></p>
+                        @if(play.mvc.Http.Context.Implicit.flash.get("error")!=null){
+                            <div class="login-error-message">
+                                @play.mvc.Http.Context.Implicit.flash.get("error")
+                            </div>
+                        }
+
+
+					<p>@Messages("smallWord.or")</p>
+
+					<form id="user_form" class="contact-form" action="#" method="POST" data-originalurl="@originalUrl">
+						<div class="form-group">
+						  <label class="control-label">@Messages("input.label.email")</label>
+						  <div class="controls">
+							<i class="fa fa-envelope"></i>
+							<input id="contact-mail" name="user.email" placeholder="@Messages("input.ph.email")" class="form-control input-lg requiredField js_mail_input" type="email">
+						  </div>
+						  <div class="login-error-message js_email_error" style="display:none;" data-error-empty="@Messages("error.email.empty")" data-error-invalid="@Messages("error.email.invalid")"></div>
+						</div><!-- End email input -->
+
+						<div class="form-group js_onlyWhenNew" style="display:none;">
+						  <label class="control-label" for="contact-name">@Messages("input.label.name")</label>
+						  <div class="controls">
+							<i class="fa fa-user"></i>
+							<input id="contact-name" name="user.firstname" placeholder="@Messages("input.ph.name")" class="form-control input-lg requiredField js_name_input" type="text" data-error-empty="@Messages("error.name.empty")">
+						  </div>
+						  <div class="login-error-message js_name_error" style="display:none;">@Messages("error.name.empty")</div>
+						</div><!-- End name input -->
+
+						<div class="form-group js_onlyWhenExists js_onlyWhenNew passwordInput" style="display:none;">
+						  <label class="control-label" for="contact-password">@Messages("input.label.password")</label>
+						  <div class=" controls">
+							<i class="fa fa-lock"></i>
+							<input id="contact-password" name="password" placeholder="@Messages("input.ph.password")" class="form-control input-lg requiredField" type="password" data-error-empty="@Messages("error.password.empty")" data-error-invalid="@Messages("error.password.invalid")">
+						  </div>
+						  <div class="login-error-message js_error_pw" style="display:none;" data-error-empty="@Messages("error.password.empty")" data-error-wrong_password="@Messages("error.password.invalid")"></div>
+						</div><!-- End password input -->
+						
+						<p class="">
+							<button name="submit" type="button" class="btn-login tr-bg btn-theme btn-lg js_login js_btnLogin" data-error-message="@Messages("button.status.error")" data-sending-message="@Messages("button.status.waiting")" data-ok-message="@Messages("button.status.ok")">@Messages("button.enter")</button>
+							<button type="button" class="btn-login tr-bg btn-password-login btn-lg js_resetPassword">@Messages("button.forgot.pwd")</button>
+						</p>
+						<div class="success-message login" style="display:none;">@Messages("login.success.feedback")</div>
+						<div class="success-message register" style="display:none;">@Messages("login.success.register")</div>
+						<input type="hidden" name="submitted" id="submitted" value="true" />
+						
+					</form>
+				</div><!-- End contact-form -->
+			  
+			</div><!-- End row -->
+
+			<div class="resetContainer col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" style="display:none;">
+				<form id="" class="contact-form">
+					<div class="form-group">
+					  <label class="control-label">@Messages("input.label.reset")</label>
+					  <div class="controls">
+						<i class="fa fa-envelope"></i>
+						<input id="reset-mail" name="email" placeholder="@Messages("input.ph.email")" class="form-control input-lg requiredField" type="email">
+					  </div>
+					  <div class="login-error-message js_emailReset_error" style="display:none;">@Messages("error.email.invalid")</div>
+					</div><!-- End email input -->
+				</form>
+				<div class="success-message" style="display:none;margin-bottom:5px;">@Messages("login.success.register")</div>
+				<p>
+					<button name="submit" type="button" class="btn-login tr-bg js_btnSwitch btn-theme btn-lg js_resetPasswordSend" data-error-message="@Messages("button.status.error")" data-sending-message="@Messages("button.status.sending")" data-ok-message="@Messages("button.status.ok")">@Messages("login.forgot.password")</button>
+				</p>
+			</div>
+			
+		</div><!-- End container -->
+		
+	</section><!-- End contact section -->
+}
+
+
+
+

@@ -1,0 +1,85 @@
+@(totem_name: String)(javascript: Html)(content: Html)
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <!-- ==================================================
+         META + FAV
+         ================================================== -->
+    <title>Travelling Totem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="image/png" href="https://www.wimha.com/assets/images/favicon.png">
+
+    <link href='//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css' rel='stylesheet'>
+
+
+
+    @* In any case, loader style needed *@
+    <style>
+        .image_loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        }
+
+    </style>
+
+    @* Start timestamp of loading timer *@
+    <script>
+            var loading_time_beginning = new Date().getTime();
+        </script>
+
+
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+
+@* Libraries loaded normally for old androids *@
+<div class="image_loading">
+    <i class="fa fa-plane fa-spin fa-3x"></i>
+    <p class="loading">Loading ...</p>
+</div>
+<div class="page-container" style="display:none;">
+    @content
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="@routes.Assets.versioned("javascripts/jquery-2.1.0.min.js")" type="text/javascript"></script>
+        <script>
+            (function() {
+
+                $("head").append("<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap.min.css")'>");
+                $("head").append("<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")'>");
+                $("head").append("<link rel='stylesheet' media='screen' href='@routes.Assets.versioned("stylesheets/mainFlash_v31.min.css")'>");
+
+                $("head").append("<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>");
+                $("head").append("<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>");
+                $("head").append("<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic' rel='stylesheet' type='text/css'>");
+
+            })();
+
+            $(document).ready(function() {
+                //stop first loader
+                $(".image_loading").hide();
+                $(".page-container").show();
+            });
+
+            setTimeout(function() {
+                        $(".image_loading").hide();
+                        $(".page-container").show();
+            },20000);
+
+        </script>
+
+
+
+<script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")"></script>
+
+        @elements.external_services(false)
+    	@javascript
+    </body>
+</html>

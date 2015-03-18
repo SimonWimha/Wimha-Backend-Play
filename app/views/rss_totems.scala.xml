@@ -1,0 +1,21 @@
+@(totems : java.util.List[models.totem.Tribu])
+<rss version="2.0">
+
+<channel>
+  <title>Wimha.com : new totems</title>
+  <link>https://www.wimha.com/</link>
+  <description>"Last totems created on wimha.com"</description>
+  @for(totem <- totems){
+    @if(totem.name!=null && !totem.name.isEmpty() && totem.birthdate!=null ){
+      <item>
+        <title>@totem.name</title>
+        <link>https://www.wimha.com/myTotemPage/@totem.name</link>
+        <description>#@totem.name : "@totem.question" @@wimha http://wimha.com/myTotemPage/@totem.name</description>
+        <pubDate>@Helpers.getPubDate(totem.birthdate.getTime()+"")</pubDate>
+        <guid>@totem.birthdate.getTime()</guid>
+      </item>
+    }
+  }
+</channel>
+
+</rss>

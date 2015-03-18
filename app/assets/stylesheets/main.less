@@ -1,0 +1,1165 @@
+//Variables
+
+	// Grays
+	// -------------------------
+	@black:                 #000;
+	@grayDarker:            #222;
+	@grayDark:              #333;
+	@gray:                  #555;
+	@grayLight:             #999;
+	@grayLighter:           #eee;
+	@white:                 #fff;
+	@lightBlack: 			rgba(0,0,0,0.6);
+
+
+	// Accent colors
+	// -------------------------
+	@blue:                  #049cdb;
+	@blueDark:              #0064cd;
+	@green:                 #46a546;
+	@red:                   #9d261d;
+	@yellow:                #ffc40d;
+	@orange:                #f89406;
+	@pink:                  #c3325f;
+	@purple:                #7a43b6;
+
+.well.white {background-color: @white!important;}
+
+header {
+	position: relative;
+}
+body {
+	position: absolute;top: 0;bottom: 0;left: 0;right: 0; // To make sure the body takes the whole browser window
+	&.genidBodyBg {
+		position: relative;
+		background: #555 url('http://res.cloudinary.com/cloudinarywimha/image/upload/e_colorize:60/v1421918772/Static%20Pictures/jungle.jpg');
+		background-size: cover;
+		background-position: center;
+	}
+} 
+
+
+.modal-open {margin-right: 0!important;} // To avoid modal margin due to Bootstrap css 
+
+.noScroll {overflow: hidden;}
+.torange {color: @orange;}
+
+
+.centered {text-align: center;}
+.imgCentered {margin-left: auto;margin-right: auto;}
+.italic {font-style: italic;}
+.left {text-align: left;}
+.justified {text-align: justify;}
+.oneLine {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+.unstyled {text-decoration: none!important;}
+.zoom-in {cursor: -webkit-zoom-in;}
+.relative {position: relative!important;}
+.absolute {position: absolute!important;}
+.inline {display: inline;}
+.white {color: @white!important;}
+.gray {color: @gray!important;}
+.bold {font-weight: bold!important;}
+
+.download-blue{background:#39a5e2;}
+.download-orange{background:#ef6230!important;}
+
+
+.download-green {background: #5cb85c!important;}
+
+.mg-top-40 {margin-top: 40px;}
+.mg-top-30 {margin-top: 30px;}
+.mg-top-20 {margin-top: 20px;}
+.mg-top-10 {margin-top: 10px;}
+.pd-top-50 {padding-top: 50px;}
+.mg-bottom-20 {margin-bottom: 20px;}
+.mg-bottom-50 {margin-bottom: 50px;}
+.mg-bottom-100 {margin-bottom: 100px;}
+.img-35 {height: 35px;width: 35px;}
+
+.tr-bg {
+	-webkit-transition:background-color 0.5s ease-out;
+	transition:background-color 0.5s ease-out;
+	&:hover{
+		-webkit-transition:background-color 0.5s ease-out;
+		transition:background-color 0.5s ease-out;
+	}
+}
+
+.btn-empty {
+	background-color: rgba(0,0,0,0);
+	cursor: pointer;
+	&.btn-small {padding:10px;}
+	&.btn-white{
+		border : 2px solid #EEE;
+		color: #EEE;
+		border-radius: 3px;
+		&:hover{
+			background-color:@grayLighter;color:@grayLight;
+		}
+	}
+}
+
+.btn-black {
+	background-color: #000;color: @white;
+}
+
+
+// GenId page
+
+#tribeForm {
+	label {font-size: 18px;}
+}
+
+// Flash Picture 
+
+.timeline-heading {
+	border-bottom: 1px solid #eee;
+	&.myTP {position: relative;}
+	&.socialFeed {margin-bottom: 10px;margin-top: 5px;}
+	&.commentPage {border-bottom: none;}
+	&.closed {
+		overflow: hidden;
+	}
+	.flashPicture {width: 100%;}
+}
+
+
+// MyTotemPage 
+
+
+.top.myTP {
+	&.mobileBG {background-image:url('https://res.cloudinary.com/cloudinarywimha/image/upload/e_colorize:30/v1404372980/Static%20Pictures/backDark.jpg');}
+	&.desktopBG {display:table-row;}
+}
+
+.btn-follow {position: absolute;top: 15px;right: 10px;min-width: 140px;}
+.hero_fSize {
+	&.desktopBG {
+		display:table-cell;
+		vertical-align:bottom;
+	}
+}
+.bluredImg {
+	position:fixed;top:0;left:0;right:0;height:100%;background:rgba(0,0,0,0);
+	.js_blur{
+		opacity: 0;
+	}
+}
+.full-width {width: 100%;}
+.tokenOK {
+	background-color: #dff0d8;
+	color: #468847;
+	font-size: 20px;
+	padding:15px;
+}
+.pvWimha {margin-bottom: 40px;}
+.totemName {font-family: 'Lobster Two', sans-serif!important;margin-top: 10px; color: @white;}
+.ownerPicture {
+	img {
+		width:100%;
+		border:1px solid @white;
+		max-width: 100px;
+		max-height: 100px;
+	}	
+}
+.chevronScroll {
+	position: absolute;
+	padding: 10px;
+	opacity: 0.5;
+	.chevron_white {color: white;}
+	.chevron_black {color: black;}
+	border-radius:5px;
+	&:hover {
+		background-color:rgba(255,255,255,0.1);
+		-webkit-transition:opacity 0.8s ease-out;
+		transition:opacity 0.8s ease-out;
+		opacity: 0.8;
+	}
+}
+.map_block {height: 100%;position: relative;}
+.travelerMap {height: 100%!important;}
+
+#infobox {
+    padding:0!important;
+    margin-top: 8px;
+    &.pic{background:rgba(250,250,250,0.8);color:#333;}
+    &.noPic{background:rgba(0,0,0,0.8);color:#FFF;}
+    font-size:12px;
+    .firstHeading {color:@white;}
+    .flashInfo {padding:15px;}
+    h3,h4 {font-family : 'Open Sans'!important;}
+    .leftPointer {position: absolute;left: -18px;top: 120px;}
+    .messagePreview {
+    	display: block;
+    	display: -webkit-box;
+    	max-width: 250px;
+	    -webkit-line-clamp: 3;
+	    -webkit-box-orient: vertical;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+    }
+}
+
+// close info window button 
+.infoBox > img {
+    position:absolute!important;
+    top:15px;right:7px;
+    z-index: 1;
+}
+
+.feed_tab {
+	&.second_tab {margin-left: 10px;}
+	&:not(.active){
+		color:@grayLighter;
+		-webkit-transition:color 0.5s ease-out;
+		transition:color 0.5s ease-out;
+	}
+	&:hover {color: @gray;}
+}
+
+.timeline-title {
+	border-bottom: 1px solid @grayLighter;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 15px;
+	padding: 10px;
+	.dropdown {position: relative;}
+}
+
+.dropdown_actions {
+	left: -140px!important;
+	min-width: 180px!important;
+	li {
+		padding: 5px 10px;
+		.fa {margin-right: 5px;}
+	}
+}
+.dropdown.pic, .dropdown.nopic {top: 0;right:-40px;}
+
+.flasherName {
+	font-size: 35px;	
+	padding-left: 0!important;
+	img{
+		width: 50px;height: 50px; 
+		background-color: @grayLight;
+	}
+}
+.top_flash_pic {
+	position: absolute;top:	0;
+	img {width: 30px;height: 30px;}
+}
+.bottom_flash_pic {position: absolute;bottom: 0;width: 100%;}
+
+.timeline_post {
+	&:hover{
+		.bottom_flash_pic {
+			background-color:rgba(0,0,0,0.5);
+		    -webkit-transition: background-color 500ms linear;
+		    -moz-transition: background-color 500ms linear;
+		    -o-transition: background-color 500ms linear;
+		    -ms-transition: background-color 500ms linear;
+		    transition: background-color 500ms linear;
+		}		
+	}
+	.fa-heart {color: @red;}
+}
+
+.flasherName_pic {
+	text-align: left;
+	img {width: 40px;height: 40px;}
+	.display_name{
+		display: inline-block!important;
+		vertical-align: bottom;
+		color: white;
+		white-space: nowrap;
+		text-overflow:ellipsis;
+		overflow: hidden;
+	}
+}
+.socialElements.pic {
+	margin-top: 6px;
+	.like_pic, .comment_pic, .like_count_pic{
+		color: rgba(250,250,250,0.8);
+		&:hover{color: rgba(250,250,250,1);}
+	}
+}
+.socialElements.nopic {
+	.like_nopic, .comment_nopic, .like_count_nopic{
+		color: rgba(153,153,153,0.8);
+		&:hover{color: rgba(153,153,153,1);}
+	}
+}
+.commentShot {
+	background-color: @white;
+	position: relative; //important for the header background picture not to go over the timeline
+	.commentsTitle {margin-bottom: 45px!important;}
+}
+
+.commentNumber {
+	font-size: 16px;vertical-align: bottom;margin-left: 5px;color: @gray; 
+}
+.flashQuestion {
+	padding-bottom: 0!important;padding-left: 15px!important;
+}
+.messageLeft {
+	font-size: 18px;
+	padding-top: 5px!important;
+	margin-bottom: 40px;
+}
+
+.secondInfo {
+	padding-left: 15px;
+	&.pic {margin-top: 10px;position: relative;}
+}
+.postPicture {width: 100%;}
+
+.shots {&.getYourTotem {max-width:100%!important;}}
+.emptyTimeline {font-size: 20px;margin-top: 50px;}
+.getYourTotem {background-color: @grayLighter;}
+
+
+.modal-body {padding-bottom: 0!important;} //overide TBS property 
+.modal-footer {margin-top: 0!important;}
+
+// Comment page
+
+.dropdownComment {
+	right: 25px;
+	.fa-times {opacity: 0.2;}
+}
+.commentShot {
+	.locationSize {font-size: 20px;} 
+	.timeSize {font-size: 15px;} 
+	.commentText {margin-bottom: 20px;} 
+	.backLinkMyTP {
+		margin-top:30px;font-size: 25px;
+		a {text-decoration: none;} 
+	}
+}
+
+.commentBlock {
+	height: 100%;
+	padding: 0 30px;
+	.shotcontent {
+		background-color: @grayLighter;
+		border-top:1px solid white;
+		padding:15px 0;
+		text-align:left;
+		.fa-comment, .fa-user {padding-left: 15px;}
+		.commentNumber {padding-left: 5px;font-weight: bold;}
+		.commentPicture {
+			max-height:60px;
+			min-width: 30px;min-height: 30px;
+			border:3px solid @grayLight;
+			background-color: @gray;
+		}
+		.infoBlock {padding-left: 0;}
+		.commentName {display:inline-block;}
+	}
+	.error-happened {
+		background-color: lighten(@red,20%);
+		color: @white;
+		padding: 10px;	
+		font-weight: bold;	
+	}
+}
+.inputCommentBlock {
+	padding:15px;
+	textarea {border-radius:0;margin-bottom: 15px;}
+	.error-message {
+		background-color: lighten(@red,20%);
+		color: @white;
+		padding: 10px;
+		margin-bottom: 15px;
+		font-weight: bold;
+		border-radius: 0 0 15px 15px;
+	}
+}
+
+.download.postButton {max-width: 180px!important; margin-left: auto;}
+
+
+
+// Wimha home page  
+
+.page-title h3 {color: #E34446;}
+.top.homeP {
+	background:#555 url('https://res.cloudinary.com/cloudinarywimha/image/upload/e_colorize:12/v1407488881/Static%20Pictures/MapBG.jpg');
+	background-size: cover;
+	background-position: center;
+	.catchLine, .pv {color:@lightBlack;}
+	.fa-android, .fa-apple {color: @lightBlack;vertical-align: middle;margin-left: 10px;&:hover{color:@black;}}
+}
+
+#howItWorks {
+	background: #eee url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgAQMAAACxAfVuAAAABlBMVEX////w8PBJB7MPAAAAdElEQVR4Xu3PMQ5EQACF4VciWyAK7UQkdPYKIxFRiRtwlrFRKBQuIHEScbDtX1Tq1/ztnw+fOry/FMTuKDoKjGdDR4HdzjKgwI1pE1GwZt5VUTAks2kpz6N+z31LwTKlP0N5J5JIIokkkkgiiSSSSCKJJPoDn958rmW4fOIAAAAASUVORK5CYII=') repeat;
+	.img_OS{position: absolute;top: -47px;right: 0;}
+}
+.hpiOSDevice {
+	background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_258,h_547/v1407412385/Static%20Pictures/IPhone_5s.png')no-repeat;width:270px;height:547px;
+}
+.fadingPicture {
+	&.iPhone {position:absolute;top:80px;left:20px;width:221px;}
+	img {
+		width:100%!important;position:absolute;
+		opacity: 0;
+		-webkit-transition:opacity 0.8s ease-out;
+		transition:opacity 0.8s ease-out;
+		&.active{
+			opacity: 1;
+			-webkit-transition:opacity 0.8s ease-out;
+			transition:opacity 0.8s ease-out;
+		}
+	}
+}
+#whyIsItCool, #gallery, #contactUs{background-color: #fafafa;}
+#travelAmb {background-color: #233445;}
+
+.pricing {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 40px;
+}
+
+#testimonials {
+	.btn {margin-top: 10px;float: left;}
+	.carousel-inner {height: 240px;}
+}
+#faq {h3{margin:15px 0!important;}p{font-size: 18px;}}
+
+.modal-content.ouibounce, .modal-content.intercom, .modal-content.favorite {
+	background-color: #adbdc9!important;
+	.message {font-size: 30px;}
+}
+.modal-footer.ouibounce, .modal-footer.intercom, .modal-footer.favorite {background-color: rgb(242,229,212);}
+.btn-close-result{position: absolute;bottom: 10px;right: 10px;}
+
+#intercomFake {position: fixed;bottom: 20px;right: 20px;z-index: 3;}
+
+// GeniD
+
+.errorForm {background-color: lighten(@red,30%);color: @white;padding:10px;}
+
+
+// google search bar 
+
+.gsc-input-box {height: 40px!important;border-radius: 5px;padding-top: 5px;}
+input.gsc-search-button {padding: 8px!important;height: 40px!important;width: 40px!important;}
+td.gsc-search-button {width: 100px!important;text-align: center!important;background-color: #CECECE;border-radius: 5px;}
+
+
+// Totem family 
+
+#totemfamily {
+	.title {margin-top: 40px!important;}
+	.totemBlock {margin-bottom: 40px;}
+	.name-totem {margin-bottom: 10px!important;}
+	.totemPicCentered {margin-right: auto;margin-left: auto;}
+	.backLink {padding: 30px 0 50px 0; a{font-size: 40px;}}
+}
+
+// Header 
+
+#showLeftPush {
+	position:absolute;top:15px;left:15px;z-index: 1;
+}
+#closeSideMenu {
+	font-family: 'Lobster Two', sans-serif!important;
+	.fa {color:rgba(255,255,255,0.65);font-size: 0.8em;padding-top: 7px;}
+}
+.sideBar_titles {padding: 1.7em 1em 0.5em 1em;color: #999;}
+.cbp-spmenu {
+	overflow: scroll;
+	.loginCAT {margin: 10px;padding: 15px;border: 1px solid rgba(255,255,255,0.1);border-radius: 5px;background-color: rgba(255,255,255,0.1);}
+	.fa-newspaper-o,.fa-bell-o,.fa-sign-out {margin-right: 5px;}
+	.fa-gear {padding-top: 5px;float:right;}
+	.userPic {height: 30px;width: 30px;margin-right: 5px;margin-left: -4px;}
+	.userTotem {float:left; padding:10px;margin-left: 4px;}
+}
+
+.focusedBtn {
+	white-space: nowrap;
+	background-color: rgba(105,184,229,0.7)!important;
+	&:hover {background-color : rgba(105,184,229,0.9)!important;}
+	&.open {
+		background-color:rgba(194,31,31,0.8)!important;
+		border: 5px solid rgba(0,0,0,0.3);
+	} //follows the dropdown color
+}
+
+.navField {white-space: nowrap;}
+
+.dropdown {
+	position: absolute;
+	z-index: 1000;
+	padding: 10px 0 10px 0;
+	li {
+		list-style: none;
+		&:hover:not(.title) {
+			background-color: rgba(0,0,0,0.3);
+			-webkit-transition:background-color 0.2s ease-out;
+			transition:background-color 0.2s ease-out;
+		}
+	}
+
+	a {
+		display: block;
+		width: 100%;
+		color: @white;
+		&:hover{text-decoration:none;color: @white;}
+	}
+	font-size: 20px;
+}
+
+.dropdownHeader {
+	background-color:rgba(194,31,31,0.8);
+	hr {margin: 10px 0 10px 0;}
+	li {
+		padding: 5px 0 5px 20px;
+		&.firstLink {background-color: rgba(0,0,0,0.3);}
+		&.totemPage {padding-left: 40px;}
+		.yourTotemPage {
+			color: @grayLighter;
+			font-size: 16px;
+		}
+	}
+}
+
+.dropdownLang {
+	padding: 5px 0 5px 20px;
+	&.alignRight {right: 0;}
+	background-color:rgba(0,0,0,0.5);
+}
+
+
+// Login page
+
+.btn-login {
+	padding:15px 40px;
+	color:#fff;
+	font-size:24px;
+	font-weight:300;
+	border:none;
+	border-radius:0;
+}
+
+.btn-Facebook-login {
+	background-color: #3B5998;
+	&:hover {background-color:lighten(#3B5998,3%);color:#fff;}
+	cursor:pointer;
+}
+
+.btn-Facebook-login [class*=fa]{
+    margin-right:10px;
+}
+
+.success-message {
+	background-color: @green;
+	color: @white;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+	margin-top: -15px;
+	font-size: 20px;
+}
+
+.login-error-message {
+	background-color: lighten(@red,20%);
+	color: @white;
+	margin-top: -20px;
+	padding:10px;
+}
+
+// Settings page
+
+.userImgPreview {
+	width: 85%;
+	max-width: 250px;
+}
+.pictureMaxSize {
+	margin-top: 10px;
+	opacity: 0;
+}
+.error-picture {
+	background-color: lighten(@red,20%);
+	padding: 15px;
+	font-weight: bold;
+}
+.additionalInfo {
+	padding: 10px;
+	border: 1px solid #eee;
+	margin-bottom: 5px;
+	.form-group {margin-bottom: 0;}
+}
+.additionalInfoHeader {
+	h2, h4 {color: @white;}
+	margin: 20px 0 40px 0;
+}
+
+.notifSettings {
+	.section-title.marginBottom {margin-bottom: 40px!important;}
+	#intro {font-size: 35px;margin-bottom: 45px;} // using id to overwrite the cyan stylesheet  
+	.notifCasesBlock {
+		margin-bottom: 20px;
+		&.totemLike {margin-top:20px}
+		&.newComment {margin-top:20px;}
+	}
+	.notifCases {font-size: 20px;}
+}
+
+.connectWithFacebook, .notifModifQuestion {
+	margin-bottom: 50px;
+	margin-top: 60px;
+	.headLine {font-size: 25px;}
+	.switch {text-align: right;}
+}
+
+/*----------------------
+-----Totem Settings Styles----- I had to adapt due to the use of an id by the cyan stylesheet
+------------------------*/
+
+.totemSettings {
+   padding:60px 0; 
+   color:#fff;
+}
+
+.totemSettings .section-title {
+    color:#fff;
+    margin-bottom:84px;
+}
+
+.totemSettings textarea.form-control {
+    height:auto;
+	max-width:100%;
+	min-width:100%;
+    font-size:30px;
+    line-height:42px;
+	padding-top:14px;
+}
+
+.totemSettings.bgOne {
+	background-color: #8aaad9;
+}
+.totemSettings.bgTwo {
+	background-color: #a2ce7e;
+}
+
+.totemPicPreview img {
+	max-width:90px;
+    box-shadow:12px 0px 0px 12px rgba(255,255,255,0.2),
+                -12px 0px 0px 12px rgba(255,255,255,0.2);
+    background-color: rgba(250,250,250,0.6);
+}
+
+.totemNamePreview {color: @white;font-weight: bold;}
+
+.contact-form .error-textarea {
+    background:lighten(@red,30%);
+    padding:10px 20px;
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    font-size:16px;
+    font-weight:400;
+}
+
+// Buttons & indicators
+
+.download {cursor: pointer;}
+.download.gray {background-color: @grayLight;}
+
+.followButton.myTP {
+	margin-bottom: 20px;
+	.download {margin-bottom: 20px;}
+}
+.socialIndicators {
+	font-weight: 900;
+	font-size: 16px;
+	vertical-align: bottom;
+	.fa-dashboard {margin-right: 5px;vertical-align: 0px;}
+	.heart, .comment, .flash {margin-right: 5px;margin-left:5px;vertical-align: 0px;}
+
+	&.myTPHeader{display:inline-block;color: @white;margin-bottom: 10px;}
+	&.socialFeed {padding-top: 10px;}
+	&.myTPFlash {}
+	&.homeP {margin-top: 25px;}
+
+	.indicators {
+		text-decoration: none;
+		display: inline-block;
+		padding: 5px;
+		border-radius: 3px;
+		&:hover {background-color:@grayLighter;}
+	}
+
+	.error {background-color: lighten(@red,30%);color: @white;padding:10px;}
+}
+.settingButton {
+	font-size: 16px;
+	font-weight: 900;
+	.editTotem {color: @white;text-decoration: none;}
+	.errorSize {margin-top: 10px;color:rgba(230,65,35,0.9)!important;}
+	.fa-image {margin: 0 5px;vertical-align: 0px;}
+	.fa-gear {margin: 0 5px 0 0;vertical-align: 0px;}
+}
+.facebookBtn {
+	margin-bottom: 10px;
+	.fa-facebook {margin: 0 5px;vertical-align: 0px;}
+}
+.facebookBtn,.printTotem {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 900;
+	.postOnFacebook {
+		background-color: #3B5998;
+		border: 1px solid @white;
+		color: @white;
+		padding:7px;
+		border-radius: 3px;
+		text-decoration: none;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+	.postOnFbSuccess {
+		background-color: @green;
+		padding:7px;
+		border-radius: 3px;	
+		display: inline;	
+	}
+	.printTotemBtn {
+		border: 1px solid @white;
+		background-color: rgba(230,65,35,0.9);
+		color: @white;
+		padding:7px;
+		border-radius: 4px;
+	}
+}
+
+// SocialFeed
+
+.unsubscribe_banner {
+	background-color: lighten(@green,20%);
+	color: @white;
+	padding:15px;
+	font-size: 18px;
+}
+
+.features.socialFeed {
+	background: #eee;
+	padding-top: 5px;
+}
+.sideBar {
+	border-radius: 5px;
+	margin-top: 10px;
+	padding: 15px;
+	background-color: @white;
+	.user {color: @white;font-size: 25px;margin-top: 10px;font-weight: bold;}
+	.userPic {border:2px solid @white;}
+
+	.uploadPicture {
+		color: @white;padding:10px;font-size: 15px;margin-top: 10px;
+		&:hover {background-color:@grayLighter;transition:background-color 1s linear;color: @gray;border-radius: 5px;};
+	}
+	&.userBlock {background-image:url(https://res.cloudinary.com/cloudinarywimha/image/upload/v1395853636/Static%20Pictures/userBG.jpg);}
+	&.welcome {font-size: 25px;}
+	.headLine {border-bottom: 1px solid @grayLighter;padding-bottom: 15px;margin-bottom: 15px;}
+	.userName {
+		display: block;
+		color: @orange;
+	}
+	.userName,.userQuestion {margin-left: 60px;}//picture width + 10px
+	&.toFollow {
+		.toFollowBlock {
+			margin-top: 5px;
+			opacity: 1;
+			&.disapear{opacity:0!important;transition:opacity 1s linear;}
+		}
+		.toFollowUser {
+			img {position: absolute;top: 0;left: 0;width: 50px;height: 50px;}
+			position:relative;
+			text-decoration: none;
+		}
+		.followBtn {
+			text-align: right;
+			margin-top: 10px;
+			.btn{font-size: 20px;}
+		}
+	}
+	&.myTotem {
+		.myTotemBlock {
+			margin-top: 15px;
+			opacity: 1;
+		}
+		.myTotemUser {
+			img {position: absolute;top: 0;left: 0;height: 50px;}
+			position:relative;
+			text-decoration: none;
+		}
+	}
+}
+.feedHeadLine {
+	background-color: @white;
+	margin: 10px 0;
+	font-size: 25px;
+	padding:10px 20px;	
+}
+.socialAction {
+	background-color: @white;
+	margin: 10px 0;
+	padding: 25px 15px 15px 15px;
+	&.emptyFeed {
+		text-align: center;
+		font-size: 24px;
+		padding: 50px 25px;
+		p {margin: 10px 0;}
+	}
+	.userPic {
+		img{width: 100%;background-color: @grayLight;}
+		padding-right:5px;
+	}
+	.actionSentence {font-size: 18px;}
+	.timeStamp {font-style: italic;font-size: 12px;color:@grayLight;}
+	.totemQuestion{font-size: 14px;color: @grayLight; margin-top: 10px;}
+	.flashMessage {
+		font-size: 20px;margin: 20px 0;
+	}
+	.quote {padding: 0 10px;}
+	.totemInvolved {text-decoration:none;font-weight:bold;}
+}
+.scrolLoader {
+	position:fixed;bottom:0;
+	background-color:rgba(0,0,0,0.5);
+	padding: 15px;
+	color: @white;
+	font-size: 20px;
+	z-index: 2000;
+	.fa-spinner {margin-right: 10px;}
+}
+
+
+// Responsivity 
+    
+    @media (min-width: 1200px) {
+
+    	@mytp_pic_padding : 15px;
+    	.top_flash_pic {padding: @mytp_pic_padding;}
+    	.flasherName_pic {
+    		padding: @mytp_pic_padding;font-size: 25px;
+    		.display_name{max-width: 230px;}
+    	}
+    	.socialElements.pic {padding: @mytp_pic_padding;margin-top: 6px;}
+
+    	.timeline_post {.fa-heart,.fa-comment,.fa-heart-o {font-size: 2em}}
+
+    	.hero_fSize {padding-top:100px!important;padding-bottom:170px;}
+    	.hero.homeP {padding-top: 70px!important;}
+    	.hpPicture {
+			position: absolute;
+			right: 75px;
+			bottom: -75px;
+    	}
+  		.boucingTotem {
+			-webkit-transition:bottom 0.2s ease-out;
+			transition:bottom 0.2s ease-out;
+			&:hover{
+				bottom:-150px;
+				-webkit-transition:bottom 0.2s ease-out;
+				transition:bottom 0.2s ease-out;
+			};
+  		}
+		.hpDesktopDevice {
+			background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_800,h_650/v1407334327/Static%20Pictures/monitor.png')no-repeat;width:800px;height:650px;
+		}
+		.intercomIntro {font-size: 30px;}
+		.fadingPicture {&.desktop {position: absolute;top:44px;left: 45px;width:710px;}}
+    	.header .brandText {text-align: left;}
+    	.header .navigation {float: right;}
+    	.projectDescription {
+			text-align: justify;
+		}
+    	a, .pointer {cursor: pointer !important;}
+    	.dropdownHeader {
+    		width: 330px;
+    		&.alignRight {right:80px;}
+    	}
+    	.dropdownLang{width: 300px;}
+
+    	.socialIndicators.homeP {text-align: right;}
+    	.socialIndicators.myTPFlash{text-align: right;}
+		.socialIndicators.socialFeed {text-align: right;}
+
+    	.followButton.homeP {padding-top: 30px;font-size: 15px;text-align: right;}
+    	.followButton.myTP {font-size: 15px;text-align: left;}
+    	.followerNumber {text-align: right;}
+
+    	.container {
+    		&.socialFeed{max-width: 1200px;width: 100%;}
+    		&.header {max-width: 1200px;width: 100%;}
+    	}
+    	.timeline-heading.socialFeed {
+			&.closed {
+				max-height: 550px;
+			}
+		}
+		.chevronScroll {bottom:20px;}
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+
+    	@mytp_pic_padding : 15px;
+    	.top_flash_pic {padding: @mytp_pic_padding;}
+    	.flasherName_pic {
+    		padding: @mytp_pic_padding;font-size: 25px;
+    		.display_name{max-width: 225px;}
+    	}
+    	.socialElements.pic {padding: @mytp_pic_padding;margin-top: 6px;}
+
+    	.timeline_post {.fa-heart,.fa-comment,.fa-heart-o {font-size: 2em}}
+
+    	.hero_fSize {	padding-top:100px!important;padding-bottom:170px;}
+    	.hero.homeP {padding-top: 70px!important;}
+    	.hpPicture {
+			position: absolute;
+			right: 75px;
+			bottom: -75px;
+			-webkit-transition:bottom 0.2s ease-out;
+			transition:bottom 0.2s ease-out;
+			&:hover{
+				bottom:-150px;
+				-webkit-transition:bottom 0.2s ease-out;
+				transition:bottom 0.2s ease-out;
+			};
+    	}
+    	.hpDesktopDevice {
+			background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_800,h_650/v1407334327/Static%20Pictures/monitor.png')no-repeat;width:800px;height:650px;
+		}
+		.intercomIntro {font-size: 30px;}
+    	.fadingPicture {&.desktop {position: absolute;top:44px;left: 45px;width:710px;}}
+    	.header .brandText {text-align: left;}
+    	.header .navigation {float: right;}
+       	.projectDescription {
+			text-align: justify;
+		}
+    	a, .pointer {cursor: pointer !important;}
+    	.dropdownHeader, .dropdownLang {
+    		width: 300px;
+    		&.alignRight {right:0px;}
+    	}
+
+    	.socialIndicators.homeP {text-align: right;}
+    	.socialIndicators.myTPFlash{text-align: right;}
+		.socialIndicators.socialFeed {text-align: right;}
+
+    	.followButton {padding-top: 30px;font-size: 15px;}
+    	.followButton.homeP {text-align: right;}
+    	.followButton.myTP {text-align: left;}
+    	.followerNumber{text-align: right;}
+    	.timeline-heading.socialFeed {
+			&.closed {
+				max-height: 450px;
+			}
+		}
+		.chevronScroll {bottom:20px;}
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+
+    	@mytp_pic_padding : 15px;
+    	.top_flash_pic {padding: @mytp_pic_padding;}
+    	.flasherName_pic {
+    		padding: @mytp_pic_padding;font-size: 25px;
+    		.display_name{max-width: 130px;}
+    	}
+    	.socialElements.pic {padding: @mytp_pic_padding;margin-top: 6px;}
+
+    	.timeline_post {.fa-heart,.fa-comment,.fa-heart-o {font-size: 2em}}
+
+    	.hero_fSize {	padding-top:100px!important;padding-bottom:170px;}
+    	.hpPicture {
+    		margin-left: auto;
+    		margin-right: auto;
+    		margin-top: 40px;
+    		margin-bottom: -130px;
+    	}
+    	.pvWimha {text-align: center;}
+    	.header .brandText {text-align: left;}
+    	.header .navigation {float: right;}
+    	.hpPicture {padding-bottom: 20px;}
+    	.projectDescription {
+			text-align: justify;
+		} 
+		.hpDesktopDevice {
+			background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_700,h_569/v1407334327/Static%20Pictures/monitor.png')no-repeat;width:700px;height:569px;
+		}
+		.intercomIntro {font-size: 30px;margin-bottom: 15px;}
+		.fadingPicture {&.desktop {position: absolute;top:38px;left:39px;width:622px;}}
+    	.dropdownHeader {
+    		width: 300px;
+    		&.alignRight {right:100px;}
+    	}
+    	.dropdownLang{width: 300px;}
+
+    	.socialIndicators.myTPFlash{text-align: right;}
+		.socialIndicators.socialFeed {text-align: right;}
+
+    	.followButton {padding-top: 25px;font-size: 15px;}
+
+    	.followButton {text-align: center;}
+    	.followButton.homeP {.download {width: 100%;}}
+    	.pricing-content a {font-size: 15px;}
+    	.timeline-heading.socialFeed {
+			&.closed {
+				max-height: 550px;
+			}
+		}
+		.chevronScroll {bottom:-50px;}
+    }
+     
+    @media (min-width:481px) and (max-width: 767px) {
+    
+    	@mytp_pic_padding : 20px;
+    	.top_flash_pic {padding: @mytp_pic_padding;}
+    	.flasherName_pic {
+    		padding: @mytp_pic_padding;font-size: 22px;
+    		.display_name{max-width: 180px;}
+    	}
+    	.socialElements.pic {padding: @mytp_pic_padding;margin-top: 13px;}
+
+    	.timeline_post {.fa-heart,.fa-comment,.fa-heart-o {font-size: 1.5em}}
+
+    	.hero_fSize {padding-top:170px!important;padding-bottom:170px;}
+    	.pvWimha {text-align: center;}
+    	.hpPicture {
+    		margin-left: auto;
+    		margin-right: auto;
+    		margin-top: 40px;
+    		margin-bottom: -130px;
+    	}
+ 		.hpDesktopDevice {
+			background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_480,h_390/v1407334327/Static%20Pictures/monitor.png')no-repeat;width:480px;height:390px;
+		}
+		.intercomIntro {font-size: 30px;margin-bottom: 15px;}
+		.openIntercom {margin: 10px 15px 0 0;}
+		.fadingPicture {&.desktop {position: absolute;top:26px;left:27px;width:426px;}}
+    	.projectDescription {text-align: center;}    	
+    	.dropdownHeader {
+    		width: 100%;
+    		&.alignRight {right:0;}
+    	}
+    	.dropdownLang{width: 300px;}
+
+    	.socialIndicators.myTPFlash{text-align: right;}
+    	.followButton {padding-top: 20px;font-size: 15px;}
+
+       	.thanksMessage {text-align: center;} 
+       	.changePicture {text-align: center;}
+    	.totemNamePreview, .totemPicPreview {text-align: center;}
+    	.followButton {text-align: center;}
+    	.followButton.homeP {.download {width: 100%;}}
+    	.notifSettings {
+    		.notifCases {text-align: center;margin-bottom: 20px;}
+    		.switch{text-align: center;}
+    	}
+    	.connectWithFacebook, .notifModifQuestion {
+    		.switch, .headLine {text-align: justify;}
+    	}
+    	.socialAction {
+    		text-align: center;
+    		.userPic {
+    			img{width: 25%;}
+    			margin-bottom:20px;
+    		}
+    	}
+    	.pricing-block {
+    		margin-bottom: 15px!important;
+    	}
+    	.pricing-content a {font-size: 15px;}
+    	.timeline-heading.socialFeed {
+			&.closed {
+				max-height: 550px;
+			}
+		}
+    }
+     
+    @media (max-width: 480px) {
+    	#howItWorks {width: 100%;
+    	}
+    	@mytp_pic_padding : 10px;
+    	.top_flash_pic {padding: @mytp_pic_padding;}
+    	.flasherName_pic {
+    		padding: @mytp_pic_padding;font-size: 20px;
+    		.display_name{max-width: 100px;}
+    	}
+    	.socialElements.pic {padding: @mytp_pic_padding;margin-top: 16px;}
+
+    	.timeline_post {.fa-heart,.fa-comment,.fa-heart-o {font-size: 1.33333333em}}
+
+    	.hero_fSize {padding-top:135px!important;padding-bottom:40px;}
+    	.pvWimha {text-align: center;}
+    	.hpPicture {
+    		margin-left: auto;
+    		margin-right: auto;
+    		margin-top: 40px;
+    		margin-bottom: -130px;
+    	}
+    	.hpDesktopDevice {
+			background:url('https://res.cloudinary.com/cloudinarywimha/image/upload/w_300,h_244/v1407334327/Static%20Pictures/monitor.png')no-repeat;width:300px;height:244px;
+		}
+		.intercomIntro {font-size: 23px;margin-bottom: 15px;}
+		.openIntercom {margin: 10px 15px 0 0;}
+		.fadingPicture {&.desktop {position: absolute;top:16px;left:16px;width:268px;}}    	
+    	.projectDescription {text-align: center;}
+    	.dropdownHeader,.dropdownLang {
+    		width: 100%;
+    		&.alignRight {right:0;}
+    	}
+    	.btn-login {
+    		font-size: 20px;
+    		padding: 15px 20px;
+    		width: 100%;
+    	}
+
+    	#map-canvas {margin:0 25px;}
+
+    	.socialIndicators.myTPFlash{text-align: center;font-size: 14px;}
+
+    	.followButton {padding-top: 15px;font-size: 15px;}
+    	.editTotem {display: block;margin-bottom: 10px;}
+    	.commentPicture {margin-left: -5px; margin-top: 5px;width: 100%;}
+    	.thanksMessage {text-align: center;} 
+    	.changePicture {text-align: center;}
+    	.totemNamePreview, .totemPicPreview {text-align: center;}
+    	.followButton {text-align: center;}
+    	.notifSettings {
+    		.notifCases {text-align: center;margin-bottom: 20px;}
+    		.switch{text-align: center;}
+    	}
+    	.connectWithFacebook, .notifModifQuestion {
+    		.switch, .headLine {text-align: center;}
+    	}
+    	.socialAction {
+    		text-align: center;
+    		.userPic {
+    			margin-bottom: 10px;
+    			img{width: 40%;}
+    		}
+    	}
+    	.sideBar.welcome {text-align: center;} 
+    	.sideBar {
+    		.download{width: 40%;}
+    		.headLine{text-align: center;}
+    	}
+    	.pricing-block {
+    		margin-bottom: 15px!important;
+    	}
+    	.pricing-content a {font-size: 15px;}
+    	.callToActionBtn a {margin-bottom: 5px;}
+    	.timeline-heading.socialFeed {
+			&.closed {
+				max-height: 350px;
+			}
+		}
+    }

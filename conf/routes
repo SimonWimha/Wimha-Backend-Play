@@ -1,0 +1,146 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#Misc but prio
+GET     /robots.txt                             controllers.Assets.at(path="/public", file="robots.txt")
+GET     /appiphone                              controllers.Application.appIphone()
+GET     /appandroid                             controllers.Application.appAndroid()
+GET     /faq                                    controllers.Application.faq()
+GET 	/sitemap.xml				            controllers.Application.sitemap()
+GET     /messages.js                            controllers.Application.jsMessages()
+
+# Home page
+GET     /                                       controllers.Application.index()
+GET     /ajaxHP/                                controllers.Application.indexAjax()
+
+GET     /fr/                                    controllers.Application.totemIndexPageFr()
+GET     /cgu/                                   controllers.Application.terms()
+GET     /lang/                                  controllers.Lang.changeLocaleHomePage(locale:String)
+GET 	/TotemFamily/				            controllers.Application.totemIndexPage()
+GET 	/TotemFamily/fr				            controllers.Application.totemIndexPageFr()
+GET 	/totemFamily/				            controllers.Application.totemIndexPage()
+GET 	/totemfamily/				            controllers.Application.totemIndexPage()
+GET 	/Totemfamily/				            controllers.Application.totemIndexPage()
+GET 	/totemList/					            controllers.Application.totemList()
+GET 	/getFeedPage/:page 				        controllers.social.SocialFeed.getFeedPage(page:String)
+
+# My totem page
+GET 	/MyTotemPage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/MytotemPage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/MyTotempage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/Mytotempage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/myTotemPage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/mytotempage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/mytotemPage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/myTotempage/:totem_name	            controllers.Application.myTotemPage(totem_name:String)
+GET 	/getMyTPPage/:page 				        controllers.Application.getMyTPPage(page:String, totemName:String, favoriteOnly:String)
+
+POST 	/changebackground/:totem_name			controllers.Settings.changeTotemPageBackPicture(totem_name:String)
+GET  	/map/:totem_name    		            controllers.Application.map(totem_name:String)
+GET  	/mapData/:totem_name    		        controllers.Application.mapData(totem_name:String)
+
+#Mobile apps
+GET     /android/id/:totem_id                   controllers.flash.Scan.androidIndex(totem_id:String)
+GET     /mytotems/                              controllers.NewTotem.myTotems(email:String)
+GET 	/getFeedPageWS/:page 				    controllers.social.SocialFeed.getFeedPageWS(page:String)
+GET 	/getCommentPageWS/:flashId/:pageId      controllers.social.Comments.getCommentPageWS(flashId:String , pageId:String)
+GET 	/commentPageWS/:flash_id			  	controllers.social.Comments.commentPageWS(flash_id:String)
+
+
+# creation totem
+GET     /genid/				                    controllers.NewTotem.generateNewId
+POST    /genid/				                    controllers.NewTotem.generateNewIdSubmit
+POST    /newtotem/  			                controllers.NewTotem.submitForm
+GET     /newtotem/validate/:id/:token  	        controllers.NewTotem.validateToken(id:String, token: String)
+POST    /resendmail/:totem_name  	            controllers.NewTotem.reSendMail(totem_name: String)
+POST    /resendmailwithid/:id  	                controllers.NewTotem.reSendMailId(id: String)
+GET 	/newtribe/						    	controllers.NewTotem.genPublicId()
+POST 	/genPublicIdSubmit/					    controllers.NewTotem.genPublicIdSubmit()
+
+
+# flash totem
+GET     /r/:short_id                            controllers.Application.redirectShortUrl(short_id:String)
+GET     /id/:totem_id                           controllers.flash.Scan.index(totem_id:String)
+GET 	/deleteFlash/				            controllers.Application.deleteFlash()
+GET     /:totem_name                            controllers.Application.myTotemPage(totem_name:String)
+POST    /submit/                                controllers.flash.Flash.submit()
+GET     /submit/validate/:id/                   controllers.flash.Flash.validateNullToken(id:String)
+GET     /submit/validate/:id/:token             controllers.flash.Flash.validateToken(id:String, token: String)
+GET     /update_version/                        controllers.flash.Flash.updateVersionPicture(signature:String, version:String, content_type:String)
+
+# Admin
+GET     /delete_flash/:flash_id 				controllers.Admin.delete(flash_id:String)
+GET     /delete_flash_owner/:flash_id 			controllers.Admin.ownerDelete(flash_id:String)
+GET     /block_member/:flash_id 			    controllers.Admin.block(flash_id:String)
+GET     /delete_comment_owner/:comment_id 		controllers.Admin.ownerDeleteComment(comment_id:String)
+POST    /favorite/:flashId/:value  		        controllers.Admin.favorite(flashId:String, value:String)
+GET     /getTribuId/:tribuName                  controllers.Admin.getTribuId(tribuName:String)
+
+
+#login
+GET     /logout/                     			controllers.authentication.Helper.logout()
+GET     /login/					                controllers.authentication.Helper.loginWithoutOrigin()
+GET     /login/:originUrl		                controllers.authentication.Helper.login(originUrl : String)
+POST 	/facebook/picture/:idFb					external_services.Facebook.getPictureFb(idFb:String)
+GET 	/facebook/post/:totem_name/:id     	    external_services.Facebook.firstActivatePostOnFB(totem_name:String,id:String)
+GET 	/facebook/post/:totem_name     			external_services.Facebook.activatePostOnFB(totem_name:String)
+GET 	/facebook/nopost/:totem_name     		external_services.Facebook.deactivatePostOnFB(totem_name:String)
+GET     /register/validateToken/:token 			controllers.authentication.Register.validateToken(token :String)
+GET     /register/validateToken/:token/:id 		controllers.authentication.Register.validateTokenAndLog(token :String,id:String)
+POST   	/register/           					controllers.authentication.Register.doRegister()
+POST   	/doFacebookConnect/           			controllers.authentication.Register.doFacebookConnect()
+GET 	/missingEmail/:originUrl	            controllers.authentication.Register.missingEmail(originUrl: String)
+POST   	/givemail/           					controllers.authentication.Register.giveEmail()
+
+# Thread Subscribe
+GET     /subscribeuser/thread/:threadId 		controllers.Application.subscribeUser(threadId:String)
+GET     /unsubscribeuser/thread/:threadId 		controllers.Application.unsubscribeUser(threadId:String)
+GET     /unsubscribeFromMail/:threadId/:userId 	controllers.Application.unsubscribeFromMail(threadId:String, userId:String)
+
+# Comments
+GET 	/commentPage/:flash_id			  	    controllers.social.Comments.commentPageDisplay(flash_id:String,comingPage:String ?= "myTP")
+GET 	/followersPage/					  	    controllers.social.Comments.followersPageDisplay(totem_id:String,comingPage:String ?= "myTP")
+POST    /submit_comment/:threadId		 	    controllers.social.Comments.submitComment(threadId:String)
+
+# Like
+GET     /like_flash/:flash_id 				    controllers.social.Like.like(flash_id:String)
+GET     /unlike_flash/:flash_id 				controllers.social.Like.unlike(flash_id:String)
+GET     /like_totem/:totem_id 				    controllers.social.Like.likeTotem(totem_id :String)
+GET     /unlike_totem/:totem_id  				controllers.social.Like.unlikeTotem(totem_id :String)
+
+#Settings
+GET 	/settingsPage/:error_size			    controllers.Settings.accountSettings(error_size:String)
+POST 	/settingsPage/						    controllers.Settings.accountSettingsSubmit
+POST 	/settingsPageTotem/					    controllers.Settings.accountSettingsSubmitTotem
+POST 	/settingsPageTotem/notif/       	    controllers.Settings.accountSettingsSubmitTotemNotif
+
+POST 	/userprofile/uploadImage/			    controllers.Settings.changePicture
+
+GET 	/notificationsettings/ 		            controllers.Settings.notificationSettings()
+GET 	/subscribeNotification/:setting 		controllers.Settings.subscribeNotification(setting:String)
+GET 	/unsubscribeNotification/:setting 		controllers.Settings.unsubscribeNotification(setting:String)
+GET 	/unsubscribeSettingFromMail/:userId/:group		controllers.Settings.unsubscribeFromMail(userId:String, group : String)
+
+#Ajax
+GET     /checkMail/:mail 			            controllers.authentication.Register.checkMail(mail : String)
+GET     /checkFbId/:fbId 			            controllers.authentication.Register.checkFbId(fbId : String)
+
+#Misc
+GET  	/rss/:totem_name    		            controllers.Application.rss(totem_name:String)
+GET  	/rss/    					            controllers.NewTotem.rss()
+GET     /dailydigest/                           controllers.Application.dailyDigest()
+GET     /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)
+
+
+#Send Mails
+POST 	/sendmail/					            controllers.authentication.Helper.sendResetPasswordMail()
+GET 	/resetPassword/:token		            controllers.authentication.Helper.resetPasswordPage(token : String)
+POST 	/resetPasswordSubmit/:token	            controllers.authentication.Helper.resetPasswordSubmit(token : String)
+GET 	/emailPreview/				            controllers.Application.emailPreview()
+
+
+# External services
+GET     /actoboard_polling/                     controllers.Application.actoboard()
+GET  	/fbredirect/				            external_services.Facebook.fbRedirect()
+POST  	/fbredirect/				            external_services.Facebook.fbRedirect()

@@ -1,0 +1,684 @@
+############################################################################################################
+######## CLASSIFICATION BY FONCTION
+############################################################################################################
+
+# Buttons 
+
+button.follow = Follow
+button.unfollow = Unfollow
+button.like = Like
+button.liked = Liked
+button.login = Login
+button.post = Post
+button.status.error = Error!
+button.status.waiting = Waiting
+button.status.ok = Good!
+button.status.sending = Sending...
+button.enter = Enter
+button.forgot.pwd = I forgot my password
+button.comment = Comment
+button.select = Select
+button.save = Save
+button.discover = Discover
+button.send = Send
+button.start = Start
+button.unsubscribe = Unsubscribe
+button.buy = Buy
+button.offer = Offer
+button.view = View
+button.answer = Answer
+button.cancel = Cancel
+button.delete = Delete
+button.hp = Home page
+button.feed = Your news feed
+button.notInterested = Not interested at all
+button.interested = Waoh! Sounds good
+button.choose = Choose 
+button.yes = Yes I''m curious
+button.close = Close
+button.block = Block
+button.favorite = Favorite
+button.remove.favorite = Remove from favorite
+button.noThanks = No thanks
+
+# Call to action 
+
+callToAction.get = Create my tribe
+callToAction.get.your = Create your tribe
+callToAction.get.custom = Customize your totem
+callToAction.ready = Ready to start?
+callToAction.validationToken = I am not a robot
+callToAction.haveALook = Have a look
+callToAction.choose.your = Choose your totem
+callToAction.showMore = Show more ...
+callToAction.contactUs = Contact us
+callToAction.example = See example
+callToAction.keepInTouch = Keep in touch with
+callToAction.discoverFlash = Discover previews
+callToAction.validateYourTotem = Click here to validate
+callToAction.validateYourAccount = Click here to validate
+callToAction.totemPage = Go to the tribe page
+callToAction.connectTotem = Connect my totem
+callToAction.newTribe = Create another tribe
+callToAction.seeFlash = See other flashs
+callToAction.print = Print your travel book
+callTaAction.map = See the map
+callToAction.backTo.hp = Back to home page
+callToAction.try = Give it a try
+callToAction.signOrCreate = Sign in or create an account
+
+# Descriptions & PV 
+
+wimha.totem = The Wimha totem
+wimha.pv = Student school year, group of volunteers, group of buddies, travelers... You most probably be part of a tribe! Order your customized totem to capture all the best moments of your tribe. Flash it with the Wimha application and post a picture on your tribe''s map!
+ 
+wimha.catchLine = Your tribe journal 
+wimha.catchLine.1 = YOUR TRIBE
+wimha.catchLine.2 = YOUR TOTEM
+wimha.catchLine.3 = YOUR MAP
+
+
+# Error 
+
+error.post.lenght.1000 = Oops, your message is too long ... (max length 1000 characters)
+error.internet.connexion = Oops please check your internet connection ... 
+
+error.empty = Oops, you forgot to answer :)
+error.email.empty = Please enter your email ...
+error.email.invalid = Oops are you sure about the email?
+error.email.alreadyUsed = This email is already taken ...
+error.name.empty = Please enter your name
+error.password.empty = Please enter a password
+error.password.invalid = Invalid password
+error.totemName.empty = Your totem deserves a name!
+error.totemName.alreadyTaken = Oops this name is already taken...
+error.totemName.invalid = Oops only letters please... 
+error.totemQuestion.empty = Please enter a question...
+
+error.picture.invalid = Picture invalid (max-size : 700Ko, format : PNG, JPG, JPEG) 
+error.picture.size = Picture invalid (max-size : 1Mo, format : PNG, JPG, JPEG)
+
+error.500.1 = Oops, sorry ...
+error.500.2 = we''re sorting things out   
+error.500.3 = we''ll get back to normal in no time : ) 
+
+error.400.1 = We couldn''t find your destination
+error.400.2 = Come back with us
+error.400.3 = Click here ...
+
+error.geoloc.headLine = Oops we couldn''t find your location ...
+error.geoloc.internet = We don''t know this place, do you still have an internet connection?
+
+error.server.connexion = Our server didn''t respond, can you try again?
+error.internet.connexion = No internet connection ... Please try again
+error.bug = Something''s wrong, we''re working on it, please try again later?
+
+error.login.fbc = Your account is linked with Facebook, click on the Facebook button to enter
+error.login.noAccount = You don''t have an account yet, please sign up
+error.login.wrongPassword = Oops wrong password ...
+
+error.lenght.1000 = Sorry, your comment is too long, can you make it shorter than 1000 caracters?
+
+error.password.noMatch = Oops passwords have to match
+error.password.length = Password must be at least 6 characters...
+
+
+#Facebook
+
+facebook.post.owner = New flash on my tribe :
+facebook.post.flasher = I just flashed the tribe''s totem :
+facebook.feedback.accountLinked = Account linked
+
+
+# Indicators
+
+indicator.followers = followers
+indicator.like = likes
+indicator.comment = comments
+
+
+# Input 
+
+input.label.email = Email
+input.ph.email = Enter your email...
+input.label.name = Name
+input.ph.name = Enter your name...
+input.label.password = Password
+input.ph.password = Enter a password...
+input.ph.newPassword = New password
+input.ph.confirmPassword = Confirm password
+input.label.reset = Reset
+input.label.totemQuestion = totemQuestion
+input.ph.totemQuestion = Enter a question ...
+input.label.totemDescription = totemDescription
+input.ph.totemDescription = Enter a description (optional) ...
+input.label.totemOwner.email = Email
+input.label.totemOwner.facebook = facebook.com/
+input.label.totemOwner.twitter = twitter.com/
+input.ph.totemOwner.username = username
+
+
+# Meta 
+
+meta.totem.title = the traveling totem
+meta.totemFamily.description = Discover the totem family! Get your own totem for 14,90€ and capture all your encounters while traveling! 
+meta.totemFamily.buy = Buy a Wimha totem
+
+
+# Pictures
+
+picture.og.homePage = http://res.cloudinary.com/cloudinarywimha/image/upload/h_315/v1408007070/Static%20Pictures/ogEn.png
+
+
+# Settings 
+
+settings.editButton = Edit 
+settings.editButton.totem = Edit my tribe
+settings.editButton.bg = Edit cover
+settings.postOnFacebook = Connect with Facebook
+settings.connectWithFb.headLine = Every new flash is posted on your Facebook wall
+settings.totem.socialInfo.headLine = Would you like to use this tribe as a visiting card?
+settings.totem.socialInfo.desc = People will receive the following info by email when they flash your totem
+settings.totem.notif =  Members will receive a notification when you change the question (up to 1notif/day)
+settings.totem.nottif.sent = notifications sent
+settings.totem.nottif.alreadysent = Notification already sent today
+
+# Feedback when unsubscribe daily digest or ambassador mail from the email link
+email.unsubscribe_mail.newFlashOnATotemYouFollow = You have been unsubscribed from the daily digest
+email.unsubscribe_mail.ambassadorsMail = You have been unsubscribed
+already_unsubscribe = You already are unsubscribed
+
+# Social interactions 
+
+social.facebook.page = Join us on Facebook
+social.twitter.page = Follow us on Twitter
+
+# Small words
+
+smallWord.or = Or
+smallWord.at = at
+smallWord.in = in
+smallWord.welcome = Welcome
+smallWord.days = days
+smallWords.of = of
+smallWords.on = on
+smallWord.starting = Starting
+smallWord.hello = Hello!
+smallWord.here = here
+
+
+# Status 
+
+status.loading = Loading awesome news
+
+############################################################################################################
+######## CLASSIFICATION BY PAGES (web)
+############################################################################################################
+
+
+# Comment Page 
+
+commentPage.backTo.before = Back to 
+commentPage.backTo.after = ''s page 
+commentPage.backTo.socialFeed = Back to your news feed
+
+# Follower Page
+
+followerPage.yourFollowers = Your followers
+followerPage.noFollower = No followers
+
+# Header
+
+header.price = Price
+header.settings = Settings
+header.notificationSettings = Notification settings
+header.totemPage = YOUR TRIBE PAGE
+header.logout = Logout
+header.language = LANGUAGE
+
+
+# Home Page 
+
+hp.title.howTo = How does it work? 
+hp.video = Watch the video
+
+hp.title.screenshot = Your tribe''s page
+
+hp.headLine.howto = When you are having a good time with your tribe''s mate, grab your totem and flash it to create a nice online map.
+
+hp.subtitle.howto.1 = Customize your totem
+hp.text.howto.1 = With your tribe''s colours, your logo, you choose
+hp.subtitle.howto.2 = Flash it!
+hp.text.howto.2 = Their is a code to flash on its back (with the free Wimha mobile app), enter your message and capture the moment with a picture. No need to have a internet connection. 
+hp.subtitle.howto.3 = Your tribe as you''ve never seen it before
+hp.text.howto.3 = All your members flashs are automatically pinpointed on a map! Is your tribe traveling? 
+
+hp.title.map = Your tribe, worldwide
+hp.headLine.map = Customizable, accessible to everyone, exportable to your website
+
+hp.title.why = Why is it awesome?
+hp.headLine.why = in three points...
+
+hp.subtitle.why.1 = It is fun
+hp.text.why.1 = With it, it has never been easier to ask someone to post on your tribe''s webpage
+hp.subtitle.why.2 = Your tribe has the power
+hp.text.why.2 = Members empower the tribe! They share all their best moments spent together
+hp.subtitle.why.3 = A membership feeling
+hp.text.why.3 = A unique totem for your unique tribe. Members will be proud flying the tribe's colours
+
+hp.title.testimonial = They trust us
+hp.headLine.testimonial = Why don''t you? 
+hp.testi.crf =  "Thanks to the totem everyone has attached to his jacket, the Red Cross volunteers can flash and have a national map in real time of all the actions done on the field"
+hp.testi.icam = "We had a gap year and decided to buy a totem to create our school year road book all over the world! The result is just insane" 
+hp.testi.at = "We have to go to different cities for competitions, with our totems we keep a souvenir of all these good times. And those who couldn''t come can still follow our results at home"
+
+hp.testi.who.crf = French Red Cross : 
+hp.testi.who.icam = ICAM, school year 116 :
+hp.testi.who.at = Aviron Toulousain : 
+
+hp.title.pricing = Pricing
+hp.headLine.pricing = Contact us, we answer within 2days
+
+hp.pricing.offer.1 = Your own totem
+hp.pricing.offer.2 = Totem small tribe
+hp.pricing.offer.3 = Totem big tribe
+hp.pricing.price.1 = 14,99€
+hp.pricing.price.2 = 119€
+hp.pricing.price.3 = 1199€
+hp.pricing.nb.1 = per totem
+hp.pricing.nb.2 = 10 - 100 totems
+hp.pricing.nb.3 = > 100 totems
+
+pricing.1 = Totem made of wood
+pricing.2 = Delivered within
+pricing.3 = Customized colours
+pricing.3bis = Classic design
+pricing.3.link = totem family
+pricing.4 = Customized logo
+pricing.5 = Customized map
+pricing.6 = Launching event 
+pricing.7 = Monthly reporting for 6 months
+
+hp.title.gallery = Gallery
+hp.headLine.gallery = Random pictures...
+hp.gallery.1 = Hand made 
+hp.gallery.text.1 = With brushes, wood, glue, etc. 
+hp.gallery.2 = Laser cut 
+hp.gallery.text.2 = Bootstrapped in Toulouse FabLab
+hp.gallery.3 =  For all tastes
+hp.gallery.text.3 = Customize your own with colours you love 
+hp.gallery.4 = Our office & friends
+hp.gallery.text.4 = Accelerated @LeCampingToulouse
+hp.gallery.5 = They have a totem
+hp.gallery.text.5 = and seem pretty happy about it!
+hp.gallery.6 = They had a totem
+hp.gallery.text.6 = to the brazil world cup to support France
+hp.gallery.7 = Hello FrenchTech 
+hp.gallery.text.7 = The FrenTech tribe also has a totem
+hp.gallery.8 = And sometimes ...
+hp.gallery.text.8 = real tribes have a totem, but it''s another story
+
+hp.title.travel = Are you a traveler? 
+hp.headLine.travel = with an original project?
+hp.offer.travel = We are big fans of travelers! Even more for those with an original project. If you are one of them feel free to contact us, we give away totems for travelers projects we like the most!
+
+
+hp.headLine.contact = What do you think? Contact us, you''ll receive an answer within 2days
+hp.title.us = The Wimha tribe
+hp.headLine.us = 
+hp.us.bertran = Tribe shaker, always ready to boost your tribe!
+hp.us.simon = Design, simplicity, user experience, product is everything. 
+hp.us.martin = Production is his thing, behing every totem is Martin''s love 
+hp.us.julien = Code it, test it, push it, debug it, refactor it, repeat it
+
+hp.modal.first = Would you like to know what 
+hp.modal.first.bis = means?
+hp.modal.second = Hit the Like button
+hp.modal.second.bis = to reveal the answer...
+
+hp.intercom.first = To contact us,
+hp.intercom.second = start entering your email
+hp.intercom.write = Write your message
+
+
+# Login / Register
+
+login.headline.before = Let''s 
+login.headline.middle = CONNECT
+login.headline.after = on wimha
+login.success.feedback = Success! Please wait...
+login.success.register = Go check your mailbox :)
+login.forgot.password = Send new password
+
+login.withFacebook = Connect with Facebook
+login.lastStep = One last step ...
+
+
+# My Totem Page 
+
+myTP.feedback.totem.created = Well done! Your totem has come to life : ) Here is your tribe''s page ... Enjoy 
+myTP.feedback.message.posted = Well done! Your message has been posted : ) ... You rock! 
+myTP.map.headLine = Flash map
+myTP.comment.headLine = flashs
+myTP.comment.headLine.empty = No flash yet :(
+myTP.comment.empty = Flash your totem and your tribe''s feed will appear right here
+myTP.favorite.empty = No favorite flash yet... 
+myTP.modal.headLine = We are working on it, it''s going to be awesome!
+myTP.modal.text = Be patient and stay tuned
+
+myTP.noMoreNews = Last flashs loaded...
+
+myTP.tab.favorite = FAVORITE
+myTP.tab.all = ALL FLASHS
+
+myTP.ambOfTheWeek = Ambassador of the week : {0} with {1} likes
+
+myTP.favorite.modal = Would you like to send a message to 
+
+
+# Parse
+
+parse.notif.question = Answer the new question :
+parse.notif.newFlash = New flash on {0} !
+
+
+# Settings 
+
+settings.headLine = Modify your settings
+settings.headLine.notif = Modify your notifications settings
+settings.notif.cases = Receive notification when :
+settings.notif.cases.1 = you have a new follower
+settings.notif.cases.2 = a member likes your tribe
+settings.notif.cases.3 = a member likes a message you have left on a tribe
+settings.notif.cases.4 = a member leaves a message on a tribe you follow
+settings.notif.cases.5 = a member comments on one of your tribe messages
+settings.notif.cases.6 = a member comments on a message you have left on a tribe
+settings.notif.cases.7 = a member comments on a message you have already commented on
+
+settings.picture.upload = Change your profile picture
+settings.picture.maxSize = Up to 700Ko
+
+settings.totem = Tribe settings
+
+# Social feed
+
+socialFeed.side.upload = Upload a picture
+socialFeed.side.toFollow = Wimha''s tribes
+socialFeed.side.start = Start following travelers
+socialFeed.side.myTotem = My tribe 
+socialFeed.side.myTotems = My tribes 
+
+socialFeed.headLine = Last Flashs
+
+socialFeed.empty.1 = You can discover Wimha''s tribes
+socialFeed.empty.2 = clicking the "follow" button
+
+socialFeed.action.flash = has just flashed
+socialFeed.totemInvolved = ,
+socialFeed.totemInvolved.en = ''s totem
+socialFeed.noMoreNews = No more news, let''s follow more tribes 
+
+socialFeed.onboarding = Hey! I''ve just let a message on my tribes''s page thanks to our customized totem :)
+
+socialFeed.unsubscribe.dailyD = You''ve been unsubscribe from daily digest emails 
+socialFeed.unsubscribe.amb_week = You''ve been unsubscribe from the ambassadors emails
+
+# Totem Family 
+
+totemfamily.headLine = Totem family 
+totemfamily.hashtags = #handMade #France #notFromChina
+
+totemfamily.CovoitTot = Covoit''Tot
+totemfamily.AutumnTot = AutumnTot
+totemfamily.BuddhaTot = BuddhaTot
+totemfamily.DurtyTot = DurtyTot
+totemfamily.HollandTot = HollandTot
+totemfamily.HoneyTot = HoneyTot
+totemfamily.NakedTot = NakedTot
+totemfamily.SandyTot = SandyTot
+totemfamily.SummerTot = SummerTot
+totemfamily.Playtot = PlayTot
+totemfamily.FunkyTot = FunkyTot
+totemfamily.VentanaTot = VentanaTot
+totemfamily.GardenTot = GardenTot
+totemfamily.OddenTot = OddenTot
+totemfamily.urbanTot = UrbanTot
+totemfamily.SofiaTot = SofiaTot
+totemfamily.ColeTot = ColeTot
+
+totemfamily.CovoitTot.intro = Hang me up on your interior mirror and never leave a seat empty in your car. 
+totemfamily.AutumnTot.intro = All life is an experiment. The more experiments you make the better.
+totemfamily.BuddhaTot.intro = The mind is everything. What you think you become. #BuddhaSpirit
+totemfamily.DurtyTot.intro = When the traveler goes alone he gets acquainted with himself. #mindset
+totemfamily.HollandTot.intro = I wander for distraction, but I travel for fulfillment. #Ontheroad
+totemfamily.HoneyTot.intro = Change your life today. Don''t gamble on the future, act now, without delay.
+totemfamily.NakedTot.intro = The World is a book, and those who do not travel read only a page.
+totemfamily.SandyTot.intro = One travels more usefully when alone, because he reflects more.
+totemfamily.SummerTot.intro = To travel is to discover that everyone is wrong about other countries.
+totemfamily.Playtot.intro = The traveler sees what he sees, the tourist sees what he has come to see.
+totemfamily.FunkyTot.intro = Travel is not action, but a state of mind. #FeelingAbroadAtHome
+totemfamily.VentanaTot.intro = We travel, some of us forever, to seek other states, other lives, other souls.
+totemfamily.GardenTot.intro = If you love nature you will find beauty everywhere. #FreshSpirit
+totemfamily.urbanTot.intro = Every perfect traveler always creates the country where he travels.
+totemfamily.OddenTot.intro = Life is a song - sing it. Life is a game - play it. Life is a challenge - meet it. 
+totemfamily.SofiaTot.intro = It''s important to find the little things in everyday life that make you happy.
+totemfamily.ColeTot.intro = Music is about expressing things you can''t in everyday life.
+
+
+totemfamily.citation.1 = http://ctt.ec/4bd5e
+totemfamily.citation.2 = http://ctt.ec/dbdoU
+totemfamily.citation.3 = http://ctt.ec/247s9
+totemfamily.citation.4 = http://ctt.ec/VrFsU
+totemfamily.citation.5 = http://ctt.ec/lsxGV
+totemfamily.citation.6 = http://ctt.ec/9Rdxu 
+totemfamily.citation.7 = http://ctt.ec/5TfDe
+totemfamily.citation.8 = http://ctt.ec/d94eO
+totemfamily.citation.9 = http://ctt.ec/WF38j
+totemfamily.citation.10 = http://ctt.ec/1o24u
+totemfamily.citation.11 = http://ctt.ec/v22iK
+totemfamily.citation.12 = http://ctt.ec/Y0UG8
+totemfamily.citation.13 = http://ctt.ec/Mv0Wn
+totemfamily.citation.14 = http://ctt.ec/3r203
+totemfamily.citation.15 = http://ctt.ec/Zao7h
+totemfamily.citation.16 = http://ctt.ec/xE08W
+
+totemfamily.AutumnTot.get = Get AutumnTot
+totemfamily.FrenchTech.get = Get FrenchTechTot
+totemfamily.BuddhaTot.get = Get BuddhaTot
+totemfamily.DurtyTot.get = Get DurtyTot
+totemfamily.HollandTot.get = Get HollandTot
+totemfamily.HoneyTot.get = Get HoneyTot
+totemfamily.NakedTot.get = Get NakedTot
+totemfamily.SandyTot.get = Get SandyTot
+totemfamily.SummerTot.get = Get SummerTot
+totemfamily.Playtot.get = Get PlayTot
+totemfamily.FunkyTot.get = Get FunkyTot
+totemfamily.VentanaTot.get = Get VentanaTot
+totemfamily.GardenTot.get = Get GardenTot
+totemfamily.OddenTot.get = Get OddenTot
+totemfamily.urbanTot.get = Get UrbanTot
+totemfamily.SofiaTot.get = Get SofiaTot
+totemfamily.ColeTot.get = Get ColeTot
+
+totemfamily.faq.title = F.A.Q
+
+totemfamily.faq.question1 = How is the totem made? 
+totemfamily.faq.reponse1 = The Wimha totem is made of wood, hand made in France with love.
+totemfamily.faq.question2 = I don''t understand, who can flash the totem?
+totemfamily.faq.reponse2 = You just need a smartphone to flash a totem. You can flash it yourself or lend your phone to someone that he or she can flash it with the "guest mode". 
+totemfamily.faq.question3 = Which app can I use to flash a totem? 
+totemfamily.faq.reponse3 = The Wimha application. It is fast, free and works without an internet connection. Available for iOS and Android.
+totemfamily.faq.question4 = How can I flash the totem without internet?  
+totemfamily.faq.reponse4 = After having flashed the totem with internet, you can flash it any time you want without an internet connection. Even in the desert
+totemfamily.faq.question5 = Is the map exportable to my own website? 
+totemfamily.faq.reponse5 = Yes.
+totemfamily.faq.question6 = Is the totem strong?
+totemfamily.faq.reponse6 = Hell yeah! But still avoid fire and ice contact.
+totemfamily.faq.question7 = Is my web page public?
+totemfamily.faq.reponse7 = Yes, you can send the link to anyone interested in your tribe. No need to be logged in to access the map''s webpage.
+
+totemfamily.faq.android = https://res.cloudinary.com/cloudinarywimha/image/upload/h_60/v1400578144/Static%20Pictures/english_get.png
+totemfamily.faq.ios = https://res.cloudinary.com/cloudinarywimha/image/upload/h_50/v1400578835/Static%20Pictures/Download_on_the_App_Store_Badge_US-UK_135x40.png
+
+totemfamily.homemade.title = Totems are handmade in Toulouse!
+totemfamily.homemade.intro = That''s right, we make them ourselves!
+
+
+
+
+############################################################################################################
+######## FLASH MOBILE
+############################################################################################################
+
+flash.getOut = Hi! Wimha is much more fun with the mobile app.
+flash.download = Download it now!
+
+flash.downloadApp = Hi! You can now add a picture to your flash by downloading the Wimha application (iOS and Android)
+
+flash.header.success = Good job
+flash.header.powered = powered by
+flash.resendEmail.headLine = You need to validate your totem before using it :)
+flash.resendEmail.action = Send me another email for validation 
+
+flash.initialization.intro = Before starting, do you have a question you would like to ask all the nice people you''ll be meeting?
+flash.initialization.intro.2 = The initialization only takes 1min.
+
+flash.initialization.label.question = Choose your travel book question! Every person you''ll meet will have to answer it. The best ones are personal, it can''t be answered in one word and fun to ask. 
+flash.initialization.ph.question = Enter your question here ...
+flash.initialization.label.totemName = It is your totem, give him/her a nickname :)
+flash.initialization.ph.totemName = Napoleon, Roberta, Bromigo, ...
+flash.initialization.label.description = Tell us why this question is meaningful for you?
+flash.initialization.ph.description = Enter your answer here (optional)
+flash.initialization.createTotem = Create your totem!
+
+flash.initialization.feedback.1 = Your totem is almost ready ...
+flash.initialization.feedback.2 = To make sure you are not an evil robot go to your mailbox & validate the message I’ve just sent you.
+flash.initialization.feedback.3 = Then your totem will definitely be ready
+
+flash.detail.headLine = You''ve just met someone !
+flash.detail.content.1 = Leave
+flash.detail.content.2 = a message as a souvenir
+
+flash.feedback.headLine = Thank you!
+flash.feedback.content.1 = Please go to your email address to confirm the message
+flash.feedback.content.2 = If you haven''t received an email from us, please check your SPAM folder.
+
+flash.geoloc.headLine = Where are you now? : ) 
+flash.geoloc.button = Click here
+flash.geoloc.feedback = Location found ... 
+
+flash.form.ph.answer = Write your answer here ...
+
+
+
+############################################################################################################
+######## EMAILS
+############################################################################################################
+
+email.browser = View this email in your browser
+
+email.object.dailyDigest = Today''s flashs
+email.dailyDigestFlash.headLine = Last flash resume
+email.dailyDigest.totem = lots of messages have been posted today, Check them out!
+
+email.ownerSocialInfo = How to contact
+
+email.newAccount.validation = Welcome aboard. We are so glad to have you with us. Please prove you are not an evil robot by clicking on the button below.
+
+email.comment.intro.TO_OWNER = left a comment on your tribe : 
+email.comment.intro.TO_FLASHER = wrote a comment on your flash you left on :
+email.comment.intro.TO_SUBSCRIBED_USER = left a new comment on :
+
+email.firstFlash.content.1 = Thanks for flashing
+email.flash.validate = Please validate your flash
+email.firstFlash.notMe = I''m not the one who flashed the totem
+email.firstFlash.feedback = Thanks for letting us know, we''ll delete the post manually. Simon, co-funder
+
+
+email.follow.content = follows your tribe
+email.follow.content.1 = He/she will be notice for all your next flashs 
+
+email.like.totem = New Like on your tribe !
+email.like.totem.content = likes your tribe.
+
+email.like.flash = New Like on your message !
+email.like.flash.content = likes a message you left on 
+
+email.like.popular = You are getting popular !
+email.like.alsoHaveTotem = also has a totem
+
+email.like.tip = Tip : Connect your tribe to your Facebook account. All the futur flashs will automatically be posted on your Facebook timeline !
+
+email.totemValidation.headLine = Confirm your tribe!
+email.totemValidation.content = It is the final step,
+email.totemValidation.content.1 = is almost ready to hit the road! 
+email.totemValidation.content.2 = Once confirmed people can flash your totem and leave a message on it.
+email.totemValidation.callToAction = Confirm my tribe!
+
+email.resetPassword.headLine = Hello, click on the button below to reset your password
+email.resetPassword.button = Reset 
+
+email.object.reset = New password
+email.object.confirmationAccount = Confirm your account
+email.object.comment.TOTEM = New flash 
+email.object.comment.FLASH = New comment
+email.object.comment.FLASH.TO_OWNER = New comment
+email.object.comment.FLASH.TO_SUBSCRIBED_USER = New comment
+email.object.newFollower = New follower
+email.object.newLike = New like
+email.object.confirmationTotem = Confirm your tribe
+email.object.confirmationFlash = Confirm your message
+email.object.firstFlash = Thanks for your flash
+email.object.blocked = You''ve been blocked
+email.object.favorite = The tribe loved your flash
+email.object.ambassador = Weekly ambassadors
+
+email.blocked.tribe = You''ve been blocked from the 
+email.blocked.tribe.2 = tribe. You can not post on the tribe''s page anymore.
+email.blocked.action = Send us an email
+
+email.favorite = loved your flash
+email.favorite.1 = Your flash is now part of the
+email.favorite.2 = favorites flashs. It feels good right?
+
+email.amb.headLine = Ambassadors of the week!
+email.amb.content = Their flashs have been the last week most populars in the tribe 
+email.amb.content.1 = You too can become 
+email.amb.content.2 = ''s ambassador!
+email.amb.content.3 = To do so, flash your totem and post a nice picture
+email.amb.CTA = Discover their flashs
+
+
+
+
+
+
+############################################################################################################
+######## CREATE TRIBE
+############################################################################################################
+
+
+create.title = Create your own tribe
+create.upload = Change image
+create.tribe.name = Choose your tribe''s name
+create.tribe.name.placeholder = Entre the name here (without space or special caracters)...
+create.tribe.question = What question would you like to ask ? (Can be modified later on)
+create.tribe.question.placeholder = Hey! What are you doing?
+create.member = How many members do you want in your tribe?
+create.member.placeholder = Up to 15
+create.name = What''s your name?
+create.name.placeholder = Entre your name here...
+create.email = What''s your email?
+create.email.placeholder = Entre your email here... 
+create.go = Let''s go! 
+create.lastStep = One last thing...
+create.qrcode.1 = Every member has his flash code
+create.qrcode.2 = Copy every link from below and generate your own flash codes by clicking 
+
+create.error.nb = A number between 1 and 15 please !
+create.error.question = You must give a tribe's question !
+create.error.tribe_name_null = You must give your tribe a name !
+create.error.tribe_name_exists = This name is already taken
+create.error.user_name_null = You must give your name
+create.error.email_null = You must give your email
+
